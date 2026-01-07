@@ -1,0 +1,12 @@
+Payment Confirmed
+
+Dear {{ payment.order.customer_name }},
+
+Your payment has been successfully processed.
+
+Payment Details:
+- Payment ID: {{ payment.payment_id }}
+- Amount: {{ payment.amount }} {{ payment.currency }}
+- Method: {{ payment.get_gateway_display }}
+
+Thank you for your payment!

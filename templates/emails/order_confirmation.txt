@@ -1,0 +1,17 @@
+Order Confirmation
+
+Dear {{ customer_name }},
+
+Thank you for your order! Your order has been received and is being processed.
+
+Order Details:
+- Order Number: {{ order.order_number }}
+- Total Amount: {{ order. total_amount }} {{ order.currency }}
+- Payment Method: {{ order.get_payment_method_display }}
+
+You can track your order at: {{ order_url }}
+
+Thank you for shopping with us!
+
+---
+This is an automated email. Please do not reply.

@@ -1,0 +1,75 @@
+{% load static %}
+
+<div class="card h-100 product-card">
+    <a href="{% url 'products: detail' slug=product.slug %}" class="text-decoration-none text-dark">
+        {% if product.images.first %}
+        <img src="{{ product.images.first.image.url }}" class="card-img-top" alt="{{ product. name }}" style="height: 200px; object-fit: cover;">
+        {% else %}
+        <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+            <i class="bi bi-image fs-1 text-muted"></i>
+        </div>
+        {% endif %}
+
+        {% if product.discount_percentage > 0 %}
+        <span class="badge bg-danger position-absolute top-0 end-0 m-2">
+            -{{ product.discount_percentage }}%
+        </span>
+        {% endif %}
+
+        {% if not product.is_in_stock %}
+        <span class="badge bg-secondary position-absolute top-0 start-0 m-2">
+            Out of Stock
+        </span>
+        {% endif %}
+    </a>
+
+    <div class="card-body">
+        <a href="{% url 'products: detail' slug=product.slug %}" class="text-decoration-none text-dark">
+            <h6 class="card-title text-truncate">{{ product.name }}</h6>
+        </a>
+
+        <p class="text-muted small mb-2">{{ product.category.name }}</p>
+
+        <!-- Rating -->
+        <div class="mb-2">
+            {% with rating=product.average_rating %}
+            {% for i in "12345" %}
+                {% if forloop.counter <= rating %}
+                <i class="bi bi-star-fill text-warning"></i>
+                {% else %}
+                <i class="bi bi-star text-warning"></i>
+                {% endif %}
+            {% endfor %}
+            <small class="text-muted">({{ product.review_count }})</small>
+            {% endwith %}
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+            {% if product.discount_percentage > 0 %}
+            <span class="text-decoration-line-through text-muted small">
+                {{ currency_service.format_price(product.price, current_currency) }}
+            </span>
+            <br>
+            {% endif %}
+            <span class="fw-bold text-primary fs-5">
+                {{ currency_service. format_price(product.discounted_price, current_currency) }}
+            </span>
+        </div>
+
+        <!-- Add to Cart -->
+        {% if product.is_in_stock %}
+        <form method="post" action="{% url 'cart:add' product_id=product.id %}" class="add-to-cart-form">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-cart-plus"></i> Add to Cart
+            </button>
+        </form>
+        {% else %}
+        <button class="btn btn-secondary btn-sm w-100" disabled>
+            Out of Stock
+        </button>
+        {% endif %}
+    </div>
+</div>

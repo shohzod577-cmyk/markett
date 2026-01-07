@@ -1,0 +1,173 @@
+/* Market E-Commerce Platform - Custom Styles */
+
+: root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color:  #f8f9fa;
+    --dark-color: #212529;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+/* Product Card Hover Effect */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #dee2e6;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Category Card Hover */
+.hover-shadow: hover {
+    box-shadow:  0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Cart Badge */
+.badge {
+    font-size: 0.75rem;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size:  1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Footer */
+footer a: hover {
+    color: var(--primary-color) !important;
+    transition: color 0.3s ease;
+}
+
+/* Dashboard Sidebar */
+.dashboard-sidebar {
+    min-height: calc(100vh - 56px);
+    background-color: var(--light-color);
+    border-right: 1px solid #dee2e6;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Star Rating */
+.bi-star-fill,
+.bi-star {
+    font-size: 0.9rem;
+}
+
+/* Pagination */
+.pagination . page-item. active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary: hover {
+    background-color: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(13, 110, 253, 0.3);
+}
+
+/* Alerts */
+.alert {
+    border-radius: 0.5rem;
+    border-left: 4px solid;
+}
+
+.alert-success {
+    border-left-color: var(--success-color);
+}
+
+.alert-danger {
+    border-left-color: var(--danger-color);
+}
+
+.alert-warning {
+    border-left-color: var(--warning-color);
+}
+
+.alert-info {
+    border-left-color:  var(--info-color);
+}
+
+/* Loading Spinner */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Responsive */
+@media (max-width:  768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    . product-card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity:  0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity:  1;
+        transform: translateY(0);
+    }
+}
+
+. fade-in {
+    animation:  fadeIn 0.5s ease-in;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width:  10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}

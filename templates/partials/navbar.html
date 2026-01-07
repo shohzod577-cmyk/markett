@@ -1,0 +1,112 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+            <i class="bi bi-shop"></i> MARKET
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Search Bar -->
+            <form class="d-flex mx-auto" style="width: 50%;" action="{% url 'products: list' %}" method="get">
+                <input class="form-control me-2" type="search" name="search" placeholder="Search products..." aria-label="Search">
+                <button class="btn btn-light" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+
+            <!-- Right Menu -->
+            <ul class="navbar-nav ms-auto">
+                <!-- Currency Selector -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        {{ current_currency }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for currency in supported_currencies %}
+                        <li>
+                            <a class="dropdown-item" href="? currency={{ currency }}">
+                                {{ currency }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <!-- Cart -->
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="{% url 'cart: view' %}">
+                        <i class="bi bi-cart3 fs-5"></i>
+                        {% if cart_count > 0 %}
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ cart_count }}
+                        </span>
+                        {% endif %}
+                    </a>
+                </li>
+
+                <!-- User Menu -->
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i> {{ user.get_full_name|default:user.email }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{% url 'users:profile' %}">
+                            <i class="bi bi-person"></i> My Profile
+                        </a></li>
+                        <li><a class="dropdown-item" href="{% url 'orders:list' %}">
+                            <i class="bi bi-box-seam"></i> My Orders
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        {% if user.is_staff %}
+                        <li><a class="dropdown-item" href="{% url 'dashboard:home' %}">
+                            <i class="bi bi-speedometer2"></i> Dashboard
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        {% endif %}
+                        <li><a class="dropdown-item" href="{% url 'users:logout' %}">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">
+                        <i class="bi bi-box-arrow-in-right"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-light btn-sm" href="{% url 'users:register' %}">
+                        Sign Up
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Categories Bar -->
+<div class="bg-light border-bottom">
+    <div class="container">
+        <ul class="nav nav-pills py-2">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products: list' %}">All Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products:categories' %}">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products:list' %}? on_sale=true">On Sale</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products:list' %}?sort=popular">Popular</a>
+            </li>
+        </ul>
+    </div>
+</div>

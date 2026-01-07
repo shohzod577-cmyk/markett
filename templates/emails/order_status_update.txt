@@ -1,0 +1,10 @@
+Order Status Update
+
+Dear {{ order.customer_name }},
+
+{{ status_message }}
+
+Order Number: {{ order.order_number }}
+Current Status: {{ order.get_status_display }}
+
+View order details: {{ order_url }}
