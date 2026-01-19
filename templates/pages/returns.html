@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Qaytarish va to'lovni qaytarish" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">{% trans "Qaytarish va to'lovni qaytarish" %}</h1>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3><i class="bi bi-arrow-return-left text-warning me-2"></i>{% trans "Qaytarish shartlari" %}</h3>
+                    
+                    <p class="lead">Siz xarid qilgan mahsulotni 14 kun ichida qaytarishingiz yoki almashtirishingiz mumkin.</p>
+                    
+                    <h5 class="mt-4">{% trans "Qaytarish uchun shartlar" %}</h5>
+                    <ul>
+                        <li>Mahsulot ishlatilmagan va asl holatda bo'lishi kerak</li>
+                        <li>Asl qadoq, yorliq va etiketkalar saqlanishi kerak</li>
+                        <li>Kvitansiya yoki chek bo'lishi shart</li>
+                        <li>Mahsulotda shikast yoki nuqson bo'lmasligi kerak</li>
+                    </ul>
+                    
+                    <div class="alert alert-danger mt-3">
+                        <strong>Qaytarib bo'lmaydigan mahsulotlar:</strong>
+                        <ul class="mb-0 mt-2">
+                            <li>Oziq-ovqat mahsulotlari</li>
+                            <li>Shaxsiy gigiena buyumlari</li>
+                            <li>Ochilgan programma ta'minoti</li>
+                            <li>Maxsus buyurtma bo'yicha tayyorlangan mahsulotlar</li>
+                        </ul>
+                    </div>
+                    
+                    <h5 class="mt-4">{% trans "Qaytarish jarayoni" %}</h5>
+                    <ol>
+                        <li><strong>Bog'laning:</strong> +998 71 123 45 67 raqamiga qo'ng'iroq qiling yoki support@halolrizq.uz ga xat yozing</li>
+                        <li><strong>Ma'lumot bering:</strong> Buyurtma raqami va qaytarish sababini aytib bering</li>
+                        <li><strong>Tasdiqlash:</strong> Bizdan tasdiq xabarini kuting</li>
+                        <li><strong>Mahsulotni qaytaring:</strong> Kuryer mahsulotni olib ketadi yoki ofisimizga olib kelishingiz mumkin</li>
+                        <li><strong>Tekshirish:</strong> Mahsulot tekshiriladi (1-2 ish kuni)</li>
+                        <li><strong>To'lov qaytariladi:</strong> Agar shartlar bajarilgan bo'lsa, pul 3-5 ish kuni ichida qaytariladi</li>
+                    </ol>
+                    
+                    <h3 class="mt-5"><i class="bi bi-cash-coin text-success me-2"></i>{% trans "To'lovni qaytarish" %}</h3>
+                    
+                    <p>To'lov quyidagi usullar orqali qaytariladi:</p>
+                    <ul>
+                        <li><strong>Plastik karta:</strong> To'lov qilgan kartaga 3-5 ish kuni ichida</li>
+                        <li><strong>Naqd pul:</strong> Ofisimizdan olishingiz mumkin</li>
+                        <li><strong>Click/Payme:</strong> Hisobingizga 1-3 ish kuni ichida</li>
+                    </ul>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>Eslatma:</strong> Agar mahsulot noto'g'ri yoki shikastlangan holda kelgan bo'lsa, yetkazib berish xarajatlari ham qaytariladi.
+                    </div>
+                    
+                    <h5 class="mt-4">{% trans "Almashtirish" %}</h5>
+                    <p>Agar mahsulotni boshqa o'lcham, rang yoki modelga almashtirishni istasangiz:</p>
+                    <ul>
+                        <li>Yuqoridagi qaytarish jarayonini bajaring</li>
+                        <li>Yangi mahsulot uchun alohida buyurtma bering</li>
+                        <li>Eski mahsulot uchun to'lov qaytariladi</li>
+                    </ul>
+                    
+                    <div class="card bg-light mt-4">
+                        <div class="card-body">
+                            <h5 class="mb-3">{% trans "Savolingiz bormi?" %}</h5>
+                            <p>Qaytarish bo'yicha qo'shimcha ma'lumot olish uchun:</p>
+                            <div class="d-flex gap-3">
+                                <a href="tel:+998711234567" class="btn btn-primary">
+                                    <i class="bi bi-telephone-fill me-2"></i>Qo'ng'iroq qiling
+                                </a>
+                                <a href="{% url 'contact' %}" class="btn btn-outline-primary">
+                                    <i class="bi bi-envelope me-2"></i>Xabar yozing
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

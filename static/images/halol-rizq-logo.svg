@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" width="300" height="80">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3009;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background badge shape -->
+  <path d="M 20 15 L 280 15 Q 290 15 290 25 L 290 55 Q 290 65 280 65 L 20 65 Q 10 65 10 55 L 10 25 Q 10 15 20 15 Z" 
+        fill="url(#greenGradient)" stroke="url(#goldGradient)" stroke-width="2"/>
+  
+  <!-- Crescent moon -->
+  <g transform="translate(25, 25)">
+    <path d="M 15 5 A 10 10 0 1 0 15 25 A 8 8 0 1 1 15 5 Z" 
+          fill="url(#goldGradient)" stroke="#FFD700" stroke-width="0.5"/>
+    <circle cx="20" cy="8" r="2" fill="url(#goldGradient)"/>
+  </g>
+  
+  <!-- Mosque dome -->
+  <g transform="translate(45, 28)">
+    <ellipse cx="7" cy="10" rx="7" ry="5" fill="url(#goldGradient)"/>
+    <path d="M 7 5 L 7 15" stroke="url(#goldGradient)" stroke-width="1.5"/>
+    <circle cx="7" cy="4" r="2" fill="url(#goldGradient)"/>
+  </g>
+  
+  <!-- Main text "HALOL RIZQ" -->
+  <text x="70" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" 
+        fill="url(#goldGradient)" stroke="#FFD700" stroke-width="0.5">
+    HALOL RIZQ
+  </text>
+  
+  <!-- Subtitle "Savdo Markazi" -->
+  <text x="70" y="52" font-family="Arial, sans-serif" font-size="11" font-weight="600" 
+        fill="#FFFFFF">
+    SAVDO MARKAZI
+  </text>
+  
+  <!-- Decorative stars -->
+  <g fill="url(#goldGradient)" opacity="0.7">
+    <polygon points="260,25 262,30 267,30 263,33 265,38 260,35 255,38 257,33 253,30 258,30" transform="scale(0.6)"/>
+    <polygon points="270,35 272,40 277,40 273,43 275,48 270,45 265,48 267,43 263,40 268,40" transform="scale(0.5)"/>
+  </g>
+  
+  <!-- Baraka symbol (wheat) -->
+  <g transform="translate(255, 40)" stroke="url(#goldGradient)" stroke-width="1.5" fill="none">
+    <path d="M 0 0 Q 2 -3 4 -5"/>
+    <path d="M 0 0 Q -2 -3 -4 -5"/>
+    <path d="M 0 0 L 0 -12"/>
+    <ellipse cx="0" cy="-13" rx="2" ry="3" fill="url(#goldGradient)"/>
+  </g>
+</svg>

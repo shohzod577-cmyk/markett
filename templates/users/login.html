@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container my-5" style="max-width:480px;">
+  <h2>Login</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+    {% endif %}
+    <div class="mb-3">
+      <label class="form-label">Email or Username</label>
+      {{ form.username }}
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      {{ form.password }}
+    </div>
+    <input type="hidden" name="next" value="{{ next_url }}">
+    <button class="btn btn-primary" type="submit">Sign in</button>
+  </form>
+  <p class="mt-3">Don't have an account? <a href="{% url 'users:register' %}">Sign up</a></p>
+  <hr>
+  <div class="mt-3">
+    <h6>Quick pick a username</h6>
+    <form method="get" action="{% url 'users:register' %}" class="d-flex">
+      <input name="username" class="form-control me-2" placeholder="Choose a username" aria-label="username">
+      <button class="btn btn-outline-primary" type="submit">Start Registration</button>
+    </form>
+    <small class="text-muted">This will open the registration form with the username prefilled.</small>
+  </div>
+</div>
+{% endblock %}

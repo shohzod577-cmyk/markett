@@ -1,0 +1,24 @@
+[Unit]
+Description=Gunicorn daemon for Markett Django application
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/markett
+Environment="PATH=/home/ubuntu/markett/venv/bin"
+EnvironmentFile=/home/ubuntu/markett/.env
+ExecStart=/home/ubuntu/markett/venv/bin/gunicorn \
+    --workers 3 \
+    --bind 127.0.0.1:8000 \
+    --timeout 120 \
+    --access-logfile /home/ubuntu/markett/logs/gunicorn-access.log \
+    --error-logfile /home/ubuntu/markett/logs/gunicorn-error.log \
+    --log-level info \
+    config.wsgi:application
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

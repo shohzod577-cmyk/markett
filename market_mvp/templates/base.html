@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Market MVP</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+  </head>
+  <body>
+    <header style="padding:1rem;background:#f5f5f5;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <a href="/">Home</a> |
+        <a href="/products/">Products</a> |
+        <a href="/cart/">Cart</a>
+      </div>
+      <div>
+        {% if request.user.is_authenticated %}
+          Hello, {{ request.user.get_full_name|default:request.user.username }} |
+          <a href="/users/logout/">Logout</a>
+          {% if request.user.is_staff %} |
+            <a href="{% url 'dashboard:home' %}">Dashboard</a>
+          {% endif %}
+        {% else %}
+          <a href="/users/login/">Login</a> |
+          <a href="/users/register/">Register</a>
+        {% endif %}
+      </div>
+    </header>
+
+    <main style="padding:2rem;">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer style="padding:1rem;background:#f5f5f5;text-align:center;">
+      &copy; Market MVP
+    </footer>
+  </body>
+</html>

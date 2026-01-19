@@ -19,14 +19,20 @@ def cart_view(request):
     cart_service = CartService(request.user)
     cart = cart_service.get_cart()
 
-    # Get currency from session
     currency = request.session.get('currency', 'UZS')
     total = cart.get_total(currency) if cart else 0
+    
+    FREE_DELIVERY_THRESHOLD = 300000
+    delivery_fee = 0 if total >= FREE_DELIVERY_THRESHOLD else 20000
+    is_free_delivery = total >= FREE_DELIVERY_THRESHOLD
 
     context = {
         'cart': cart,
         'total': total,
         'currency': currency,
+        'delivery_fee': delivery_fee,
+        'is_free_delivery': is_free_delivery,
+        'free_delivery_threshold': FREE_DELIVERY_THRESHOLD,
     }
 
     return render(request, 'cart/cart.html', context)
@@ -49,18 +55,18 @@ def add_to_cart_view(request, product_id):
     cart_service = CartService(request.user)
     cart_service.add_item(product, quantity, variant)
 
-    messages.success(request, f'{product.name} added to cart.')
+    messages.success(request, f'✓ {product.name} savatga qo\'shildi!')
 
-    # Return JSON for AJAX requests
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         cart = cart_service.get_cart()
         return JsonResponse({
             'success': True,
             'cart_count': cart.items_count if cart else 0,
-            'message': f'{product.name} added to cart.'
+            'message': f'{product.name} savatga qo\'shildi!'
         })
 
-    return redirect('cart:view')
+    next_url = request.POST.get('next', request.META.get('HTTP_REFERER', 'cart:view'))
+    return redirect(next_url)
 
 
 @login_required

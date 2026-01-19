@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="greenGrad">
+      <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3009;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#greenGrad)" stroke="url(#goldGrad)" stroke-width="2"/>
+  
+  <!-- Crescent moon and star -->
+  <g transform="translate(18, 18)">
+    <path d="M 14 8 A 10 10 0 1 0 14 28 A 8 8 0 1 1 14 8 Z" 
+          fill="url(#goldGrad)" stroke="#FFD700" stroke-width="0.8"/>
+    <circle cx="22" cy="12" r="3" fill="url(#goldGrad)"/>
+  </g>
+  
+  <!-- Baraka wheat symbol -->
+  <g transform="translate(32, 48)" stroke="url(#goldGrad)" stroke-width="2" fill="none">
+    <path d="M 0 0 Q 3 -4 5 -8"/>
+    <path d="M 0 0 Q -3 -4 -5 -8"/>
+    <path d="M 0 0 L 0 -15"/>
+    <ellipse cx="0" cy="-16" rx="3" ry="4" fill="url(#goldGrad)"/>
+  </g>
+</svg>

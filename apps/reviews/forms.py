@@ -1,31 +1,15 @@
-"""
-Review forms.
-"""
+"""Review forms."""
+
 from django import forms
 from .models import Review
 
 
 class ReviewForm(forms.ModelForm):
-    """
-    Product review form.
-    """
-    from django import forms
-    from .models import Review
+    images = forms.FileField(required=False)
 
-    # from django import forms
-    # from .models import Review
-
-    # forms.py
-    # from django import forms
-    # from .models import Review
-
-    class ReviewForm(forms.ModelForm):
-        images = forms.FileField(required=False)  # widget ni qo'ymaymiz
-
-        class Meta:
-            model = Review
-            fields = ['rating', 'title', 'content', 'images']
-
+    class Meta:
+        model = Review
+        fields = ['rating', 'title', 'comment', 'images']
         widgets = {
             'rating': forms.RadioSelect(
                 choices=[(i, f'{i} Star{"s" if i > 1 else ""}') for i in range(1, 6)],
@@ -38,6 +22,6 @@ class ReviewForm(forms.ModelForm):
             'comment': forms.Textarea(attrs={
                 'class': 'form-control',
                 'rows': 5,
-                'placeholder': 'Share your experience with this product.. .'
+                'placeholder': 'Share your experience with this product.'
             }),
         }

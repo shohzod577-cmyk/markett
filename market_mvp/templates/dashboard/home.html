@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<div style="display:flex;gap:2rem;flex-wrap:wrap;">
+  <div style="border:1px solid #ddd;padding:1rem;min-width:180px;">Users<br><strong>{{ stats.users_count }}</strong></div>
+  <div style="border:1px solid #ddd;padding:1rem;min-width:180px;">Products<br><strong>{{ stats.products_count }}</strong></div>
+  <div style="border:1px solid #ddd;padding:1rem;min-width:180px;">Orders<br><strong>{{ stats.orders_count }}</strong></div>
+  <div style="border:1px solid #ddd;padding:1rem;min-width:180px;">Pending Orders<br><strong>{{ stats.orders_pending }}</strong></div>
+  <div style="border:1px solid #ddd;padding:1rem;min-width:180px;">Transactions<br><strong>{{ stats.transactions_count }}</strong></div>
+  <div style="border:1px solid #ddd;padding:1rem;min-width:180px;">Successful Txns<br><strong>{{ stats.transactions_success }}</strong></div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<h2>Last 30 days</h2>
+<canvas id="ordersChart" width="800" height="300"></canvas>
+<script>
+fetch("{% url 'dashboard:stats' %}")
+  .then(r => r.json())
+  .then(data => {
+    const ctx = document.getElementById('ordersChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: 'Orders',
+          data: data.orders,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.2,
+        }, {
+          label: 'Revenue',
+          data: data.revenue,
+          borderColor: 'rgb(54, 162, 235)',
+          tension: 0.2,
+          yAxisID: 'y-rev'
+        }]
+      },
+      options: {
+        scales: {
+          'y-rev': { type: 'linear', position: 'right' }
+        }
+      }
+    });
+  })
+  .catch(console.error);
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>Recent Orders</h2>
+{% if recent_orders %}
+  <table style="width:100%;border-collapse:collapse;">
+    <thead>
+      <tr><th>ID</th><th>Email</th><th>Total</th><th>Status</th><th>Created</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+      {% for o in recent_orders %}
+        <tr style="border-top:1px solid #eee;">
+          <td>{{ o.id }}</td>
+          <td>{{ o.email }}</td>
+          <td>{{ o.total }}</td>
+          <td>{{ o.status }}</td>
+          <td>{{ o.created_at|date:'Y-m-d H:i' }}</td>
+          <td>
+            <form method="post" action="{% url 'dashboard:order_action' o.id 'ship' %}" style="display:inline;">{% csrf_token %}
+              <button type="submit">Mark shipped</button>
+            </form>
+            <form method="post" action="{% url 'dashboard:order_action' o.id 'cancel' %}" style="display:inline;">{% csrf_token %}
+              <button type="submit">Cancel</button>
+            </form>
+            <a href="{% url 'orders:detail' o.id %}">View</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <p>No recent orders.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}404 - {% trans "Page Not Found" %}{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <div class="error-illustration mb-4">
+                    <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="150" cy="150" r="140" fill="#F3F4F6"/>
+                        <text x="150" y="180" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#7000ff" text-anchor="middle">404</text>
+                    </svg>
+                </div>
+                
+                <h1 class="error-title">{% trans "Page Not Found" %}</h1>
+                <p class="error-description">
+                    {% trans "Sorry, the page you are looking for does not exist or has been moved." %}
+                </p>
+                
+                <div class="error-actions mt-5">
+                    <a href="{% url 'home' %}" class="btn btn-primary-modern btn-lg me-3">
+                        <i class="bi bi-house-door me-2"></i>{% trans "Go Home" %}
+                    </a>
+                    <a href="{% url 'products:list' %}" class="btn btn-outline-primary btn-lg">
+                        <i class="bi bi-shop me-2"></i>{% trans "Browse Products" %}
+                    </a>
+                </div>
+                
+                <div class="error-suggestions mt-5">
+                    <h5 class="mb-3">{% trans "Popular Links" %}</h5>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        {% for category in categories|slice:":4" %}
+                            <a href="{% url 'products:list' %}?category={{ category.id }}" class="badge-link">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.error-illustration {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.error-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary, #1a1a1a);
+    margin-bottom: 1rem;
+}
+
+.error-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary, #666);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.badge-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--primary-light, #f0e6ff);
+    color: var(--primary-color, #7000ff);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.badge-link:hover {
+    background: var(--primary-color, #7000ff);
+    color: white;
+    transform: translateY(-2px);
+}
+</style>
+{% endblock %}

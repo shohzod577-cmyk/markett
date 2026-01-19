@@ -18,7 +18,6 @@ class User(AbstractUser):
     is_verified = models.BooleanField(_('verified'), default=False)
     avatar = models.ImageField(_('avatar'), upload_to='avatars/', blank=True, null=True)
 
-    # User preferences
     preferred_currency = models.CharField(
         _('preferred currency'),
         max_length=3,
@@ -26,11 +25,9 @@ class User(AbstractUser):
         choices=[('UZS', 'UZS'), ('USD', 'USD'), ('EUR', 'EUR')]
     )
 
-    # Timestamps
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
-    # Security
     is_blocked = models.BooleanField(_('blocked'), default=False)
     blocked_reason = models.TextField(_('blocked reason'), blank=True, null=True)
 
@@ -64,14 +61,12 @@ class Address(models.Model):
         verbose_name=_('user')
     )
 
-    # Address details
     label = models.CharField(_('label'), max_length=50, help_text='e.g., Home, Office')
     full_address = models.TextField(_('full address'))
     city = models.CharField(_('city'), max_length=100)
     region = models.CharField(_('region/state'), max_length=100, blank=True)
     postal_code = models.CharField(_('postal code'), max_length=20, blank=True)
 
-    # Geolocation
     latitude = models.DecimalField(
         _('latitude'),
         max_digits=9,
@@ -87,10 +82,8 @@ class Address(models.Model):
         null=True
     )
 
-    # Contact
     phone = models.CharField(_('phone number'), max_length=20)
 
-    # Metadata
     is_default = models.BooleanField(_('default address'), default=False)
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
@@ -124,7 +117,6 @@ class UserProfile(models.Model):
         verbose_name=_('user')
     )
 
-    # Personal information
     date_of_birth = models.DateField(_('date of birth'), blank=True, null=True)
     gender = models.CharField(
         _('gender'),
@@ -133,7 +125,6 @@ class UserProfile(models.Model):
         blank=True
     )
 
-    # Statistics
     total_orders = models.PositiveIntegerField(_('total orders'), default=0)
     total_spent = models.DecimalField(
         _('total spent'),
@@ -142,7 +133,6 @@ class UserProfile(models.Model):
         default=0
     )
 
-    # Notifications
     email_notifications = models.BooleanField(_('email notifications'), default=True)
     sms_notifications = models.BooleanField(_('SMS notifications'), default=False)
 

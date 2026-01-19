@@ -1,108 +1,176 @@
 {% load static %}
+{% load i18n %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+<nav class="modern-navbar">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="{% url 'home' %}">
-            <i class="bi bi-shop"></i> MARKET
-        </a>
+        <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}" style="text-decoration: none;">
+                    <img src="{% static 'images/halol-savdo-baraka-circle.svg' %}" alt="Halol Savdo Baraka Market" 
+                         style="height: 60px; width: 60px; border-radius: 50%; filter: drop-shadow(0 4px 10px rgba(255,215,0,0.6)); transition: transform 0.3s ease;" 
+                         onmouseover="this.style.transform='scale(1.1) rotate(5deg)'" 
+                         onmouseout="this.style.transform='scale(1) rotate(0deg)'">
+                </a>
+            </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Search Bar -->
-            <form class="d-flex mx-auto" style="width: 50%;" action="{% url 'products: list' %}" method="get">
-                <input class="form-control me-2" type="search" name="search" placeholder="Search products..." aria-label="Search">
-                <button class="btn btn-light" type="submit">
-                    <i class="bi bi-search"></i>
+            <!-- Categories Button -->
+            <div class="col-lg-2 col-md-3 col-6 d-none d-md-block">
+                <button class="btn btn-outline-modern w-100" data-bs-toggle="modal" data-bs-target="#categoriesModal">
+                    <i class="bi bi-grid"></i> {% trans 'Categories' %}
                 </button>
-            </form>
+            </div>
 
-            <!-- Right Menu -->
-            <ul class="navbar-nav ms-auto">
-                <!-- Currency Selector -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        {{ current_currency }}
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% for currency in supported_currencies %}
-                        <li>
-                            <a class="dropdown-item" href="? currency={{ currency }}">
-                                {{ currency }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </li>
+            <!-- Search Bar -->
+            <div class="col-lg-3 col-md-12 col-12 mt-3 mt-lg-0">
+                <form action="{% url 'products:list' %}" method="get" class="position-relative">
+                    <input class="search-input" type="search" name="search" placeholder="{% trans 'Search products...' %}">
+                    <button class="search-btn" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
 
-                <!-- Cart -->
-                <li class="nav-item">
-                    <a class="nav-link position-relative" href="{% url 'cart: view' %}">
+            <!-- Right Menu Icons -->
+            <div class="col-lg-5 col-md-12 col-12 mt-3 mt-lg-0">
+                <div class="d-flex justify-content-end align-items-center gap-3">
+                    <!-- Language Selector -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary d-flex align-items-center px-3 py-2" data-bs-toggle="dropdown" style="border-radius: 20px;">
+                            <i class="bi bi-translate fs-5 me-2"></i>
+                            <span class="fw-bold">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% if LANGUAGE_CODE == 'uz' %}O'zbek
+                                {% elif LANGUAGE_CODE == 'ru' %}Русский
+                                {% elif LANGUAGE_CODE == 'en' %}English
+                                {% endif %}
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {% get_available_languages as languages %}
+                            {% get_language_info_list for languages as langs %}
+                            <form action="{% url 'set_language' %}" method="post">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                {% for language in langs %}
+                                    <li>
+                                        <button type="submit" name="language" value="{{ language.code }}" 
+                                                class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}">
+                                            {{ language.name_local }}
+                                        </button>
+                                    </li>
+                                {% endfor %}
+                            </form>
+                        </ul>
+                    </div>
+                    
+                    <!-- Currency Selector -->
+                    <div class="dropdown">
+                        <button class="nav-icon-btn" data-bs-toggle="dropdown">
+                            <span class="fw-bold">{{ current_currency }}</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            {% for currency in supported_currencies %}
+                            <li>
+                                <a class="dropdown-item" href="?currency={{ currency }}">
+                                    {{ currency }}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- Cart -->
+                    <a href="{% url 'cart:view' %}" class="nav-icon-btn position-relative">
                         <i class="bi bi-cart3 fs-5"></i>
                         {% if cart_count > 0 %}
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {{ cart_count }}
-                        </span>
+                        <span class="nav-badge">{{ cart_count }}</span>
                         {% endif %}
                     </a>
-                </li>
 
-                <!-- User Menu -->
-                {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle"></i> {{ user.get_full_name|default:user.email }}
+                    <!-- User Menu -->
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="nav-icon-btn" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle fs-5"></i>
+                            <span class="ms-1 d-none d-xl-inline">{{ user.get_full_name|default:user.email|truncatewords:1 }}</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{% url 'users:profile' %}">
+                                <i class="bi bi-person"></i> {% trans 'My Profile' %}
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'orders:list' %}">
+                                <i class="bi bi-box-seam"></i> {% trans 'My Orders' %}
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            {% if user.is_staff %}
+                            <li><a class="dropdown-item" href="{% url 'dashboard:home' %}">
+                                <i class="bi bi-speedometer2"></i> {% trans 'Dashboard' %}
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            {% endif %}
+                            <li>
+                                <form method="post" action="{% url 'users:logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="bi bi-box-arrow-right"></i> {% trans 'Logout' %}
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'users:login' %}" class="btn btn-primary-modern">
+                        <i class="bi bi-box-arrow-in-right"></i> {% trans 'Sign In' %}
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{% url 'users:profile' %}">
-                            <i class="bi bi-person"></i> My Profile
-                        </a></li>
-                        <li><a class="dropdown-item" href="{% url 'orders:list' %}">
-                            <i class="bi bi-box-seam"></i> My Orders
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        {% if user.is_staff %}
-                        <li><a class="dropdown-item" href="{% url 'dashboard:home' %}">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        {% endif %}
-                        <li><a class="dropdown-item" href="{% url 'users:logout' %}">
-                            <i class="bi bi-box-arrow-right"></i> Logout
-                        </a></li>
-                    </ul>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:login' %}">
-                        <i class="bi bi-box-arrow-in-right"></i> Login
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-light btn-sm" href="{% url 'users:register' %}">
-                        Sign Up
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 </nav>
+
+<!-- Categories Modal -->
+<div class="modal fade" id="categoriesModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% trans 'All Categories' %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    {% for category in categories %}
+                    <div class="col-md-4 col-sm-6">
+                        <a href="{% url 'products:list' %}?category={{ category.slug }}" class="text-decoration-none">
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="bi bi-{{ category.icon|default:'box' }}"></i>
+                                </div>
+                                <div class="category-name">{{ category.name }}</div>
+                                <div class="category-count">{{ category.products.count }} {% trans 'products' %}</div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Categories Bar -->
 <div class="bg-light border-bottom">
     <div class="container">
         <ul class="nav nav-pills py-2">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'products: list' %}">All Products</a>
+                <a class="nav-link" href="{% url 'products:list' %}">All Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'products:categories' %}">Categories</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'products:list' %}? on_sale=true">On Sale</a>
+                <a class="nav-link" href="{% url 'products:list' %}?on_sale=true">On Sale</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'products:list' %}?sort=popular">Popular</a>

@@ -5,6 +5,7 @@ Supports multiple payment gateways and transaction tracking.
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 from decimal import Decimal
 
 from apps.orders.models import Order
@@ -16,7 +17,6 @@ class Payment(models.Model):
     Gateway-agnostic design for multiple payment providers.
     """
 
-    # Payment statuses
     STATUS_PENDING = 'pending'
     STATUS_PROCESSING = 'processing'
     STATUS_COMPLETED = 'completed'
@@ -33,7 +33,6 @@ class Payment(models.Model):
         (STATUS_REFUNDED, _('Refunded')),
     ]
 
-    # Payment gateways
     GATEWAY_CASH = 'cash'
     GATEWAY_CARD = 'card'
     GATEWAY_CLICK = 'click'
@@ -48,7 +47,6 @@ class Payment(models.Model):
         (GATEWAY_UZUM, _('Uzum Bank')),
     ]
 
-    # Payment identification
     payment_id = models.CharField(
         _('payment ID'),
         max_length=100,
@@ -56,7 +54,6 @@ class Payment(models.Model):
         editable=False
     )
 
-    # Relationships
     order = models.ForeignKey(
         Order,
         on_delete=models.PROTECT,
@@ -71,7 +68,6 @@ class Payment(models.Model):
         verbose_name=_('user')
     )
 
-    # Payment details
     gateway = models.CharField(
         _('payment gateway'),
         max_length=20,
@@ -85,7 +81,6 @@ class Payment(models.Model):
         default=STATUS_PENDING
     )
 
-    # Amount
     amount = models.DecimalField(
         _('amount'),
         max_digits=15,
@@ -94,7 +89,6 @@ class Payment(models.Model):
 
     currency = models.CharField(_('currency'), max_length=3, default='UZS')
 
-    # Gateway-specific data
     gateway_transaction_id = models.CharField(
         _('gateway transaction ID'),
         max_length=200,
@@ -109,7 +103,6 @@ class Payment(models.Model):
         help_text='Raw response from payment gateway'
     )
 
-    # Payment method details (for card payments)
     card_number_masked = models.CharField(
         _('masked card number'),
         max_length=20,
@@ -124,15 +117,12 @@ class Payment(models.Model):
         null=True
     )
 
-    # Metadata
     ip_address = models.GenericIPAddressField(_('IP address'), blank=True, null=True)
     user_agent = models.TextField(_('user agent'), blank=True)
 
-    # Error handling
     error_code = models.CharField(_('error code'), max_length=50, blank=True)
     error_message = models.TextField(_('error message'), blank=True)
 
-    # Timestamps
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
     completed_at = models.DateTimeField(_('completed at'), blank=True, null=True)
@@ -156,22 +146,19 @@ class Payment(models.Model):
         """Generate payment ID if not exists."""
         if not self.payment_id:
             import uuid
-            from datetime import datetime
-            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            timestamp = timezone.now().strftime('%Y%m%d%H%M%S')
             unique_id = str(uuid.uuid4().hex)[:8].upper()
             self.payment_id = f"PAY-{timestamp}-{unique_id}"
         super().save(*args, **kwargs)
 
     def mark_as_completed(self, transaction_id=None):
         """Mark payment as completed."""
-        from django.utils import timezone
         self.status = self.STATUS_COMPLETED
         self.completed_at = timezone.now()
         if transaction_id:
             self.gateway_transaction_id = transaction_id
         self.save(update_fields=['status', 'completed_at', 'gateway_transaction_id'])
 
-        # Update order payment status
         self.order.mark_as_paid()
 
     def mark_as_failed(self, error_code='', error_message=''):
@@ -193,7 +180,6 @@ class Transaction(models.Model):
     Provides audit trail for all payment-related events.
     """
 
-    # Transaction types
     TYPE_AUTHORIZATION = 'authorization'
     TYPE_CAPTURE = 'capture'
     TYPE_REFUND = 'refund'
@@ -221,7 +207,6 @@ class Transaction(models.Model):
         choices=TYPE_CHOICES
     )
 
-    # Transaction data
     amount = models.DecimalField(
         _('amount'),
         max_digits=15,
@@ -232,7 +217,6 @@ class Transaction(models.Model):
 
     status = models.CharField(_('status'), max_length=50)
 
-    # Gateway data
     gateway_transaction_id = models.CharField(
         _('gateway transaction ID'),
         max_length=200,
@@ -242,7 +226,6 @@ class Transaction(models.Model):
     request_data = models.JSONField(_('request data'), blank=True, null=True)
     response_data = models.JSONField(_('response data'), blank=True, null=True)
 
-    # Metadata
     ip_address = models.GenericIPAddressField(_('IP address'), blank=True, null=True)
     notes = models.TextField(_('notes'), blank=True)
 

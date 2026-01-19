@@ -1,0 +1,17 @@
+<!doctype html>
+<html><body>
+<h1>Products</h1>
+<form method="get"><input name="q" placeholder="Search" value="{{ request.GET.q }}"><button>Search</button></form>
+<ul>
+{% for p in products %}
+  <li><a href="{{ p.get_absolute_url|default:'/' }}">{{ p.title }}</a> — {{ p.price }} {{ p.currency }}</li>
+{% empty %}
+  <li>No products</li>
+{% endfor %}
+</ul>
+<div>
+{% if products.has_previous %}<a href="?page={{ products.previous_page_number }}">Prev</a>{% endif %}
+Page {{ products.number }} of {{ products.paginator.num_pages }}
+{% if products.has_next %}<a href="?page={{ products.next_page_number }}">Next</a>{% endif %}
+</div>
+</body></html>

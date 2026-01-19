@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" width="400" height="150">
+  <defs>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3009;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="woodBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  
+  <!-- Wooden board background -->
+  <path d="M 30 20 L 370 20 Q 380 20 380 30 L 380 120 Q 380 130 370 130 L 30 130 Q 20 130 20 120 L 20 30 Q 20 20 30 20 Z" 
+        fill="url(#woodBg)" stroke="#654321" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- Upper decorative arc -->
+  <path d="M 60 20 Q 200 -10 340 20" fill="none" stroke="url(#goldText)" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Crescent Moon (left side) -->
+  <g transform="translate(50, 40)">
+    <path d="M 20 10 A 18 18 0 1 0 20 46 A 14 14 0 1 1 20 10 Z" 
+          fill="url(#goldText)" stroke="#FFD700" stroke-width="1.5" filter="url(#glow)"/>
+    <!-- Star on crescent -->
+    <polygon points="32,18 34,23 39,23 35,26 37,31 32,28 27,31 29,26 25,23 30,23" 
+             fill="url(#goldText)" stroke="#FFD700" stroke-width="0.8"/>
+  </g>
+  
+  <!-- Mosque dome with minarets (center top) -->
+  <g transform="translate(200, 35)">
+    <!-- Left minaret -->
+    <rect x="-35" y="5" width="6" height="20" fill="url(#goldText)" rx="1"/>
+    <circle cx="-32" cy="4" r="3" fill="url(#goldText)"/>
+    <path d="M -32 1 L -32 -2 L -33 -4 L -31 -4 Z" fill="url(#goldText)"/>
+    
+    <!-- Main dome -->
+    <ellipse cx="0" cy="15" rx="15" ry="10" fill="url(#goldText)" filter="url(#glow)"/>
+    <rect x="-12" y="15" width="24" height="10" fill="url(#goldText)" opacity="0.8"/>
+    <circle cx="0" cy="3" r="4" fill="url(#goldText)"/>
+    <path d="M 0 -1 L 0 -5 L -1.5 -8 L 1.5 -8 Z" fill="url(#goldText)"/>
+    
+    <!-- Right minaret -->
+    <rect x="29" y="5" width="6" height="20" fill="url(#goldText)" rx="1"/>
+    <circle cx="32" cy="4" r="3" fill="url(#goldText)"/>
+    <path d="M 32 1 L 32 -2 L 31 -4 L 33 -4 Z" fill="url(#goldText)"/>
+  </g>
+  
+  <!-- Main title "HALOL SAVDO" -->
+  <text x="200" y="75" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" 
+        text-anchor="middle" fill="url(#goldText)" stroke="#8B4513" stroke-width="1" filter="url(#glow)">
+    HALOL SAVDO
+  </text>
+  
+  <!-- Green badge for subtitle -->
+  <rect x="80" y="85" width="240" height="32" rx="16" fill="url(#greenBg)" stroke="url(#goldText)" stroke-width="2"/>
+  
+  <!-- Subtitle "BARAKA MARKET" -->
+  <text x="200" y="106" font-family="Arial, sans-serif" font-size="18" font-weight="bold" 
+        text-anchor="middle" fill="#FFD700" letter-spacing="2">
+    BARAKA MARKET
+  </text>
+  
+  <!-- Decorative elements -->
+  <!-- Wheat stalks (left) -->
+  <g transform="translate(30, 90)" stroke="url(#goldText)" stroke-width="2" fill="none">
+    <path d="M 0 0 L 0 -12"/>
+    <path d="M 0 -3 Q 3 -5 5 -7"/>
+    <path d="M 0 -3 Q -3 -5 -5 -7"/>
+    <ellipse cx="0" cy="-13" rx="2.5" ry="3.5" fill="url(#goldText)"/>
+  </g>
+  
+  <!-- Wheat stalks (right) -->
+  <g transform="translate(370, 90)" stroke="url(#goldText)" stroke-width="2" fill="none">
+    <path d="M 0 0 L 0 -12"/>
+    <path d="M 0 -3 Q 3 -5 5 -7"/>
+    <path d="M 0 -3 Q -3 -5 -5 -7"/>
+    <ellipse cx="0" cy="-13" rx="2.5" ry="3.5" fill="url(#goldText)"/>
+  </g>
+  
+  <!-- Decorative stars -->
+  <g fill="url(#goldText)" opacity="0.7">
+    <circle cx="350" cy="45" r="2"/>
+    <circle cx="355" cy="55" r="1.5"/>
+    <circle cx="45" cy="55" r="1.5"/>
+    <circle cx="340" cy="65" r="1.8"/>
+  </g>
+  
+  <!-- Bottom decorative line -->
+  <path d="M 60 130 Q 200 140 340 130" fill="none" stroke="url(#goldText)" stroke-width="2" opacity="0.6"/>
+</svg>

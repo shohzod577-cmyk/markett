@@ -23,14 +23,14 @@ def register_view(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
+            user.email = form.cleaned_data['email'].lower()
+            user.username = user.email
             user.set_password(form.cleaned_data['password'])
             user.save()
 
-            # Auto-login after registration
             login(request, user)
             messages.success(request, 'Welcome to Market!  Your account has been created.')
 
-            # Send welcome email
             from core.services.email import EmailService
             EmailService().send_welcome_email(user)
 
@@ -64,7 +64,6 @@ def login_view(request):
                     login(request, user)
                     messages.success(request, f'Welcome back, {user.first_name or user.email}!')
 
-                    # Redirect to next page or home
                     next_url = request.GET.get('next', 'home')
                     return redirect(next_url)
             else:
@@ -102,7 +101,7 @@ def profile_view(request):
     context = {
         'form': form,
         'addresses': request.user.addresses.all(),
-        'orders': request.user.orders.all()[: 10],  # Last 10 orders
+        'orders': request.user.orders.all()[: 10],
     }
 
     return render(request, 'users/profile.html', context)

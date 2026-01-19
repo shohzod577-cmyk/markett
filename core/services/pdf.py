@@ -37,7 +37,6 @@ class PDFInvoiceGenerator:
         self.styles = getSampleStyleSheet()
         self.story = []
 
-        # Custom styles
         self.title_style = ParagraphStyle(
             'CustomTitle',
             parent=self.styles['Heading1'],
@@ -69,14 +68,12 @@ class PDFInvoiceGenerator:
         self._add_payment_info()
         self._add_footer()
 
-        # Build PDF
         self.doc.build(self.story)
         self.buffer.seek(0)
         return self.buffer
 
     def _add_header(self):
         """Add invoice header with logo and title."""
-        # Title
         title = Paragraph("INVOICE", self.title_style)
         self.story.append(title)
         self.story.append(Spacer(1, 0.5 * cm))
@@ -154,12 +151,10 @@ class PDFInvoiceGenerator:
         heading = Paragraph("ORDER ITEMS:", self.heading_style)
         self.story.append(heading)
 
-        # Table header
         data = [
             ['#', 'Product', 'SKU', 'Qty', 'Unit Price', 'Subtotal']
         ]
 
-        # Add items
         for idx, item in enumerate(self.order.items.all(), 1):
             data.append([
                 str(idx),
@@ -172,7 +167,6 @@ class PDFInvoiceGenerator:
 
         table = Table(data, colWidths=[1 * cm, 7 * cm, 3 * cm, 2 * cm, 3 * cm, 3 * cm])
         table.setStyle(TableStyle([
-            # Header style
             ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#3498DB')),
             ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
             ('ALIGN', (0, 0), (-1, 0), 'CENTER'),
@@ -180,7 +174,6 @@ class PDFInvoiceGenerator:
             ('FONTSIZE', (0, 0), (-1, 0), 11),
             ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
 
-            # Body style
             ('ALIGN', (0, 1), (0, -1), 'CENTER'),
             ('ALIGN', (3, 1), (3, -1), 'CENTER'),
             ('ALIGN', (4, 1), (-1, -1), 'RIGHT'),
@@ -188,7 +181,6 @@ class PDFInvoiceGenerator:
             ('FONTSIZE', (0, 1), (-1, -1), 10),
             ('TEXTCOLOR', (0, 1), (-1, -1), colors.HexColor('#2C3E50')),
 
-            # Grid
             ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
             ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#ECF0F1')]),
             ('BOTTOMPADDING', (0, 1), (-1, -1), 8),
@@ -207,7 +199,6 @@ class PDFInvoiceGenerator:
             ['Discount:', f"-{self.order.discount_amount:,.2f} {self.order.currency}"],
         ]
 
-        # Add total with highlight
         totals_data.append([
             '<b>TOTAL: </b>',
             f"<b>{self.order.total_amount:,.2f} {self.order.currency}</b>"

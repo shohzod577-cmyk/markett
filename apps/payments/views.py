@@ -25,29 +25,44 @@ def payment_process_view(request, order_id):
         messages.info(request, 'This order has already been paid.')
         return redirect('orders:detail', order_id=order.id)
 
-    # Create payment
+    if request.method == 'GET':
+        return render(request, 'payments/payment_process.html', {
+            'order': order,
+        })
+
+    payment_method = request.POST.get('payment_method')
+    if not payment_method:
+        messages.error(request, 'Please select a payment method.')
+        return redirect('payments:process', order_id=order.id)
+
+    order.payment_method = payment_method
+    order.save()
+
     payment_service = PaymentService()
     payment = payment_service.create_payment(
         order=order,
         user=request.user,
-        gateway=order.payment_method,
+        gateway=payment_method,
         ip_address=request.META.get('REMOTE_ADDR'),
         user_agent=request.META.get('HTTP_USER_AGENT', '')
     )
 
-    # For cash payment, just confirm
-    if order.payment_method == 'cash':
-        messages.success(request, 'Order confirmed!  Payment will be collected on delivery.')
+    if payment_method == 'cash':
+        messages.success(request, 'Order confirmed! Payment will be collected on delivery.')
         return redirect('orders:detail', order_id=order.id)
 
-    # For online payments, redirect to gateway
     payment_result = payment_service.initiate_payment(payment)
 
     if payment_result.get('success'):
-        return redirect(payment_result['payment_url'])
+        return render(request, 'payments/payment_processing.html', {
+            'order': order,
+            'payment': payment,
+            'payment_url': payment_result.get('payment_url'),
+            'transaction_id': payment_result.get('transaction_id'),
+        })
     else:
         messages.error(request, f"Payment initialization failed: {payment_result.get('error')}")
-        return redirect('orders: detail', order_id=order.id)
+        return redirect('orders:detail', order_id=order.id)
 
 
 @login_required
@@ -56,28 +71,43 @@ def payment_success_view(request):
     Payment success callback.
     """
     payment_id = request.GET.get('payment_id')
+    order_id = request.GET.get('order_id')
+
+    order = None
 
     if payment_id:
         try:
             payment = Payment.objects.get(payment_id=payment_id, user=request.user)
 
-            # Verify payment with gateway
             payment_service = PaymentService()
             verification = payment_service.verify_payment(payment)
 
             if verification['is_successful']:
-                messages.success(request, 'Payment completed successfully!')
-
-                # Send confirmation email
-                from core.services.email import EmailService
-                EmailService().send_payment_confirmation(payment)
+                from apps.orders.services import OrderService
+                order_service = OrderService()
+                order_service.mark_order_as_paid(payment.order)
+                
+                order = payment.order
+                
+                return render(request, 'payments/payment_success.html', {
+                    'order': order,
+                    'payment': payment,
+                })
             else:
-                messages.warning(request, 'Payment verification pending.  Please check back later.')
-
-            return redirect('orders:detail', order_id=payment.order.id)
+                messages.warning(request, 'Payment verification pending. Please check back later.')
+                return redirect('orders:detail', order_id=payment.order.id)
 
         except Payment.DoesNotExist:
             messages.error(request, 'Payment not found.')
+    elif order_id:
+        try:
+            order = Order.objects.get(id=order_id, user=request.user)
+            if order.is_paid:
+                return render(request, 'payments/payment_success.html', {
+                    'order': order,
+                })
+        except Order.DoesNotExist:
+            pass
 
     return redirect('orders:list')
 
@@ -112,13 +142,11 @@ def click_webhook_view(request):
     Click payment gateway webhook handler.
     """
     try:
-        # Parse request data
         if request.content_type == 'application/json':
             payload = json.loads(request.body)
         else:
             payload = request.POST.dict()
 
-        # Process webhook
         from .gateways.click import ClickPaymentGateway
         gateway = ClickPaymentGateway()
         response = gateway.handle_webhook(payload, dict(request.headers))
@@ -139,10 +167,8 @@ def payme_webhook_view(request):
     Payme payment gateway webhook handler.
     """
     try:
-        # Parse JSON-RPC request
         payload = json.loads(request.body)
 
-        # Process webhook
         from .gateways.payme import PaymePaymentGateway
         gateway = PaymePaymentGateway()
         response = gateway.handle_webhook(payload, dict(request.headers))

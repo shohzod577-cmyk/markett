@@ -72,6 +72,175 @@
     </div>
 </div>
 
+<!-- Sold & Remaining Products Stats -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="card" style="
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(102, 126, 234, 0.3)'">
+            <div class="card-body" style="padding: 30px;">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5 style="color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 5px;">
+                            <i class="bi bi-cart-check-fill me-2"></i>Sotilgan Mahsulotlar
+                        </h5>
+                        <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">Jami sotilgan mahsulotlar statistikasi</p>
+                    </div>
+                    <div style="
+                        background: rgba(255,255,255,0.2);
+                        padding: 15px;
+                        border-radius: 15px;
+                        backdrop-filter: blur(10px);
+                    ">
+                        <i class="bi bi-graph-up-arrow" style="font-size: 2.5rem; color: #fff;"></i>
+                    </div>
+                </div>
+                
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div style="
+                            background: rgba(255,255,255,0.15);
+                            padding: 20px;
+                            border-radius: 12px;
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255,255,255,0.2);
+                        ">
+                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 0.85rem; margin-bottom: 8px;">Jami miqdor</p>
+                            <h3 style="color: #fff; font-weight: 700; margin: 0; font-size: 2rem;">
+                                {{ sold_products.total_sold_quantity|default:0 }}
+                                <small style="font-size: 0.5em; font-weight: 500;">dona</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="
+                            background: rgba(255,255,255,0.15);
+                            padding: 20px;
+                            border-radius: 12px;
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255,255,255,0.2);
+                        ">
+                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 0.85rem; margin-bottom: 8px;">Turli mahsulotlar</p>
+                            <h3 style="color: #fff; font-weight: 700; margin: 0; font-size: 2rem;">
+                                {{ sold_products.unique_products_sold|default:0 }}
+                                <small style="font-size: 0.5em; font-weight: 500;">xil</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div style="
+                            background: rgba(255,255,255,0.2);
+                            padding: 20px;
+                            border-radius: 12px;
+                            backdrop-filter: blur(10px);
+                            border: 2px solid rgba(255,255,255,0.3);
+                        ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 0.9rem; margin-bottom: 5px;">
+                                        <i class="bi bi-cash-stack me-1"></i>Jami qiymat
+                                    </p>
+                                    <h2 style="color: #fff; font-weight: 800; margin: 0;">
+                                        {{ sold_products.sold_value|floatformat:0|default:"0" }}
+                                        <small style="font-size: 0.6em; font-weight: 600;">UZS</small>
+                                    </h2>
+                                </div>
+                                <i class="bi bi-currency-dollar" style="font-size: 3rem; color: rgba(255,255,255,0.3);"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="card" style="
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+            transition: all 0.3s ease;
+        " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 40px rgba(245, 87, 108, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 30px rgba(245, 87, 108, 0.3)'">
+            <div class="card-body" style="padding: 30px;">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h5 style="color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 5px;">
+                            <i class="bi bi-boxes me-2"></i>Qolgan Mahsulotlar
+                        </h5>
+                        <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">Omborda mavjud mahsulotlar</p>
+                    </div>
+                    <div style="
+                        background: rgba(255,255,255,0.2);
+                        padding: 15px;
+                        border-radius: 15px;
+                        backdrop-filter: blur(10px);
+                    ">
+                        <i class="bi bi-box-seam" style="font-size: 2.5rem; color: #fff;"></i>
+                    </div>
+                </div>
+                
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div style="
+                            background: rgba(255,255,255,0.15);
+                            padding: 20px;
+                            border-radius: 12px;
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255,255,255,0.2);
+                        ">
+                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 0.85rem; margin-bottom: 8px;">Jami miqdor</p>
+                            <h3 style="color: #fff; font-weight: 700; margin: 0; font-size: 2rem;">
+                                {{ remaining_products.total_remaining_quantity|default:0 }}
+                                <small style="font-size: 0.5em; font-weight: 500;">dona</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="
+                            background: rgba(255,255,255,0.15);
+                            padding: 20px;
+                            border-radius: 12px;
+                            backdrop-filter: blur(10px);
+                            border: 1px solid rgba(255,255,255,0.2);
+                        ">
+                            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 0.85rem; margin-bottom: 8px;">Mavjud mahsulotlar</p>
+                            <h3 style="color: #fff; font-weight: 700; margin: 0; font-size: 2rem;">
+                                {{ remaining_products.products_in_stock|default:0 }}
+                                <small style="font-size: 0.5em; font-weight: 500;">xil</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div style="
+                            background: rgba(255,255,255,0.2);
+                            padding: 20px;
+                            border-radius: 12px;
+                            backdrop-filter: blur(10px);
+                            border: 2px solid rgba(255,255,255,0.3);
+                        ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 0.9rem; margin-bottom: 5px;">
+                                        <i class="bi bi-wallet2 me-1"></i>Ombordagi qiymat
+                                    </p>
+                                    <h2 style="color: #fff; font-weight: 800; margin: 0;">
+                                        {{ remaining_products.remaining_value|floatformat:0|default:"0" }}
+                                        <small style="font-size: 0.6em; font-weight: 600;">UZS</small>
+                                    </h2>
+                                </div>
+                                <i class="bi bi-coin" style="font-size: 3rem; color: rgba(255,255,255,0.3);"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Charts -->
 <div class="row g-4 mb-4">
     <div class="col-lg-8">

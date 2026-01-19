@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Checkout</h1>
+
+<div style="display:flex;gap:2rem;">
+  <div style="flex:1">
+    <h2>Customer details</h2>
+    <form method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Place order</button>
+    </form>
+  </div>
+
+  <div style="flex:1">
+    <h2>Order summary</h2>
+    <ul>
+      {% for item in cart.items.all %}
+        <li>{{ item.quantity }} x {{ item.product.title }} — {% if item.variant %}{{ item.variant.price }}{% else %}{{ item.product.price }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+    <p>Subtotal: {{ cart.subtotal }}</p>
+  </div>
+</div>
+
+{% endblock %}

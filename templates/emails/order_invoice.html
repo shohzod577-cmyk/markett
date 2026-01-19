@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Invoice - {{ order.order_number }}</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f5f5f5; padding: 40px 0;">
+        <tr>
+            <td align="center">
+                <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; text-align: center;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 700;">
+                                🌟 Halol Rizq
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: #ffffff; font-size: 14px; opacity: 0.9;">
+                                Savdo Markazi
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Success Message -->
+                    <tr>
+                        <td style="padding: 40px; text-align: center; background-color: #f0fdf4; border-bottom: 3px solid #10b981;">
+                            <div style="display: inline-block; background-color: #10b981; color: white; width: 60px; height: 60px; border-radius: 50%; line-height: 60px; font-size: 30px; margin-bottom: 15px;">
+                                ✓
+                            </div>
+                            <h2 style="margin: 0 0 10px 0; color: #065f46; font-size: 24px;">
+                                To'lov muvaffaqiyatli amalga oshirildi!
+                            </h2>
+                            <p style="margin: 0; color: #047857; font-size: 14px;">
+                                Sizning buyurtmangiz qabul qilindi va tez orada yetkaziladi
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Customer Info -->
+                    <tr>
+                        <td style="padding: 30px 40px;">
+                            <p style="margin: 0 0 20px 0; color: #111827; font-size: 16px;">
+                                Hurmatli <strong>{{ order.customer_name }}</strong>,
+                            </p>
+                            <p style="margin: 0; color: #6b7280; font-size: 14px; line-height: 1.6;">
+                                Buyurtmangiz uchun rahmat! Sizning to'lovingiz muvaffaqiyatli qabul qilindi. 
+                                Quyida buyurtma va to'lov haqida batafsil ma'lumot berilgan.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Order Summary -->
+                    <tr>
+                        <td style="padding: 0 40px 30px 40px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f9fafb; border-radius: 8px; overflow: hidden;">
+                                <tr>
+                                    <td style="padding: 20px; border-bottom: 2px solid #e5e7eb;">
+                                        <h3 style="margin: 0; color: #111827; font-size: 18px;">
+                                            📋 Buyurtma tafsilotlari
+                                        </h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 15px 20px;">
+                                        <table width="100%" cellpadding="8" cellspacing="0" border="0">
+                                            <tr>
+                                                <td style="color: #6b7280; font-size: 14px;">Buyurtma raqami:</td>
+                                                <td align="right" style="color: #111827; font-size: 14px; font-weight: 600;">
+                                                    {{ order.order_number }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #6b7280; font-size: 14px;">Buyurtma sanasi:</td>
+                                                <td align="right" style="color: #111827; font-size: 14px; font-weight: 600;">
+                                                    {{ order.created_at|date:"d.m.Y H:i" }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #6b7280; font-size: 14px;">To'lov usuli:</td>
+                                                <td align="right" style="color: #111827; font-size: 14px; font-weight: 600;">
+                                                    {{ order.get_payment_method_display }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color: #6b7280; font-size: 14px;">Holat:</td>
+                                                <td align="right">
+                                                    <span style="background-color: #10b981; color: white; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600;">
+                                                        To'langan
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Items -->
+                    <tr>
+                        <td style="padding: 0 40px 30px 40px;">
+                            <h3 style="margin: 0 0 15px 0; color: #111827; font-size: 18px;">
+                                🛍️ Mahsulotlar
+                            </h3>
+                            <table width="100%" cellpadding="12" cellspacing="0" border="0" style="border: 1px solid #e5e7eb; border-radius: 8px;">
+                                <thead>
+                                    <tr style="background-color: #f9fafb; border-bottom: 2px solid #e5e7eb;">
+                                        <th align="left" style="color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; padding: 12px;">
+                                            Mahsulot
+                                        </th>
+                                        <th align="center" style="color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; padding: 12px;">
+                                            Soni
+                                        </th>
+                                        <th align="right" style="color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; padding: 12px;">
+                                            Narxi
+                                        </th>
+                                        <th align="right" style="color: #6b7280; font-size: 12px; font-weight: 600; text-transform: uppercase; padding: 12px;">
+                                            Jami
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in order.items.all %}
+                                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                                        <td style="padding: 12px; color: #111827; font-size: 14px;">
+                                            {{ item.product_name }}
+                                        </td>
+                                        <td align="center" style="padding: 12px; color: #6b7280; font-size: 14px;">
+                                            {{ item.quantity }}
+                                        </td>
+                                        <td align="right" style="padding: 12px; color: #6b7280; font-size: 14px;">
+                                            {{ item.price|floatformat:0 }} so'm
+                                        </td>
+                                        <td align="right" style="padding: 12px; color: #111827; font-size: 14px; font-weight: 600;">
+                                            {{ item.total_price|floatformat:0 }} so'm
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Totals -->
+                    <tr>
+                        <td style="padding: 0 40px 30px 40px;">
+                            <table width="100%" cellpadding="10" cellspacing="0" border="0" style="border-top: 2px solid #e5e7eb;">
+                                <tr>
+                                    <td align="right" style="color: #6b7280; font-size: 14px; padding: 12px 0;">
+                                        Oraliq jami:
+                                    </td>
+                                    <td align="right" style="color: #111827; font-size: 14px; font-weight: 600; padding: 12px 0; width: 120px;">
+                                        {{ order.subtotal|floatformat:0 }} so'm
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="color: #6b7280; font-size: 14px; padding: 12px 0;">
+                                        Yetkazib berish:
+                                    </td>
+                                    <td align="right" style="color: #111827; font-size: 14px; font-weight: 600; padding: 12px 0;">
+                                        {{ order.delivery_fee|floatformat:0 }} so'm
+                                    </td>
+                                </tr>
+                                {% if order.discount > 0 %}
+                                <tr>
+                                    <td align="right" style="color: #10b981; font-size: 14px; padding: 12px 0;">
+                                        Chegirma:
+                                    </td>
+                                    <td align="right" style="color: #10b981; font-size: 14px; font-weight: 600; padding: 12px 0;">
+                                        -{{ order.discount|floatformat:0 }} so'm
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                <tr style="border-top: 2px solid #111827;">
+                                    <td align="right" style="color: #111827; font-size: 18px; font-weight: 700; padding: 15px 0;">
+                                        Jami to'lov:
+                                    </td>
+                                    <td align="right" style="color: #667eea; font-size: 20px; font-weight: 700; padding: 15px 0;">
+                                        {{ order.total|floatformat:0 }} so'm
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Delivery Address -->
+                    <tr>
+                        <td style="padding: 0 40px 30px 40px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #eff6ff; border-radius: 8px; overflow: hidden;">
+                                <tr>
+                                    <td style="padding: 20px;">
+                                        <h4 style="margin: 0 0 10px 0; color: #1e40af; font-size: 16px;">
+                                            📍 Yetkazib berish manzili
+                                        </h4>
+                                        <p style="margin: 0; color: #1e40af; font-size: 14px; line-height: 1.6;">
+                                            {{ order.delivery_address }}<br>
+                                            {{ order.delivery_city }}, {{ order.delivery_region }}<br>
+                                            Tel: {{ order.customer_phone }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Track Order Button -->
+                    <tr>
+                        <td style="padding: 0 40px 30px 40px; text-align: center;">
+                            <a href="{{ site_url }}/orders/{{ order.id }}/" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: 600; font-size: 16px;">
+                                📦 Buyurtmani kuzatish
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Support Info -->
+                    <tr>
+                        <td style="padding: 30px 40px; background-color: #f9fafb; border-top: 1px solid #e5e7eb;">
+                            <h4 style="margin: 0 0 15px 0; color: #111827; font-size: 16px; text-align: center;">
+                                💬 Yordam kerakmi?
+                            </h4>
+                            <table width="100%" cellpadding="8" cellspacing="0" border="0">
+                                <tr>
+                                    <td align="center" style="color: #6b7280; font-size: 14px;">
+                                        📞 <strong>Telefon:</strong> +998 71 123 45 67
+                                    </td>
+                                    <td align="center" style="color: #6b7280; font-size: 14px;">
+                                        ✉️ <strong>Email:</strong> support@halolrizq.uz
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 30px 40px; text-align: center; background-color: #111827;">
+                            <p style="margin: 0 0 10px 0; color: #9ca3af; font-size: 12px;">
+                                Bu avtomatik yuborilgan xabar. Iltimos, javob qaytarmang.
+                            </p>
+                            <p style="margin: 0; color: #6b7280; font-size: 12px;">
+                                © 2026 Halol Rizq Savdo Markazi. Barcha huquqlar himoyalangan.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

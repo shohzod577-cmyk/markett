@@ -1,0 +1,7 @@
+<html><body>
+<p>Hello {{ user.first_name|default:user.email }},</p>
+<p>Please verify your account by clicking the link below:</p>
+<p><a href="{{ verify_url }}">Verify my email</a></p>
+<p>If you didn't create an account, ignore this email.</p>
+<p>Thanks,<br>{{ site_name }} team</p>
+</body></html>

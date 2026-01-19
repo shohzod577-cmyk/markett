@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load cart_extras %}
+
+{% block content %}
+<h1>Your Cart</h1>
+
+{% if cart.items.all %}
+  <table>
+    <thead>
+      <tr><th>Product</th><th>Variant</th><th>Quantity</th><th>Price</th><th>Total</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for item in cart.items.all %}
+        <tr>
+          <td><a href="{{ item.product.get_absolute_url }}">{{ item.product.title }}</a></td>
+          <td>{% if item.variant %}{{ item.variant }}{% else %}-{% endif %}</td>
+          <td>
+            <form method="post" action="{% url 'cart:update' item.id %}">{% csrf_token %}
+              <input type="number" name="quantity" value="{{ item.quantity }}" min="0" />
+              <button type="submit">Update</button>
+            </form>
+          </td>
+          <td>{% if item.variant %}{{ item.variant.price }}{% else %}{{ item.product.price }}{% endif %}</td>
+          <td>{% if item.variant %}{{ item.quantity|multiply:item.variant.price }}{% else %}{{ item.quantity|multiply:item.product.price }}{% endif %}</td>
+          <td>
+            <form method="post" action="{% url 'cart:remove' item.id %}">{% csrf_token %}
+              <button type="submit">Remove</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p>Items: {{ cart.total_items }}</p>
+  <p>Subtotal: {{ cart.subtotal }}</p>
+  <a href="/orders/checkout/">Proceed to checkout</a>
+{% else %}
+  <p>Your cart is empty.</p>
+{% endif %}
+
+{% endblock %}

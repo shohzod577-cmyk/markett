@@ -5,55 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c4605a6-ed28-4ac6-9b75-c13f7c5cf47a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Markett.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/cart/context_processors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/cart/services.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/cart/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/analiytics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/decorators.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/dashboard/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/services.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/orders/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/payments/services.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/payments/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/filters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/products/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/reviews/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/reviews/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/users/signals.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/celery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/cart/cart.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/dashboard/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/dashboard/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/order_confirmation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/order_confirmation.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/order_status_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/order_status_update.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/payment_confirmation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/payment_confirmation.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/welcome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/welcome.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/orders/checkout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/orders/order_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/partials/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/partials/navbar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/products/product_card.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/products/product_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/products/product_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/products/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/products/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/reviews/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/reviews/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,22 +34,22 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="37tQuAJ730iCmZV4QuPWpcfrz7R" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Markett" />
@@ -137,8 +97,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
+          <line>5</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/config/settings.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

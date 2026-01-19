@@ -18,3 +18,7 @@ class ReviewAdmin(admin.ModelAdmin):
         queryset.update(is_flagged=True)
 
     flag_reviews.short_description = "Flag selected reviews"
+    
+    def has_delete_permission(self, request, obj=None):
+        """Allow admins to delete reviews."""
+        return request.user.is_superuser or request.user.is_staff

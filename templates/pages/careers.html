@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Karyera" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">{% trans "Bizga qo'shiling!" %}</h1>
+        <p class="lead">{% trans "Halol Rizq jamoasining bir qismi bo'ling" %}</p>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-people-fill text-primary fs-1 mb-3"></i>
+                    <h4>{% trans "Jamoa" %}</h4>
+                    <p>Professional va do'stona jamoa bilan ishlash</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-graph-up-arrow text-success fs-1 mb-3"></i>
+                    <h4>{% trans "Rivojlanish" %}</h4>
+                    <p>Kasbiy o'sish va ta'lim imkoniyatlari</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <i class="bi bi-award-fill text-warning fs-1 mb-3"></i>
+                    <h4>{% trans "Imtiyozlar" %}</h4>
+                    <p>Raqobatbardosh maosh va bonuslar</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="mb-4">{% trans "Bo'sh ish o'rinlari" %}</h2>
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5>Frontend Developer</h5>
+                            <p class="text-muted mb-2">
+                                <i class="bi bi-geo-alt me-1"></i>Toshkent
+                                <i class="bi bi-clock ms-3 me-1"></i>To'liq ish kuni
+                            </p>
+                            <p>React, Vue.js yoki Angular bilan tajribaga ega dasturchilar talab qilinadi.</p>
+                        </div>
+                        <button class="btn btn-primary">{% trans "Ariza topshirish" %}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5>Backend Developer</h5>
+                            <p class="text-muted mb-2">
+                                <i class="bi bi-geo-alt me-1"></i>Toshkent
+                                <i class="bi bi-clock ms-3 me-1"></i>To'liq ish kuni
+                            </p>
+                            <p>Django yoki Node.js bilan tajribaga ega Python/JavaScript dasturchilari.</p>
+                        </div>
+                        <button class="btn btn-primary">{% trans "Ariza topshirish" %}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5>Marketing Manager</h5>
+                            <p class="text-muted mb-2">
+                                <i class="bi bi-geo-alt me-1"></i>Toshkent
+                                <i class="bi bi-clock ms-3 me-1"></i>To'liq ish kuni
+                            </p>
+                            <p>Digital marketing va SMM bo'yicha tajribaga ega mutaxassislar.</p>
+                        </div>
+                        <button class="btn btn-primary">{% trans "Ariza topshirish" %}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5>Customer Support Specialist</h5>
+                            <p class="text-muted mb-2">
+                                <i class="bi bi-geo-alt me-1"></i>Toshkent
+                                <i class="bi bi-clock ms-3 me-1"></i>Smenali ish
+                            </p>
+                            <p>Mijozlar bilan ishlash tajribasi bo'lgan, kommunikabellik xodimlar.</p>
+                        </div>
+                        <button class="btn btn-primary">{% trans "Ariza topshirish" %}</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-light mt-5">
+                <div class="card-body text-center py-5">
+                    <h3>{% trans "Rezyume yuborish" %}</h3>
+                    <p>{% trans "O'zingizga mos lavozim topolmadingizmi? Rezyumengizni yuboring!" %}</p>
+                    <a href="mailto:hr@halolrizq.uz" class="btn btn-primary btn-lg">
+                        <i class="bi bi-envelope me-2"></i>hr@halolrizq.uz
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

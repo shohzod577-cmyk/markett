@@ -15,14 +15,12 @@ class CurrencyService:
     Uses external API with caching for performance.
     """
 
-    # Cache settings
     CACHE_KEY = 'currency_rates'
-    CACHE_TIMEOUT = 3600  # 1 hour
+    CACHE_TIMEOUT = 3600
 
-    # API endpoints
     API_URL = 'https://api.exchangerate-api.com/v4/latest/USD'
     FALLBACK_RATES = {
-        'UZS': Decimal('12450.00'),  # 1 USD = 12,450 UZS (example)
+        'UZS': Decimal('12450.00'),
         'USD': Decimal('1.00'),
         'EUR': Decimal('0.92'),
     }
@@ -36,18 +34,14 @@ class CurrencyService:
         Get current exchange rates.
         Uses cache to minimize API calls.
         """
-        # Try to get from cache
         rates = cache.get(self.CACHE_KEY)
 
         if rates is None:
-            # Fetch from API
             rates = self._fetch_rates_from_api()
 
             if rates:
-                # Cache the rates
                 cache.set(self.CACHE_KEY, rates, self.CACHE_TIMEOUT)
             else:
-                # Use fallback rates if API fails
                 rates = self.FALLBACK_RATES
 
         return rates
@@ -61,7 +55,6 @@ class CurrencyService:
             response.raise_for_status()
             data = response.json()
 
-            # Convert to Decimal for precision
             rates = {
                 currency: Decimal(str(rate))
                 for currency, rate in data['rates'].items()
@@ -96,11 +89,9 @@ class CurrencyService:
 
         rates = self.get_rates()
 
-        # Convert to USD first (base currency)
         if from_currency != 'USD':
             amount = amount / rates.get(from_currency, Decimal('1'))
 
-        # Convert from USD to target currency
         if to_currency != 'USD':
             amount = amount * rates.get(to_currency, Decimal('1'))
 
@@ -130,10 +121,8 @@ class CurrencyService:
         symbol = symbols.get(currency, currency)
 
         if currency == 'UZS':
-            # Format UZS without decimals
             return f"{int(amount):,} {symbol}".replace(',', ' ')
         else:
-            # Format with decimals
             return f"{symbol}{amount: ,.2f}"
 
     def get_display_price(

@@ -17,7 +17,6 @@ class Review(models.Model):
     Only verified buyers can leave reviews.
     """
 
-    # Relationships
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,
@@ -42,34 +41,28 @@ class Review(models.Model):
         help_text='Order that verifies this purchase'
     )
 
-    # Rating
     rating = models.PositiveSmallIntegerField(
         _('rating'),
         validators=[MinValueValidator(1), MaxValueValidator(5)],
         help_text='1-5 stars'
     )
 
-    # Review content
     title = models.CharField(_('title'), max_length=200)
     comment = models.TextField(_('comment'))
 
-    # Verification
     is_verified_purchase = models.BooleanField(
         _('verified purchase'),
         default=False,
         help_text='User purchased this product'
     )
 
-    # Moderation
     is_approved = models.BooleanField(_('approved'), default=False)
     is_flagged = models.BooleanField(_('flagged'), default=False)
     moderation_notes = models.TextField(_('moderation notes'), blank=True)
 
-    # Helpful votes
     helpful_count = models.PositiveIntegerField(_('helpful count'), default=0)
     not_helpful_count = models.PositiveIntegerField(_('not helpful count'), default=0)
 
-    # Timestamps
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
@@ -165,3 +158,39 @@ class ReviewVote(models.Model):
 
     def __str__(self):
         return f"{self.user.email} - {self.vote_type}"
+
+class ProductRating(models.Model):
+    """
+    Quick rating system - users can rate products with 1-5 stars without writing full review.
+    """
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='user_ratings',
+        verbose_name=_('product')
+    )
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='product_ratings',
+        verbose_name=_('user')
+    )
+
+    rating = models.PositiveSmallIntegerField(
+        _('rating'),
+        validators=[MinValueValidator(1), MaxValueValidator(5)],
+        help_text='1-5 stars'
+    )
+
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('updated at'), auto_now=True)
+
+    class Meta:
+        db_table = 'product_ratings'
+        verbose_name = _('Product Rating')
+        verbose_name_plural = _('Product Ratings')
+        unique_together = ['product', 'user']
+
+    def __str__(self):
+        return f"{self.user.email} - {self.product.name} - {self.rating} stars"

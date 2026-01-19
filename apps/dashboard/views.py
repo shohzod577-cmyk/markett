@@ -27,7 +27,6 @@ def dashboard_home_view(request):
     """
     analytics = DashboardAnalytics()
 
-    # Get date range from request
     days = int(request.GET.get('days', 30))
 
     context = {
@@ -35,6 +34,8 @@ def dashboard_home_view(request):
         'revenue': analytics.get_revenue_metrics(days),
         'orders': analytics.get_order_metrics(days),
         'products': analytics.get_product_metrics(),
+        'sold_products': analytics.get_sold_products_metrics(),
+        'remaining_products': analytics.get_remaining_products_metrics(),
         'recent_orders': Order.objects.all().order_by('-created_at')[:10],
         'top_products': analytics.get_top_products(limit=5),
         'chart_data': analytics.get_chart_data(days),
@@ -49,9 +50,9 @@ def users_list_view(request):
     """
     User management view.
     """
+    analytics = DashboardAnalytics()
     users = User.objects.all().order_by('-created_at')
 
-    # Filters
     search = request.GET.get('search', '')
     if search:
         users = users.filter(
@@ -61,6 +62,7 @@ def users_list_view(request):
         )
 
     context = {
+        'overview': analytics.get_overview_metrics(),
         'users': users,
         'search': search,
     }
@@ -118,9 +120,9 @@ def products_list_view(request):
     """
     Product management view. 
     """
+    analytics = DashboardAnalytics()
     products = Product.objects.all().select_related('category').order_by('-created_at')
 
-    # Filters
     search = request.GET.get('search', '')
     category_id = request.GET.get('category')
     status = request.GET.get('status')
@@ -143,6 +145,7 @@ def products_list_view(request):
         products = products.filter(stock__lt=10)
 
     context = {
+        'overview': analytics.get_overview_metrics(),
         'products': products,
         'categories': Category.objects.all(),
         'search': search,
@@ -157,9 +160,9 @@ def orders_list_view(request):
     """
     Order management view. 
     """
+    analytics = DashboardAnalytics()
     orders = Order.objects.all().select_related('user').order_by('-created_at')
 
-    # Filters
     status = request.GET.get('status')
     payment_status = request.GET.get('payment_status')
     search = request.GET.get('search', '')
@@ -180,6 +183,7 @@ def orders_list_view(request):
         )
 
     context = {
+        'overview': analytics.get_overview_metrics(),
         'orders': orders,
         'status_choices': Order.STATUS_CHOICES,
         'search': search,
@@ -231,9 +235,9 @@ def reviews_list_view(request):
     """
     Review moderation view.
     """
+    analytics = DashboardAnalytics()
     reviews = Review.objects.all().select_related('user', 'product').order_by('-created_at')
 
-    # Filters
     status = request.GET.get('status')
 
     if status == 'pending':
@@ -244,6 +248,7 @@ def reviews_list_view(request):
         reviews = reviews.filter(is_flagged=True)
 
     context = {
+        'overview': analytics.get_overview_metrics(),
         'reviews': reviews,
     }
 

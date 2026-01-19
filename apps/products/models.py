@@ -2,11 +2,20 @@
 Product models for Market e-commerce platform.
 Supports categories, multiple images, variants, and ratings.
 """
+import os
+import uuid
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db.models import Avg
+
+
+def product_image_path(instance, filename):
+    """Generate unique filename for product images."""
+    ext = filename.split('.')[-1]
+    filename = f"{uuid.uuid4().hex}.{ext}"
+    return os.path.join('products', filename)
 
 
 class Category(models.Model):
@@ -18,7 +27,6 @@ class Category(models.Model):
     slug = models.SlugField(_('slug'), max_length=200, unique=True)
     description = models.TextField(_('description'), blank=True)
 
-    # Hierarchy support
     parent = models.ForeignKey(
         'self',
         on_delete=models.CASCADE,
@@ -28,17 +36,13 @@ class Category(models.Model):
         verbose_name=_('parent category')
     )
 
-    # Display
     image = models.ImageField(_('image'), upload_to='categories/', blank=True, null=True)
     icon = models.CharField(_('icon class'), max_length=100, blank=True, help_text='CSS icon class')
 
-    # Ordering
     order = models.PositiveIntegerField(_('order'), default=0)
 
-    # Status
     is_active = models.BooleanField(_('active'), default=True)
 
-    # Timestamps
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
@@ -67,13 +71,11 @@ class Product(models.Model):
     Core Product model with comprehensive e-commerce features.
     """
 
-    # Basic information
     name = models.CharField(_('name'), max_length=255)
     slug = models.SlugField(_('slug'), max_length=255, unique=True)
     description = models.TextField(_('description'))
     short_description = models.CharField(_('short description'), max_length=500, blank=True)
 
-    # Category
     category = models.ForeignKey(
         Category,
         on_delete=models.PROTECT,
@@ -81,7 +83,6 @@ class Product(models.Model):
         verbose_name=_('category')
     )
 
-    # Pricing (stored in base currency - UZS)
     price = models.DecimalField(
         _('price'),
         max_digits=15,
@@ -89,7 +90,6 @@ class Product(models.Model):
         validators=[MinValueValidator(0)]
     )
 
-    # Discount
     discount_percentage = models.DecimalField(
         _('discount percentage'),
         max_digits=5,
@@ -98,11 +98,9 @@ class Product(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(100)]
     )
 
-    # Inventory
     stock = models.PositiveIntegerField(_('stock quantity'), default=0)
     sku = models.CharField(_('SKU'), max_length=100, unique=True)
 
-    # Product attributes
     brand = models.CharField(_('brand'), max_length=100, blank=True)
     weight = models.DecimalField(
         _('weight (kg)'),
@@ -112,19 +110,15 @@ class Product(models.Model):
         null=True
     )
 
-    # SEO
     meta_title = models.CharField(_('meta title'), max_length=200, blank=True)
     meta_description = models.TextField(_('meta description'), blank=True)
 
-    # Status
     is_active = models.BooleanField(_('active'), default=True)
     is_featured = models.BooleanField(_('featured'), default=False)
 
-    # Statistics
     views_count = models.PositiveIntegerField(_('views'), default=0)
     sales_count = models.PositiveIntegerField(_('sales'), default=0)
 
-    # Timestamps
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
 
@@ -162,14 +156,15 @@ class Product(models.Model):
 
     @property
     def average_rating(self):
-        """Calculate average rating from reviews."""
-        avg = self.reviews.aggregate(Avg('rating'))['rating__avg']
+        """Calculate average rating from approved reviews."""
+        from django.db.models import Avg
+        avg = self.reviews.filter(is_approved=True).aggregate(Avg('rating'))['rating__avg']
         return round(avg, 1) if avg else 0
 
     @property
     def review_count(self):
-        """Return total number of reviews."""
-        return self.reviews.count()
+        """Return total number of approved reviews."""
+        return self.reviews.filter(is_approved=True).count()
 
     def increment_views(self):
         """Increment product view counter."""
@@ -189,7 +184,7 @@ class ProductImage(models.Model):
         verbose_name=_('product')
     )
 
-    image = models.ImageField(_('image'), upload_to='products/')
+    image = models.ImageField(_('image'), upload_to=product_image_path)
     alt_text = models.CharField(_('alt text'), max_length=200, blank=True)
     is_primary = models.BooleanField(_('primary image'), default=False)
     order = models.PositiveIntegerField(_('order'), default=0)
@@ -228,7 +223,6 @@ class ProductVariant(models.Model):
     name = models.CharField(_('variant name'), max_length=100, help_text='e.g., Size, Color')
     value = models.CharField(_('variant value'), max_length=100, help_text='e.g., Large, Red')
 
-    # Price adjustment
     price_adjustment = models.DecimalField(
         _('price adjustment'),
         max_digits=10,
@@ -237,7 +231,6 @@ class ProductVariant(models.Model):
         help_text='Additional price for this variant'
     )
 
-    # Stock
     stock = models.PositiveIntegerField(_('stock'), default=0)
     sku_suffix = models.CharField(_('SKU suffix'), max_length=50, blank=True)
 
@@ -251,3 +244,32 @@ class ProductVariant(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.name}:  {self.value}"
+
+class ProductLike(models.Model):
+    """
+    Track user likes for products.
+    """
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='likes',
+        verbose_name=_('product')
+    )
+    user = models.ForeignKey(
+        'users.User',
+        on_delete=models.CASCADE,
+        related_name='liked_products',
+        verbose_name=_('user')
+    )
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+
+    class Meta:
+        db_table = 'product_likes'
+        verbose_name = _('Product Like')
+        verbose_name_plural = _('Product Likes')
+        unique_together = ['product', 'user']
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.user.email} likes {self.product.name}"
+

@@ -1,0 +1,18 @@
+[Unit]
+Description=Celery Service for Markett
+After=network.target redis.service
+
+[Service]
+Type=forking
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/markett
+Environment="PATH=/home/ubuntu/markett/venv/bin"
+EnvironmentFile=/home/ubuntu/markett/.env
+ExecStart=/home/ubuntu/markett/venv/bin/celery -A config worker --loglevel=info --detach --logfile=/home/ubuntu/markett/logs/celery.log
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

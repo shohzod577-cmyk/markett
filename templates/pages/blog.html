@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Blog" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">{% trans "Blog" %}</h1>
+        <p class="lead">{% trans "Foydali maqolalar, maslahatlar va yangiliklar" %}</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8">
+            {% for post in posts %}
+            <div class="card mb-4">
+                <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <small class="text-muted">
+                            <i class="bi bi-calendar me-1"></i>{{ post.date }}
+                        </small>
+                        <span class="badge bg-{{ post.badge_color }}">{{ post.category }}</span>
+                    </div>
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.excerpt }}</p>
+                    <a href="{% url 'blog_detail' post.slug %}" class="btn btn-primary">{% trans "To'liq o'qish" %}</a>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <nav aria-label="Blog pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Oldingi</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Keyingi</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5>{% trans "Qidiruv" %}</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Qidirish...">
+                        <button class="btn btn-primary" type="button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5>{% trans "Kategoriyalar" %}</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Yangiliklar (12)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Maslahatlar (8)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Qo'llanmalar (5)</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none">Kompaniya (4)</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5>{% trans "Ommabop maqolalar" %}</h5>
+                    <div class="d-flex mb-3">
+                        <img src="https://via.placeholder.com/80x80" class="me-2 rounded" alt="Post thumbnail">
+                        <div>
+                            <a href="#" class="text-decoration-none">
+                                <small>Halol mahsulotlar haqida</small>
+                            </a>
+                            <br>
+                            <small class="text-muted">1 Yanvar 2026</small>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <img src="https://via.placeholder.com/80x80" class="me-2 rounded" alt="Post thumbnail">
+                        <div>
+                            <a href="#" class="text-decoration-none">
+                                <small>Chegirmalardan qanday foydalanish</small>
+                            </a>
+                            <br>
+                            <small class="text-muted">28 Dekabr 2025</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h5>{% trans "Yangiliklardan xabardor bo'ling" %}</h5>
+                    <p class="small">{% trans "Email manzilingizni qoldiring" %}</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Email">
+                        <button class="btn btn-light" type="button">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,76 +1,406 @@
-<footer class="bg-dark text-white pt-5 pb-3 mt-5">
-    <div class="container">
-        <div class="row">
-            <!-- About -->
-            <div class="col-md-3 mb-4">
-                <h5 class="fw-bold mb-3">
-                    <i class="bi bi-shop"></i> MARKET
-                </h5>
-                <p class="text-muted small">
-                    Your trusted e-commerce platform in Central Asia.  Quality products, fast delivery, secure payments.
-                </p>
-                <div class="social-links">
-                    <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
-                    <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
-                    <a href="#" class="text-white me-3"><i class="bi bi-telegram fs-5"></i></a>
-                    <a href="#" class="text-white"><i class="bi bi-youtube fs-5"></i></a>
+{% load i18n %}
+{% load static %}
+
+<footer class="modern-footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <!-- Brand Section -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-brand">
+                        <img src="{% static 'images/halol-rizq-logo.svg' %}" alt="Halol Rizq" style="height: 50px; margin-bottom: 15px;">
+                        <p class="brand-description">
+                            {% trans "Halol Rizq savdo markazi - ishonchli onlayn savdo platformasi. Sifatli mahsulotlar, tez yetkazib berish va xavfsiz to'lovlar." %}
+                        </p>
+                        <!-- Social Links -->
+                        <div class="social-links-modern">
+                            <a href="#" class="social-icon" aria-label="Facebook">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Telegram">
+                                <i class="bi bi-telegram"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="YouTube">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">{% trans "Tezkor havolalar" %}</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'products:list' %}">{% trans "Mahsulotlar" %}</a></li>
+                        <li><a href="{% url 'products:categories' %}">{% trans "Kategoriyalar" %}</a></li>
+                        <li><a href="{% url 'products:list' %}?on_sale=true">{% trans "Special Offers" %}</a></li>
+                        <li><a href="{% url 'products:list' %}?sort=new">{% trans "Yangi mahsulotlar" %}</a></li>
+                        <li><a href="{% url 'products:list' %}?sort=popular">{% trans "Eng ko'p sotiladigan" %}</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">{% trans "Xizmat ko'rsatish" %}</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'help_center' %}">{% trans "Yordam markazi" %}</a></li>
+                        <li><a href="{% url 'track_order' %}">{% trans "Buyurtmani kuzatish" %}</a></li>
+                        <li><a href="{% url 'returns' %}">{% trans "Returns & Refunds" %}</a></li>
+                        <li><a href="{% url 'shipping_info' %}">{% trans "Yetkazib berish ma'lumoti" %}</a></li>
+                        <li><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
+                    </ul>
+                </div>
+
+                <!-- About -->
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">{% trans "Biz haqimizda" %}</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'about' %}">{% trans "Biz haqimizda" %}</a></li>
+                        <li><a href="{% url 'contact' %}">{% trans "Biz bilan bog'lanish" %}</a></li>
+                        <li><a href="{% url 'careers' %}">{% trans "Careers" %}</a></li>
+                        <li><a href="{% url 'press' %}">{% trans "Press" %}</a></li>
+                        <li><a href="{% url 'blog' %}">{% trans "Blog" %}</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-title">{% trans "Newsletter" %}</h5>
+                    <p class="newsletter-text">
+                        {% trans "Subscribe to get special offers, free giveaways, and updates." %}
+                    </p>
+                    <form class="newsletter-form">
+                        <div class="input-group-modern">
+                            <input type="email" class="form-control-modern" placeholder="{% trans 'Your email' %}" required>
+                            <button type="submit" class="btn-subscribe">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <!-- App Links -->
+                    <div class="app-links mt-4">
+                        <a href="#" class="app-badge">
+                            <i class="bi bi-apple"></i>
+                            <div>
+                                <small>{% trans "Download on" %}</small>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                        <a href="#" class="app-badge">
+                            <i class="bi bi-google-play"></i>
+                            <div>
+                                <small>{% trans "Get it on" %}</small>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-
-            <!-- Quick Links -->
-            <div class="col-md-3 mb-4">
-                <h6 class="fw-bold mb-3">Quick Links</h6>
-                <ul class="list-unstyled">
-                    <li><a href="{% url 'products:list' %}" class="text-muted text-decoration-none">Shop</a></li>
-                    <li><a href="{% url 'products:categories' %}" class="text-muted text-decoration-none">Categories</a></li>
-                    <li><a href="#" class="text-muted text-decoration-none">About Us</a></li>
-                    <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Customer Service -->
-            <div class="col-md-3 mb-4">
-                <h6 class="fw-bold mb-3">Customer Service</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-muted text-decoration-none">Help Center</a></li>
-                    <li><a href="#" class="text-muted text-decoration-none">Track Order</a></li>
-                    <li><a href="#" class="text-muted text-decoration-none">Returns</a></li>
-                    <li><a href="#" class="text-muted text-decoration-none">Shipping Info</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact -->
-            <div class="col-md-3 mb-4">
-                <h6 class="fw-bold mb-3">Contact Us</h6>
-                <ul class="list-unstyled text-muted small">
-                    <li class="mb-2">
-                        <i class="bi bi-geo-alt"></i> Tashkent, Uzbekistan
-                    </li>
-                    <li class="mb-2">
-                        <i class="bi bi-telephone"></i> +998 71 123 45 67
-                    </li>
-                    <li class="mb-2">
-                        <i class="bi bi-envelope"></i> info@market.uz
-                    </li>
-                </ul>
-            </div>
         </div>
+    </div>
 
-        <hr class="bg-secondary">
-
-        <!-- Copyright -->
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start">
-                <p class="text-muted small mb-0">
-                    &copy; 2024 Market.  All rights reserved.
-                </p>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="copyright">
+                        &copy; {{ current_year|default:"2026" }} Halol Rizq savdo markazi. {% trans "All rights reserved." %}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-bottom-links">
+                        <a href="#">{% trans "Privacy Policy" %}</a>
+                        <a href="#">{% trans "Terms of Service" %}</a>
+                        <a href="#">{% trans "Cookies" %}</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 text-center text-md-end">
-                <p class="text-muted small mb-0">
-                    <a href="#" class="text-muted text-decoration-none">Privacy Policy</a> |
-                    <a href="#" class="text-muted text-decoration-none">Terms of Service</a>
-                </p>
+            
+            <!-- Payment Methods -->
+            <div class="payment-methods">
+                <span class="payment-text">{% trans "We accept:" %}</span>
+                <div class="payment-icons">
+                    <i class="bi bi-credit-card"></i>
+                    <i class="bi bi-paypal"></i>
+                    <i class="bi bi-wallet2"></i>
+                    <span class="payment-badge">Visa</span>
+                    <span class="payment-badge">Mastercard</span>
+                    <span class="payment-badge">UzCard</span>
+                    <span class="payment-badge">Humo</span>
+                </div>
             </div>
         </div>
     </div>
 </footer>
+
+<style>
+.modern-footer {
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+    color: #e5e7eb;
+    margin-top: 80px;
+}
+
+.footer-top {
+    padding: 60px 0 40px;
+}
+
+.footer-brand .brand-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #7000ff 0%, #ff1f7f 50%, #00d4aa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.brand-description {
+    color: #9ca3af;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.social-links-modern {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(112, 0, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7000ff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: #7000ff;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.footer-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #7000ff, #ff1f7f);
+    border-radius: 2px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #7000ff;
+    transform: translateX(5px);
+}
+
+.newsletter-text {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.input-group-modern {
+    display: flex;
+    gap: 8px;
+}
+
+.form-control-modern {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid rgba(112, 0, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 0.9rem;
+}
+
+.form-control-modern:focus {
+    outline: none;
+    border-color: #7000ff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.form-control-modern::placeholder {
+    color: #6b7280;
+}
+
+.btn-subscribe {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7000ff, #ff1f7f);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-subscribe:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(112, 0, 255, 0.4);
+}
+
+.app-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.app-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.app-badge:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #7000ff;
+    transform: translateY(-2px);
+}
+
+.app-badge i {
+    font-size: 1.8rem;
+}
+
+.app-badge small {
+    display: block;
+    font-size: 0.7rem;
+    color: #9ca3af;
+}
+
+.app-badge strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.footer-bottom {
+    padding: 30px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    color: #9ca3af;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: #7000ff;
+}
+
+.payment-methods {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.payment-text {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.payment-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.payment-icons i {
+    font-size: 1.5rem;
+    color: #9ca3af;
+}
+
+.payment-badge {
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+    .footer-top {
+        padding: 40px 0 20px;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .payment-methods {
+        flex-wrap: wrap;
+    }
+}
+</style>

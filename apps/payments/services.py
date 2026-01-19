@@ -48,7 +48,6 @@ class PaymentService:
             status=Payment.STATUS_PENDING
         )
 
-        # Log transaction
         Transaction.objects.create(
             payment=payment,
             transaction_type=Transaction.TYPE_AUTHORIZATION,
@@ -72,10 +71,8 @@ class PaymentService:
             }
 
         try:
-            # Build return URLs
             return_url = f"{settings.SITE_URL}/payments/success/? payment_id={payment.payment_id}"
 
-            # Create payment with gateway
             result = gateway.create_payment(
                 amount=payment.amount,
                 currency=payment.currency,
@@ -84,13 +81,11 @@ class PaymentService:
                 return_url=return_url
             )
 
-            # Update payment with gateway transaction ID
             payment.gateway_transaction_id = result['transaction_id']
             payment.status = Payment.STATUS_PROCESSING
             payment.gateway_response = result
             payment.save()
 
-            # Log transaction
             Transaction.objects.create(
                 payment=payment,
                 transaction_type=Transaction.TYPE_AUTHORIZATION,
@@ -130,7 +125,6 @@ class PaymentService:
                 transaction_id=payment.gateway_transaction_id
             )
 
-            # Log transaction
             Transaction.objects.create(
                 payment=payment,
                 transaction_type=Transaction.TYPE_CAPTURE,
@@ -139,7 +133,6 @@ class PaymentService:
                 response_data=result
             )
 
-            # Update payment status
             if result['is_successful']:
                 payment.mark_as_completed()
 
@@ -180,7 +173,6 @@ class PaymentService:
                 payment.status = Payment.STATUS_REFUNDED
                 payment.save()
 
-            # Log transaction
             Transaction.objects.create(
                 payment=payment,
                 transaction_type=Transaction.TYPE_REFUND,

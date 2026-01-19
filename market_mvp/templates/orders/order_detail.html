@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Order #{{ order.id }}</h1>
+<p>Status: {{ order.status }}</p>
+<p>Name: {{ order.first_name }} {{ order.last_name }}</p>
+<p>Email: {{ order.email }}</p>
+<p>Address: {{ order.address_line1 }} {{ order.address_line2 }} {{ order.city }}</p>
+
+<h2>Items</h2>
+<ul>
+  {% for item in order.items.all %}
+    <li>{{ item.quantity }} x {{ item.product.title }} — {{ item.price }}</li>
+  {% endfor %}
+</ul>
+<p>Total: {{ order.total }}</p>
+
+{% if order.status == 'pending' %}
+  <p><a href="{% url 'payments:initiate' order.id 'click' %}">Pay now (Click)</a></p>
+{% endif %}
+{% if order.status == 'paid' %}
+  <p><a href="{% url 'orders:invoice' order.id %}">Download invoice (PDF)</a></p>
+{% endif %}
+
+{% endblock %}

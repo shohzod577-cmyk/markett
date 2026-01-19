@@ -29,7 +29,6 @@ class CartService:
         """
         cart = self.get_cart()
 
-        # Check if item already exists
         cart_item, created = CartItem.objects.get_or_create(
             cart=cart,
             product=product,
@@ -38,7 +37,6 @@ class CartService:
         )
 
         if not created:
-            # Update quantity
             cart_item.quantity += quantity
             cart_item.save()
 

@@ -4,7 +4,8 @@ Business intelligence and metrics calculation.
 """
 from django.db.models import Sum, Count, Avg, Q, F
 from django.db.models.functions import TruncDate
-from datetime import datetime, timedelta
+from django.utils import timezone
+from datetime import timedelta
 from decimal import Decimal
 
 from apps.orders.models import Order
@@ -36,7 +37,7 @@ class DashboardAnalytics:
         """
         Get revenue metrics for specified period.
         """
-        date_from = datetime.now() - timedelta(days=days)
+        date_from = timezone.now() - timedelta(days=days)
 
         current_period = Order.objects.filter(
             created_at__gte=date_from,
@@ -73,7 +74,7 @@ class DashboardAnalytics:
         """
         Get order metrics.
         """
-        date_from = datetime.now() - timedelta(days=days)
+        date_from = timezone.now() - timedelta(days=days)
 
         orders = Order.objects.filter(created_at__gte=date_from)
 
@@ -109,9 +110,8 @@ class DashboardAnalytics:
         """
         Get data for dashboard charts.
         """
-        date_from = datetime.now() - timedelta(days=days)
+        date_from = timezone.now() - timedelta(days=days)
 
-        # Daily revenue
         daily_revenue = Order.objects.filter(
             created_at__gte=date_from,
             is_paid=True
@@ -121,7 +121,6 @@ class DashboardAnalytics:
             revenue=Sum('total_amount')
         ).order_by('date')
 
-        # Daily orders
         daily_orders = Order.objects.filter(
             created_at__gte=date_from
         ).annotate(
@@ -139,7 +138,7 @@ class DashboardAnalytics:
         """
         Get revenue chart data for AJAX.
         """
-        date_from = datetime.now() - timedelta(days=days)
+        date_from = timezone.now() - timedelta(days=days)
 
         data = Order.objects.filter(
             created_at__gte=date_from,
@@ -159,7 +158,7 @@ class DashboardAnalytics:
         """
         Get orders chart data for AJAX.
         """
-        date_from = datetime.now() - timedelta(days=days)
+        date_from = timezone.now() - timedelta(days=days)
 
         data = Order.objects.filter(
             created_at__gte=date_from
@@ -178,7 +177,7 @@ class DashboardAnalytics:
         """
         Get new users chart data for AJAX.
         """
-        date_from = datetime.now() - timedelta(days=days)
+        date_from = timezone.now() - timedelta(days=days)
 
         data = User.objects.filter(
             created_at__gte=date_from
@@ -199,3 +198,60 @@ class DashboardAnalytics:
         """
         total = Order.objects.filter(is_paid=True).aggregate(Sum('total_amount'))
         return total['total_amount__sum'] or Decimal('0')
+
+    def get_sold_products_metrics(self):
+        """
+        Get metrics about sold products.
+        Returns total quantity of products sold and number of unique products sold.
+        """
+        from apps.orders.models import OrderItem
+        
+        sold_quantity = OrderItem.objects.filter(
+            order__is_paid=True
+        ).aggregate(
+            total=Sum('quantity')
+        )['total'] or 0
+        
+        unique_products_sold = OrderItem.objects.filter(
+            order__is_paid=True
+        ).values('product').distinct().count()
+        
+        sold_value = OrderItem.objects.filter(
+            order__is_paid=True
+        ).aggregate(
+            total=Sum(F('unit_price') * F('quantity'))
+        )['total'] or Decimal('0')
+        
+        return {
+            'total_sold_quantity': sold_quantity,
+            'unique_products_sold': unique_products_sold,
+            'sold_value': sold_value,
+        }
+    
+    def get_remaining_products_metrics(self):
+        """
+        Get metrics about remaining (unsold) products in stock.
+        Returns total quantity in stock and total value.
+        """
+        remaining_quantity = Product.objects.filter(
+            is_active=True
+        ).aggregate(
+            total=Sum('stock')
+        )['total'] or 0
+        
+        remaining_value = Product.objects.filter(
+            is_active=True
+        ).aggregate(
+            total=Sum(F('price') * F('stock'))
+        )['total'] or Decimal('0')
+        
+        products_in_stock = Product.objects.filter(
+            is_active=True,
+            stock__gt=0
+        ).count()
+        
+        return {
+            'total_remaining_quantity': remaining_quantity,
+            'products_in_stock': products_in_stock,
+            'remaining_value': remaining_value,
+        }

@@ -6,6 +6,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.conf import settings
 from typing import List, Optional
+from io import BytesIO
 
 
 class EmailService:
@@ -41,19 +42,16 @@ class EmailService:
             True if successful, False otherwise
         """
         try:
-            # Render HTML content
             html_content = render_to_string(
                 f'emails/{template_name}.html',
                 context
             )
 
-            # Render plain text content
             text_content = render_to_string(
                 f'emails/{template_name}.txt',
                 context
             )
 
-            # Create email
             email = EmailMultiAlternatives(
                 subject=subject,
                 body=text_content,
@@ -63,10 +61,8 @@ class EmailService:
                 bcc=bcc_emails,
             )
 
-            # Attach HTML version
             email.attach_alternative(html_content, "text/html")
 
-            # Send email
             email.send(fail_silently=False)
 
             return True
@@ -99,8 +95,8 @@ class EmailService:
         status_messages = {
             'accepted': 'Your order has been accepted and is being processed.',
             'packed': 'Your order has been packed and ready for delivery.',
-            'on_the_way': 'Your order is on the way! ',
-            'delivered': 'Your order has been delivered.  Thank you!',
+            'on_the_way': 'Your order is on the way!',
+            'delivered': 'Your order has been delivered. Thank you!',
             'cancelled': 'Your order has been cancelled.',
         }
 
@@ -148,3 +144,64 @@ class EmailService:
             template_name='welcome',
             context=context
         )
+
+    def send_order_invoice(self, order, attach_pdf=True):
+        """
+        Send order invoice email with PDF attachment.
+        
+        Args:
+            order: Order instance
+            attach_pdf: Whether to attach PDF invoice (default True)
+        
+        Returns:
+            True if successful, False otherwise
+        """
+        try:
+            subject = f"Buyurtma fakturasi #{order.order_number} - Halol Rizq"
+
+            context = {
+                'order': order,
+                'site_url': settings.SITE_URL,
+            }
+
+            html_content = render_to_string(
+                'emails/order_invoice.html',
+                context
+            )
+
+            text_content = render_to_string(
+                'emails/order_invoice.txt',
+                context
+            )
+
+            email = EmailMultiAlternatives(
+                subject=subject,
+                body=text_content,
+                from_email=self.from_email,
+                to=[order.customer_email],
+            )
+
+            email.attach_alternative(html_content, "text/html")
+
+            if attach_pdf:
+                try:
+                    from core.services.pdf import PDFInvoiceGenerator
+                    
+                    pdf_generator = PDFInvoiceGenerator(order)
+                    pdf_buffer = pdf_generator.generate()
+                    
+                    email.attach(
+                        f'invoice_{order.order_number}.pdf',
+                        pdf_buffer.getvalue(),
+                        'application/pdf'
+                    )
+                except Exception as e:
+                    print(f"Error generating PDF attachment: {e}")
+
+            email.send(fail_silently=False)
+
+            return True
+
+        except Exception as e:
+            print(f"Error sending invoice email: {e}")
+            return False

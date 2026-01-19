@@ -37,14 +37,11 @@ class PaymePaymentGateway(BasePaymentGateway):
         Create Payme payment link.
         """
         try:
-            # Convert amount to tiyin
             amount_tiyin = int(amount * 100)
 
-            # Encode order data
             order_data = f"m={self.merchant_id};ac. order_id={order_id};a={amount_tiyin}"
             encoded_data = base64.b64encode(order_data.encode()).decode()
 
-            # Generate payment URL
             payment_url = f"https://checkout.paycom.uz/{encoded_data}"
 
             return {
@@ -92,7 +89,7 @@ class PaymePaymentGateway(BasePaymentGateway):
             if 'result' in data:
                 result = data['result']
                 return {
-                    'is_successful': result.get('state') == 2,  # 2 = completed
+                    'is_successful': result.get('state') == 2,
                     'status': self._map_payme_state(result.get('state')),
                     'amount': Decimal(result.get('amount', 0)) / 100,
                     'details': result
@@ -119,7 +116,6 @@ class PaymePaymentGateway(BasePaymentGateway):
         - CheckTransaction
         """
         try:
-            # Validate authorization
             if not self._validate_auth_header(headers.get('Authorization', '')):
                 return {
                     "jsonrpc": "2.0",
@@ -133,7 +129,6 @@ class PaymePaymentGateway(BasePaymentGateway):
             method = payload.get('method')
             params = payload.get('params', {})
 
-            # Route to appropriate handler
             if method == 'CheckPerformTransaction':
                 return self._check_perform_transaction(params, payload.get('id'))
             elif method == 'CreateTransaction':
@@ -224,7 +219,6 @@ class PaymePaymentGateway(BasePaymentGateway):
 
             order = Order.objects.get(order_number=order_id)
 
-            # Create or get payment
             payment, created = Payment.objects.get_or_create(
                 gateway_transaction_id=transaction_id,
                 defaults={
@@ -242,7 +236,7 @@ class PaymePaymentGateway(BasePaymentGateway):
                 "result": {
                     "create_time": int(payment.created_at.timestamp() * 1000),
                     "transaction": str(payment.id),
-                    "state": 1  # Created
+                    "state": 1
                 },
                 "id": request_id
             }
@@ -272,7 +266,7 @@ class PaymePaymentGateway(BasePaymentGateway):
                 "result": {
                     "transaction": str(payment.id),
                     "perform_time": int(payment.completed_at.timestamp() * 1000),
-                    "state": 2  # Completed
+                    "state": 2
                 },
                 "id": request_id
             }
@@ -303,7 +297,7 @@ class PaymePaymentGateway(BasePaymentGateway):
                 "result": {
                     "transaction": str(payment.id),
                     "cancel_time": int(payment.updated_at.timestamp() * 1000),
-                    "state": -1  # Cancelled
+                    "state": -1
                 },
                 "id": request_id
             }
@@ -393,7 +387,7 @@ class PaymePaymentGateway(BasePaymentGateway):
                 "method": "CancelTransaction",
                 "params": {
                     "id": transaction_id,
-                    "reason": 3  # Refund by merchant
+                    "reason": 3
                 },
                 "id": 1
             }

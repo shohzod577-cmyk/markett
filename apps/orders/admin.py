@@ -15,3 +15,7 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = ['order_number', 'customer_email', 'customer_phone']
     readonly_fields = ['order_number', 'created_at', 'updated_at']
     inlines = [OrderItemInline]
+    
+    def has_delete_permission(self, request, obj=None):
+        """Allow superusers to delete orders."""
+        return request.user.is_superuser

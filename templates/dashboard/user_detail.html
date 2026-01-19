@@ -1,0 +1,106 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}User {{ user.email }} - Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="mb-4">
+    <a href="{% url 'dashboard:users_list' %}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Back to Users
+    </a>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>{{ user.email }}</h1>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">User Information</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Email:</strong><br>{{ user.email }}</p>
+                <p><strong>Name:</strong><br>{{ user.get_full_name|default:"-" }}</p>
+                <p><strong>Phone:</strong><br>{{ user.phone_number|default:"-" }}</p>
+                <p><strong>Role:</strong><br>
+                    {% if user.is_staff %}
+                    <span class="badge bg-danger">Admin</span>
+                    {% else %}
+                    <span class="badge bg-primary">Customer</span>
+                    {% endif %}
+                </p>
+                <p><strong>Status:</strong><br>
+                    {% if user.is_active %}
+                    <span class="badge bg-success">Active</span>
+                    {% else %}
+                    <span class="badge bg-secondary">Inactive</span>
+                    {% endif %}
+                </p>
+                <p><strong>Joined:</strong><br>{{ user.created_at|date:"M d, Y" }}</p>
+                <p><strong>Total Spent:</strong><br>{{ total_spent|floatformat:0 }} UZS</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Orders</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td><a href="{% url 'dashboard:order_detail' order_id=order.id %}">{{ order.order_number }}</a></td>
+                                <td>{{ order.total_amount|floatformat:0 }} {{ order.currency }}</td>
+                                <td><span class="badge bg-info">{{ order.get_status_display }}</span></td>
+                                <td>{{ order.created_at|date:"M d, Y" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="text-center">No orders yet</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Recent Reviews</h5>
+            </div>
+            <div class="card-body">
+                {% for review in reviews %}
+                <div class="border-bottom pb-2 mb-2">
+                    <div class="d-flex justify-content-between">
+                        <strong>{{ review.product.name }}</strong>
+                        <span class="text-warning">
+                            {% for i in "12345"|slice:":"|make_list %}
+                                {% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                    <p class="mb-1">{{ review.comment|truncatewords:20 }}</p>
+                    <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                </div>
+                {% empty %}
+                <p class="text-center">No reviews yet</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

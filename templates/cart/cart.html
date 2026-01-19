@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cart_filters %}
+{% load i18n %}
 
-{% block title %}Shopping Cart - Market{% endblock %}
+{% block title %}{% trans 'Shopping Cart' %} - Halol Rizq{% endblock %}
 
 {% block content %}
 <div class="container my-5">
-    <h1 class="mb-4"><i class="bi bi-cart3"></i> Shopping Cart</h1>
+    <h1 class="mb-4"><i class="bi bi-cart3"></i> {% trans 'Shopping Cart' %}</h1>
     
-    {% if cart and cart.items. all %}
+    {% if cart and cart.items.all %}
     <div class="row">
         <!-- Cart Items -->
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    {% for item in cart. items.all %}
+                    {% for item in cart.items.all %}
                     <div class="row align-items-center mb-3 pb-3 border-bottom">
                         <!-- Product Image -->
                         <div class="col-md-2">
                             {% if item.product.images.first %}
-                            <img src="{{ item.product.images.first. image.url }}" class="img-fluid rounded" alt="{{ item.product.name }}">
+                            <img src="{{ item.product.images.first.image.url }}" class="img-fluid rounded" alt="{{ item.product.name }}">
                             {% else %}
                             <div class="bg-light d-flex align-items-center justify-content-center" style="height: 80px;">
                                 <i class="bi bi-image text-muted"></i>
@@ -41,20 +43,20 @@
                         
                         <!-- Quantity -->
                         <div class="col-md-3">
-                            <form method="post" action="{% url 'cart:update' item_id=item.id %}" class="d-flex align-items-center">
+                                <form method="post" action="{% url 'cart:update' item_id=item.id %}" class="d-flex align-items-center">
                                 {% csrf_token %}
                                 <div class="input-group input-group-sm">
                                     <button class="btn btn-outline-secondary" type="button" onclick="this.nextElementSibling.stepDown(); this.form.submit();">-</button>
                                     <input type="number" name="quantity" class="form-control text-center" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" style="width: 60px;">
-                                    <button class="btn btn-outline-secondary" type="button" onclick="this. previousElementSibling.stepUp(); this.form.submit();">+</button>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="this.previousElementSibling.stepUp(); this.form.submit();">+</button>
                                 </div>
                             </form>
                         </div>
                         
                         <!-- Price -->
                         <div class="col-md-2 text-end">
-                            <p class="fw-bold mb-0">{{ currency_service.format_price(item.get_subtotal, currency) }}</p>
-                            <small class="text-muted">{{ currency_service.format_price(item.price_snapshot, currency) }} each</small>
+                            <p class="fw-bold mb-0">{{ item.get_subtotal|format_price:currency }}</p>
+                            <small class="text-muted">{{ item.price_snapshot|format_price:currency }} {% trans 'each' %}</small>
                         </div>
                         
                         <!-- Remove -->
@@ -71,7 +73,7 @@
                     
                     <div class="text-end mt-3">
                         <a href="{% url 'cart:clear' %}" class="btn btn-outline-danger">
-                            <i class="bi bi-trash"></i> Clear Cart
+                            <i class="bi bi-trash"></i> {% trans 'Clear Cart' %}
                         </a>
                     </div>
                 </div>
@@ -82,28 +84,42 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Order Summary</h5>
+                    <h5 class="mb-0">{% trans 'Order Summary' %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Items ({{ cart.items_count }}):</span>
-                        <span class="fw-bold">{{ currency_service.format_price(total, currency) }}</span>
+                        <span>{% trans 'Items' %} ({{ cart.items_count }}):</span>
+                        <span class="fw-bold">{{ total|format_price:currency }}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span>Delivery: </span>
-                        <span class="text-success">Calculated at checkout</span>
+                        <span>{% trans 'Delivery' %}: </span>
+                        {% if is_free_delivery %}
+                            <span class="text-success fw-bold">{% trans 'FREE' %} 🎉</span>
+                        {% else %}
+                            <span>{{ delivery_fee|format_price:currency }}</span>
+                        {% endif %}
                     </div>
+                    {% if not is_free_delivery %}
+                    <div class="alert alert-info py-2 px-3 mb-2" style="font-size: 0.9rem;">
+                        <i class="bi bi-truck"></i>
+                        {% blocktrans with amount=free_delivery_threshold|format_price:currency %}
+                        Spend {{ amount }} more for FREE delivery!
+                        {% endblocktrans %}
+                    </div>
+                    {% endif %}
                     <hr>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="fw-bold">Total:</span>
-                        <span class="fw-bold text-primary fs-4">{{ currency_service. format_price(total, currency) }}</span>
+                        <span class="fw-bold text-primary fs-4">{{ total|add:delivery_fee|format_price:currency }}</span>
+                    </div>
+                        <span class="fw-bold text-primary fs-4">{{ total|format_price:currency }}</span>
                     </div>
                     
                     <a href="{% url 'orders:checkout' %}" class="btn btn-primary w-100 mb-2">
-                        <i class="bi bi-credit-card"></i> Proceed to Checkout
+                        <i class="bi bi-credit-card"></i> {% trans 'Proceed to Checkout' %}
                     </a>
                     <a href="{% url 'products:list' %}" class="btn btn-outline-secondary w-100">
-                        <i class="bi bi-arrow-left"></i> Continue Shopping
+                        <i class="bi bi-arrow-left"></i> {% trans 'Continue Shopping' %}
                     </a>
                 </div>
             </div>
@@ -113,13 +129,13 @@
                 <div class="card-body">
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2">
-                            <i class="bi bi-shield-check text-success"></i> Secure Payment
+                            <i class="bi bi-shield-check text-success"></i> {% trans 'Secure Payment' %}
                         </li>
                         <li class="mb-2">
-                            <i class="bi bi-truck text-primary"></i> Fast Delivery
+                            <i class="bi bi-truck text-primary"></i> {% trans 'Fast Delivery' %}
                         </li>
                         <li>
-                            <i class="bi bi-arrow-repeat text-info"></i> Easy Returns
+                            <i class="bi bi-arrow-repeat text-info"></i> {% trans 'Easy Returns' %}
                         </li>
                     </ul>
                 </div>
@@ -130,10 +146,10 @@
     <!-- Empty Cart -->
     <div class="text-center py-5">
         <i class="bi bi-cart-x text-muted" style="font-size: 5rem;"></i>
-        <h3 class="mt-3">Your cart is empty</h3>
-        <p class="text-muted">Add some products to get started! </p>
+        <h3 class="mt-3">{% trans 'Your cart is empty' %}</h3>
+        <p class="text-muted">{% trans 'Add some products to get started!' %}</p>
         <a href="{% url 'products:list' %}" class="btn btn-primary mt-3">
-            <i class="bi bi-shop"></i> Start Shopping
+            <i class="bi bi-shop"></i> {% trans 'Start Shopping' %}
         </a>
     </div>
     {% endif %}

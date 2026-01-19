@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Buyurtmani kuzatish" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <h1 class="text-center mb-4">{% trans "Buyurtmani kuzatish" %}</h1>
+            
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <p class="text-center text-muted mb-4">
+                        {% trans "Buyurtma raqamingizni kiriting va holatini tekshiring" %}
+                    </p>
+                    
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Buyurtma raqami" %}</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="Masalan: ORD-2024-00123" required>
+                            <small class="text-muted">
+                                {% trans "Buyurtma raqami email xabarnomangizda ko'rsatilgan" %}
+                            </small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Email yoki Telefon" %}</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="Email yoki telefon raqamingiz" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="bi bi-search me-2"></i>{% trans "Kuzatish" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="mb-3">{% trans "Buyurtma holatlari" %}</h5>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon bg-success">
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div>
+                                <strong>{% trans "Qabul qilindi" %}</strong>
+                                <p class="text-muted small mb-0">Buyurtmangiz qabul qilindi va tayyorlanmoqda</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon bg-info">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                            <div>
+                                <strong>{% trans "Tayyorlanmoqda" %}</strong>
+                                <p class="text-muted small mb-0">Mahsulotlar qadoqlanmoqda</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon bg-warning">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <div>
+                                <strong>{% trans "Yo'lda" %}</strong>
+                                <p class="text-muted small mb-0">Kuryer mahsulotni yetkazib bermoqda</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-icon bg-success">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div>
+                                <strong>{% trans "Yetkazildi" %}</strong>
+                                <p class="text-muted small mb-0">Buyurtma muvaffaqiyatli yetkazildi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <i class="bi bi-info-circle me-2"></i>
+                <strong>{% trans "Yordam kerakmi?" %}</strong><br>
+                Agar savolingiz bo'lsa, bizga qo'ng'iroq qiling: <a href="tel:+998711234567">+998 71 123 45 67</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 30px;
+    width: 2px;
+    height: calc(100% - 30px);
+    background: #e0e0e0;
+}
+
+.timeline-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+</style>
+{% endblock %}

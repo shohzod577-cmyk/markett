@@ -15,11 +15,9 @@ def product_list_view(request):
     """
     products = Product.objects.filter(is_active=True).select_related('category')
 
-    # Apply filters
     product_filter = ProductFilter(request.GET, queryset=products)
     products = product_filter.qs
 
-    # Search
     search_query = request.GET.get('search', '')
     if search_query:
         products = products.filter(
@@ -28,13 +26,14 @@ def product_list_view(request):
             Q(brand__icontains=search_query)
         )
 
-    # Category filter
-    category_slug = request.GET.get('category')
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
+    category_param = request.GET.get('category')
+    if category_param:
+        if category_param.isdigit():
+            category = get_object_or_404(Category, id=int(category_param))
+        else:
+            category = get_object_or_404(Category, slug=category_param)
         products = products.filter(category=category)
 
-    # Sorting
     sort_by = request.GET.get('sort', '-created_at')
     if sort_by == 'price_low':
         products = products.order_by('price')
@@ -47,8 +46,7 @@ def product_list_view(request):
     else:
         products = products.order_by(sort_by)
 
-    # Pagination
-    paginator = Paginator(products, 12)  # 12 products per page
+    paginator = Paginator(products, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -72,22 +70,17 @@ def product_detail_view(request, slug):
         is_active=True
     )
 
-    # Increment view count
     product.increment_views()
 
-    # Get reviews
     reviews = product.reviews.filter(is_approved=True).select_related('user').order_by('-created_at')
 
-    # Related products
     related_products = Product.objects.filter(
         category=product.category,
         is_active=True
     ).exclude(id=product.id)[:4]
 
-    # Get currency from session
     currency = request.session.get('currency', 'UZS')
 
-    # Convert price
     from core.services.currency import CurrencyService
     currency_service = CurrencyService()
     display_price = currency_service.get_display_price(product.discounted_price, currency)

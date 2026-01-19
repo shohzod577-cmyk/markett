@@ -1,0 +1,85 @@
+
+import django.db.models.deletion
+from django.conf import settings
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+        ('orders', '0001_initial'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Payment',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('payment_id', models.CharField(editable=False, max_length=100, unique=True, verbose_name='payment ID')),
+                ('gateway', models.CharField(choices=[('cash', 'Cash on Delivery'), ('card', 'Plastic Card'), ('click', 'Click'), ('payme', 'Payme'), ('uzum', 'Uzum Bank')], max_length=20, verbose_name='payment gateway')),
+                ('status', models.CharField(choices=[('pending', 'Pending'), ('processing', 'Processing'), ('completed', 'Completed'), ('failed', 'Failed'), ('cancelled', 'Cancelled'), ('refunded', 'Refunded')], default='pending', max_length=20, verbose_name='status')),
+                ('amount', models.DecimalField(decimal_places=2, max_digits=15, verbose_name='amount')),
+                ('currency', models.CharField(default='UZS', max_length=3, verbose_name='currency')),
+                ('gateway_transaction_id', models.CharField(blank=True, max_length=200, null=True, verbose_name='gateway transaction ID')),
+                ('gateway_response', models.JSONField(blank=True, help_text='Raw response from payment gateway', null=True, verbose_name='gateway response')),
+                ('card_number_masked', models.CharField(blank=True, max_length=20, null=True, verbose_name='masked card number')),
+                ('card_type', models.CharField(blank=True, max_length=50, null=True, verbose_name='card type')),
+                ('ip_address', models.GenericIPAddressField(blank=True, null=True, verbose_name='IP address')),
+                ('user_agent', models.TextField(blank=True, verbose_name='user agent')),
+                ('error_code', models.CharField(blank=True, max_length=50, verbose_name='error code')),
+                ('error_message', models.TextField(blank=True, verbose_name='error message')),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
+                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),
+                ('completed_at', models.DateTimeField(blank=True, null=True, verbose_name='completed at')),
+                ('order', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='payments', to='orders.order', verbose_name='order')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='payments', to=settings.AUTH_USER_MODEL, verbose_name='user')),
+            ],
+            options={
+                'verbose_name': 'Payment',
+                'verbose_name_plural': 'Payments',
+                'db_table': 'payments',
+                'ordering': ['-created_at'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Transaction',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('transaction_type', models.CharField(choices=[('authorization', 'Authorization'), ('capture', 'Capture'), ('refund', 'Refund'), ('void', 'Void'), ('webhook', 'Webhook')], max_length=20, verbose_name='transaction type')),
+                ('amount', models.DecimalField(blank=True, decimal_places=2, max_digits=15, null=True, verbose_name='amount')),
+                ('status', models.CharField(max_length=50, verbose_name='status')),
+                ('gateway_transaction_id', models.CharField(blank=True, max_length=200, verbose_name='gateway transaction ID')),
+                ('request_data', models.JSONField(blank=True, null=True, verbose_name='request data')),
+                ('response_data', models.JSONField(blank=True, null=True, verbose_name='response data')),
+                ('ip_address', models.GenericIPAddressField(blank=True, null=True, verbose_name='IP address')),
+                ('notes', models.TextField(blank=True, verbose_name='notes')),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
+                ('payment', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='transactions', to='payments.payment', verbose_name='payment')),
+            ],
+            options={
+                'verbose_name': 'Transaction',
+                'verbose_name_plural': 'Transactions',
+                'db_table': 'transactions',
+                'ordering': ['-created_at'],
+            },
+        ),
+        migrations.AddIndex(
+            model_name='payment',
+            index=models.Index(fields=['payment_id'], name='payments_payment_2d1dd8_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='payment',
+            index=models.Index(fields=['order'], name='payments_order_i_b32b33_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='payment',
+            index=models.Index(fields=['status'], name='payments_status_d621e5_idx'),
+        ),
+        migrations.AddIndex(
+            model_name='payment',
+            index=models.Index(fields=['gateway_transaction_id'], name='payments_gateway_f512b1_idx'),
+        ),
+    ]

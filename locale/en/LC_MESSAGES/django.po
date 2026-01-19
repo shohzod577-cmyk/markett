@@ -1,0 +1,418 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+
+msgid "Search products..."
+msgstr "Search products..."
+
+msgid "My Profile"
+msgstr "My Profile"
+
+msgid "My Orders"
+msgstr "My Orders"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Sign Up"
+msgstr "Sign Up"
+
+msgid "Shopping Cart"
+msgstr "Shopping Cart"
+
+msgid "Proceed to Checkout"
+msgstr "Proceed to Checkout"
+
+msgid "Continue Shopping"
+msgstr "Continue Shopping"
+
+msgid "Products"
+msgstr "Products"
+
+msgid "Categories"
+msgstr "Categories"
+
+msgid "Price"
+msgstr "Price"
+
+msgid "Add to Cart"
+msgstr "Add to Cart"
+
+msgid "Buy Now"
+msgstr "Buy Now"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Reviews"
+msgstr "Reviews"
+
+msgid "Rating"
+msgstr "Rating"
+
+msgid "Stock"
+msgstr "Stock"
+
+msgid "Brand"
+msgstr "Brand"
+
+msgid "Category"
+msgstr "Category"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Subtotal"
+msgstr "Subtotal"
+
+msgid "Delivery"
+msgstr "Delivery"
+
+msgid "Order"
+msgstr "Order"
+
+msgid "Orders"
+msgstr "Orders"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Payment"
+msgstr "Payment"
+
+msgid "Shipping"
+msgstr "Shipping"
+
+msgid "Address"
+msgstr "Address"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "Register"
+msgstr "Register"
+
+msgid "Forgot Password?"
+msgstr "Forgot Password?"
+
+msgid "Remember Me"
+msgstr "Remember Me"
+
+msgid "Submit"
+msgstr "Submit"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Save"
+msgstr "Save"
+
+msgid "Edit"
+msgstr "Edit"
+
+msgid "Delete"
+msgstr "Delete"
+
+msgid "Update"
+msgstr "Update"
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid "Sort By"
+msgstr "Sort By"
+
+msgid "View All"
+msgstr "View All"
+
+msgid "Featured Products"
+msgstr "Featured Products"
+
+msgid "New Arrivals"
+msgstr "New Arrivals"
+
+msgid "Best Sellers"
+msgstr "Best Sellers"
+
+msgid "On Sale"
+msgstr "On Sale"
+
+msgid "Welcome to Market"
+msgstr "Welcome to Market"
+
+msgid "Discover amazing products at great prices"
+msgstr "Discover amazing products at great prices"
+
+msgid "Start Shopping"
+msgstr "Start Shopping"
+
+msgid "No featured products available."
+msgstr "No featured products available."
+
+msgid "Shop by Category"
+msgstr "Shop by Category"
+
+msgid "items"
+msgstr "items"
+
+msgid "Fast Delivery"
+msgstr "Fast Delivery"
+
+msgid "Quick and reliable shipping"
+msgstr "Quick and reliable shipping"
+
+msgid "Secure Payment"
+msgstr "Secure Payment"
+
+msgid "Multiple payment options"
+msgstr "Multiple payment options"
+
+msgid "Easy Returns"
+msgstr "Easy Returns"
+
+msgid "Hassle-free return policy"
+msgstr "Hassle-free return policy"
+
+msgid "24/7 Support"
+msgstr "24/7 Support"
+
+msgid "Always here to help"
+msgstr "Always here to help"
+
+msgid "Your trusted e-commerce platform in Central Asia. Quality products, fast delivery, secure payments."
+msgstr "Your trusted e-commerce platform in Central Asia. Quality products, fast delivery, secure payments."
+
+msgid "Quick Links"
+msgstr "Quick Links"
+
+msgid "Shop"
+msgstr "Shop"
+
+msgid "About Us"
+msgstr "About Us"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Customer Service"
+msgstr "Customer Service"
+
+msgid "Help Center"
+msgstr "Help Center"
+
+msgid "Track Order"
+msgstr "Track Order"
+
+msgid "Returns"
+msgstr "Returns"
+
+msgid "Shipping Info"
+msgstr "Shipping Info"
+
+msgid "Contact Us"
+msgstr "Contact Us"
+
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+msgid "Privacy Policy"
+msgstr "Privacy Policy"
+
+msgid "Terms of Service"
+msgstr "Terms of Service"
+
+msgid "each"
+msgstr "each"
+
+msgid "Clear Cart"
+msgstr "Clear Cart"
+
+msgid "Order Summary"
+msgstr "Order Summary"
+
+msgid "Items"
+msgstr "Items"
+
+msgid "Calculated at checkout"
+msgstr "Calculated at checkout"
+
+msgid "Your cart is empty"
+msgstr "Your cart is empty"
+
+msgid "Add some products to get started!"
+msgstr "Add some products to get started!"
+
+msgid "Product name..."
+msgstr "Product name..."
+
+msgid "All Categories"
+msgstr "All Categories"
+
+msgid "Price Range"
+msgstr "Price Range"
+
+msgid "Min"
+msgstr "Min"
+
+msgid "Max"
+msgstr "Max"
+
+msgid "In Stock Only"
+msgstr "In Stock Only"
+
+msgid "Apply Filters"
+msgstr "Apply Filters"
+
+msgid "Clear"
+msgstr "Clear"
+
+msgid "Showing"
+msgstr "Showing"
+
+msgid "of"
+msgstr "of"
+
+msgid "products"
+msgstr "products"
+
+msgid "Sort by:"
+msgstr "Sort by:"
+
+msgid "Newest"
+msgstr "Newest"
+
+msgid "Price: Low to High"
+msgstr "Price: Low to High"
+
+msgid "Price: High to Low"
+msgstr "Price: High to Low"
+
+msgid "Most Popular"
+msgstr "Most Popular"
+
+msgid "Top Rated"
+msgstr "Top Rated"
+
+msgid "No products found"
+msgstr "No products found"
+
+msgid "Try adjusting your filters"
+msgstr "Try adjusting your filters"
+
+msgid "First"
+msgstr "First"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Last"
+msgstr "Last"
+
+msgid "Out of Stock"
+msgstr "Out of Stock"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "reviews"
+msgstr "reviews"
+
+msgid "In Stock"
+msgstr "In Stock"
+
+msgid "available"
+msgstr "available"
+
+msgid "Quantity"
+msgstr "Quantity"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Views"
+msgstr "Views"
+
+msgid "Product Description"
+msgstr "Product Description"
+
+msgid "Customer Reviews"
+msgstr "Customer Reviews"
+
+msgid "Write a Review"
+msgstr "Write a Review"
+
+msgid "Verified Purchase"
+msgstr "Verified Purchase"
+
+msgid "Was this review helpful?"
+msgstr "Was this review helpful?"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
+
+msgid "No reviews yet. Be the first to review this product!"
+msgstr "No reviews yet. Be the first to review this product!"
+
+msgid "Related Products"
+msgstr "Related Products"
+
+msgid "Halol Savdo - Baraka Keltiradi!"
+msgstr "Halal Trade - Brings Blessings!"
+
+msgid "Eng arzon narxlar"
+msgstr "Lowest prices"
+
+msgid "Tez yetkazib berish"
+msgstr "Fast delivery"
+
+msgid "Sifatli mahsulotlar"
+msgstr "Quality products"
+
+msgid "Ishonchli xizmat"
+msgstr "Reliable service"
+
+msgid "Xarid qilish"
+msgstr "Shop Now"
+
+msgid "HALOL SAVDO"
+msgstr "HALAL TRADE"
+
+msgid "BARAKA MARKET"
+msgstr "BLESSING MARKET"
+

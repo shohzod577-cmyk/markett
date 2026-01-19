@@ -1,0 +1,851 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: uz\n"
+
+msgid "Search products..."
+msgstr "Mahsulotlarni qidirish..."
+
+msgid "My Profile"
+msgstr "Mening profilim"
+
+msgid "My Orders"
+msgstr "Mening buyurtmalarim"
+
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Login"
+msgstr "Kirish"
+
+msgid "Sign Up"
+msgstr "Ro'yxatdan o'tish"
+
+msgid "Shopping Cart"
+msgstr "Savat"
+
+msgid "Proceed to Checkout"
+msgstr "To'lovga o'tish"
+
+msgid "Continue Shopping"
+msgstr "Xaridni davom ettirish"
+
+msgid "Products"
+msgstr "Mahsulotlar"
+
+msgid "Categories"
+msgstr "Kategoriyalar"
+
+msgid "Price"
+msgstr "Narxi"
+
+msgid "Add to Cart"
+msgstr "Savatga qo'shish"
+
+msgid "Buy Now"
+msgstr "Xoziroq sotib olish"
+
+msgid "Description"
+msgstr "Tavsif"
+
+msgid "Reviews"
+msgstr "Sharhlar"
+
+msgid "Rating"
+msgstr "Reyting"
+
+msgid "Stock"
+msgstr "Omborda"
+
+msgid "Brand"
+msgstr "Brend"
+
+msgid "Category"
+msgstr "Kategoriya"
+
+msgid "Total"
+msgstr "Jami"
+
+msgid "each"
+msgstr "donasi"
+
+msgid "Subtotal"
+msgstr "Oraliq jami"
+
+msgid "Delivery"
+msgstr "Yetkazib berish"
+
+msgid "Order"
+msgstr "Buyurtma"
+
+msgid "Orders"
+msgstr "Buyurtmalar"
+
+msgid "Status"
+msgstr "Holati"
+
+msgid "Date"
+msgstr "Sana"
+
+msgid "Payment"
+msgstr "To'lov"
+
+msgid "Shipping"
+msgstr "Yetkazib berish"
+
+msgid "Address"
+msgstr "Manzil"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Name"
+msgstr "Ism"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Confirm Password"
+msgstr "Parolni tasdiqlang"
+
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+msgid "Forgot Password?"
+msgstr "Parolni unutdingizmi?"
+
+msgid "Remember Me"
+msgstr "Eslab qolish"
+
+msgid "Submit"
+msgstr "Yuborish"
+
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+msgid "Save"
+msgstr "Saqlash"
+
+msgid "Edit"
+msgstr "Tahrirlash"
+
+msgid "Delete"
+msgstr "O'chirish"
+
+msgid "Update"
+msgstr "Yangilash"
+
+msgid "Search"
+msgstr "Qidirish"
+
+msgid "Filter"
+msgstr "Filtrlash"
+
+msgid "Sort By"
+msgstr "Saralash"
+
+msgid "View All"
+msgstr "Barchasini ko'rish"
+
+msgid "Featured Products"
+msgstr "Tanlangan mahsulotlar"
+
+msgid "New Arrivals"
+msgstr "Yangi mahsulotlar"
+
+msgid "Best Sellers"
+msgstr "Eng ko'p sotiladigan"
+
+msgid "On Sale"
+msgstr "Chegirmada"
+
+msgid "Welcome to Market"
+msgstr "Market'ga xush kelibsiz"
+
+msgid "Discover amazing products at great prices"
+msgstr "Ajoyib mahsulotlarni qulay narxlarda toping"
+
+msgid "Start Shopping"
+msgstr "Xaridni boshlash"
+
+msgid "No featured products available."
+msgstr "Tanlangan mahsulotlar yo'q."
+
+msgid "Shop by Category"
+msgstr "Kategoriya bo'yicha xarid qilish"
+
+msgid "items"
+msgstr "dona"
+
+msgid "Fast Delivery"
+msgstr "Tez yetkazib berish"
+
+msgid "Get your orders delivered quickly"
+msgstr "Buyurtmalaringiz tez yetkazib beriladi"
+
+msgid "Quick and reliable shipping"
+msgstr "Tez va ishonchli yetkazib berish"
+
+msgid "Secure Payment"
+msgstr "Xavfsiz to'lov"
+
+msgid "Your payment information is safe"
+msgstr "To'lov ma'lumotlaringiz xavfsiz saqlanadi"
+
+msgid "Multiple payment options"
+msgstr "Ko'plab to'lov usullari"
+
+msgid "Easy Returns"
+msgstr "Oson qaytarish"
+
+msgid "30-day return policy on all items"
+msgstr "Barcha mahsulotlar uchun 30 kunlik qaytarish"
+
+msgid "Hassle-free return policy"
+msgstr "Qiyinchiliksiz qaytarish siyosati"
+
+msgid "24/7 Support"
+msgstr "24/7 Qo'llab-quvvatlash"
+
+msgid "Our team is always here to help"
+msgstr "Jamoamiz har doim sizga yordam berishga tayyor"
+
+msgid "Always here to help"
+msgstr "Har doim yordam berishga tayyormiz"
+
+msgid "Why Choose Us"
+msgstr "Nega bizni tanlash kerak"
+
+msgid "Your trusted e-commerce platform in Central Asia. Quality products, fast delivery, secure payments."
+msgstr "Markaziy Osiyodagi ishonchli elektron savdo platformasi. Sifatli mahsulotlar, tez yetkazib berish, xavfsiz to'lovlar."
+
+msgid "Quick Links"
+msgstr "Tezkor havolalar"
+
+msgid "Shop"
+msgstr "Do'kon"
+
+msgid "About Us"
+msgstr "Biz haqimizda"
+
+msgid "Contact"
+msgstr "Aloqa"
+
+msgid "Customer Service"
+msgstr "Xizmat ko'rsatish"
+
+msgid "Help Center"
+msgstr "Yordam markazi"
+
+msgid "Track Order"
+msgstr "Buyurtmani kuzatish"
+
+msgid "Returns"
+msgstr "Qaytarish"
+
+msgid "Shipping Info"
+msgstr "Yetkazib berish ma'lumoti"
+
+msgid "Contact Us"
+msgstr "Biz bilan bog'lanish"
+
+msgid "All rights reserved."
+msgstr "Barcha huquqlar himoyalangan."
+
+msgid "Privacy Policy"
+msgstr "Maxfiylik siyosati"
+
+msgid "Terms of Service"
+msgstr "Foydalanish shartlari"
+
+msgid "each"
+msgstr "donadan"
+
+msgid "Clear Cart"
+msgstr "Savatni tozalash"
+
+msgid "Order Summary"
+msgstr "Buyurtma xulosasi"
+
+msgid "Items"
+msgstr "Mahsulotlar"
+
+msgid "Calculated at checkout"
+msgstr "To'lovda hisoblanadi"
+
+msgid "Your cart is empty"
+msgstr "Savatingiz bo'sh"
+
+msgid "Add some products to get started!"
+msgstr "Boshlash uchun mahsulotlar qo'shing!"
+
+msgid "Product name..."
+msgstr "Mahsulot nomi..."
+
+msgid "All Categories"
+msgstr "Barcha kategoriyalar"
+
+msgid "Price Range"
+msgstr "Narx oralig'i"
+
+msgid "Min"
+msgstr "Minimum"
+
+msgid "Max"
+msgstr "Maksimum"
+
+msgid "In Stock Only"
+msgstr "Faqat mavjud"
+
+msgid "Apply Filters"
+msgstr "Filtrlarni qo'llash"
+
+msgid "Clear"
+msgstr "Tozalash"
+
+msgid "Showing"
+msgstr "Ko'rsatilmoqda"
+
+msgid "of"
+msgstr "dan"
+
+msgid "products"
+msgstr "mahsulotlar"
+
+msgid "Sort by:"
+msgstr "Saralash:"
+
+msgid "Newest"
+msgstr "Eng yangi"
+
+msgid "Price: Low to High"
+msgstr "Narx: Arzondan qimmatlarga"
+
+msgid "Price: High to Low"
+msgstr "Narx: Qimmatdan arzonga"
+
+msgid "Most Popular"
+msgstr "Eng mashhur"
+
+msgid "Top Rated"
+msgstr "Eng yuqori baho"
+
+msgid "No products found"
+msgstr "Mahsulotlar topilmadi"
+
+msgid "Try adjusting your filters"
+msgstr "Filtrlarni o'zgartiring"
+
+msgid "First"
+msgstr "Birinchi"
+
+msgid "Previous"
+msgstr "Oldingi"
+
+msgid "Next"
+msgstr "Keyingi"
+
+msgid "Last"
+msgstr "Oxirgi"
+
+msgid "Out of Stock"
+msgstr "Omborda yo'q"
+
+msgid "Home"
+msgstr "Bosh sahifa"
+
+msgid "reviews"
+msgstr "sharh"
+
+msgid "In Stock"
+msgstr "Omborda bor"
+
+msgid "available"
+msgstr "mavjud"
+
+msgid "Quantity"
+msgstr "Miqdor"
+
+msgid "Options"
+msgstr "Variantlar"
+
+msgid "Views"
+msgstr "Ko'rishlar"
+
+msgid "Product Description"
+msgstr "Mahsulot tavsifi"
+
+msgid "Customer Reviews"
+msgstr "Xaridorlar sharhlari"
+
+msgid "Write a Review"
+msgstr "Sharh yozish"
+
+msgid "Verified Purchase"
+msgstr "Tasdiqlangan xarid"
+
+msgid "Was this review helpful?"
+msgstr "Bu sharh foydali bo'ldimi?"
+
+msgid "Yes"
+msgstr "Ha"
+
+msgid "No"
+msgstr "Yo'q"
+
+msgid "No reviews yet. Be the first to review this product!"
+msgstr "Hali sharhlar yo'q. Birinchi bo'lib sharh yozing!"
+
+msgid "Related Products"
+msgstr "O'xshash mahsulotlar"
+
+msgid "Special Offers"
+msgstr "Maxsus takliflar"
+
+msgid "Winter Sale"
+msgstr "Qishki aksiya"
+
+msgid "Up to 50% off on selected items"
+msgstr "Tanlangan mahsulotlarga 50% gacha chegirma"
+
+msgid "Shop Now"
+msgstr "Xarid qilish"
+
+msgid "Explore"
+msgstr "Ko'rib chiqish"
+
+msgid "Check out our latest products"
+msgstr "Eng yangi mahsulotlarimizni ko'ring"
+
+msgid "No featured products available"
+msgstr "Tanlangan mahsulotlar yo'q"
+
+msgid "No categories available"
+msgstr "Kategoriyalar yo'q"
+
+msgid "FAQ"
+msgstr "Tez-tez so'raladigan savollar"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Careers"
+msgstr "Kareera"
+
+msgid "Press"
+msgstr "Matbuot"
+
+msgid "To'liq o'qish"
+msgstr "To'liq o'qish"
+
+msgid "Foydali maqolalar, maslahatlar va yangiliklar"
+msgstr "Foydali maqolalar, maslahatlar va yangiliklar"
+
+msgid "Qidiruv"
+msgstr "Qidiruv"
+
+msgid "Kategoriyalar"
+msgstr "Kategoriyalar"
+
+msgid "Ommabop maqolalar"
+msgstr "Ommabop maqolalar"
+
+msgid "Yangiliklardan xabardor bo'ling"
+msgstr "Yangiliklardan xabardor bo'ling"
+
+msgid "Email manzilingizni qoldiring"
+msgstr "Email manzilingizni qoldiring"
+
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+msgid "Market Admin"
+msgstr "Market Admin"
+
+msgid "View Store"
+msgstr "Do'konni ko'rish"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Orders"
+msgstr "Buyurtmalar"
+
+msgid "Products"
+msgstr "Mahsulotlar"
+
+msgid "Users"
+msgstr "Foydalanuvchilar"
+
+msgid "Reviews"
+msgstr "Sharhlar"
+
+msgid "Tags"
+msgstr "Teglar"
+
+msgid "Share"
+msgstr "Ulashish"
+
+msgid "Back to Blog"
+msgstr "Blogga qaytish"
+
+# Checkout page translations
+msgid "Checkout"
+msgstr "To'lov"
+
+msgid "Cart"
+msgstr "Savat"
+
+msgid "Information"
+msgstr "Ma'lumotlar"
+
+msgid "Payment"
+msgstr "To'lov"
+
+msgid "Customer Information"
+msgstr "Mijoz ma'lumotlari"
+
+msgid "Customer name"
+msgstr "Mijoz ismi"
+
+msgid "Full Name"
+msgstr "To'liq ism"
+
+msgid "Customer email"
+msgstr "Mijoz emaili"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Customer phone"
+msgstr "Mijoz telefoni"
+
+msgid "Delivery Address"
+msgstr "Yetkazib berish manzili"
+
+msgid "Use saved address"
+msgstr "Saqlangan manzildan foydalanish"
+
+msgid "Saved address"
+msgstr "Saqlangan manzil"
+
+msgid "Delivery address"
+msgstr "Yetkazib berish manzili"
+
+msgid "Select city"
+msgstr "Shaharni tanlang"
+
+msgid "Delivery city"
+msgstr "Shahar"
+
+msgid "Select region"
+msgstr "Viloyatni tanlang"
+
+msgid "Delivery region"
+msgstr "Viloyat"
+
+msgid "Tashkent City"
+msgstr "Toshkent shahri"
+
+msgid "Tashkent Region"
+msgstr "Toshkent viloyati"
+
+msgid "Andijan"
+msgstr "Andijon"
+
+msgid "Bukhara"
+msgstr "Buxoro"
+
+msgid "Fergana"
+msgstr "Farg'ona"
+
+msgid "Jizzakh"
+msgstr "Jizzax"
+
+msgid "Namangan"
+msgstr "Namangan"
+
+msgid "Navoiy"
+msgstr "Navoiy"
+
+msgid "Kashkadarya"
+msgstr "Qashqadaryo"
+
+msgid "Samarkand"
+msgstr "Samarqand"
+
+msgid "Sirdaryo"
+msgstr "Sirdaryo"
+
+msgid "Surkhandarya"
+msgstr "Surxondaryo"
+
+msgid "Khorezm"
+msgstr "Xorazm"
+
+msgid "Karakalpakstan"
+msgstr "Qoraqalpog'iston"
+
+msgid "Tashkent"
+msgstr "Toshkent"
+
+msgid "Karshi"
+msgstr "Qarshi"
+
+msgid "Nukus"
+msgstr "Nukus"
+
+msgid "Termez"
+msgstr "Termiz"
+
+msgid "Urgench"
+msgstr "Urganch"
+
+msgid "Guliston"
+msgstr "Guliston"
+
+msgid "Select Location on Map (Optional)"
+msgstr "Xaritadan joyni tanlang (ixtiyoriy)"
+
+msgid "Payment Method"
+msgstr "To'lov usuli"
+
+msgid "Cash on Delivery"
+msgstr "Naqd pul (yetkazishda)"
+
+msgid "Plastic Card"
+msgstr "Plastik karta"
+
+msgid "Click"
+msgstr "Click"
+
+msgid "Payme"
+msgstr "Payme"
+
+msgid "Uzum Bank"
+msgstr "Uzum Bank"
+
+msgid "Credit/Debit Card"
+msgstr "Bank kartasi"
+
+msgid "Additional Notes"
+msgstr "Qo'shimcha izohlar"
+
+msgid "Customer notes"
+msgstr "Mijoz izohlari"
+
+msgid "Any special instructions?"
+msgstr "Maxsus ko'rsatmalar bormi?"
+
+msgid "Place Order"
+msgstr "Buyurtma berish"
+
+msgid "Order Summary"
+msgstr "Buyurtma xulosasi"
+
+msgid "Basic Information"
+msgstr "Asosiy ma'lumot"
+
+msgid "Pricing"
+msgstr "Narxlash"
+
+msgid "Inventory"
+msgstr "Ombor"
+
+msgid "SEO"
+msgstr "SEO"
+
+msgid "Status"
+msgstr "Holat"
+
+msgid "Statistics"
+msgstr "Statistika"
+
+msgid "Display"
+msgstr "Ko'rinish"
+
+msgid "Preview"
+msgstr "Ko'rinish"
+
+msgid "Deactivate selected categories"
+msgstr "Tanlangan kategoriyalarni o'chirish"
+
+msgid "name"
+msgstr "nomi"
+
+msgid "slug"
+msgstr "slug"
+
+msgid "description"
+msgstr "tavsif"
+
+msgid "short description"
+msgstr "qisqacha tavsif"
+
+msgid "parent category"
+msgstr "asosiy kategoriya"
+
+msgid "image"
+msgstr "rasm"
+
+msgid "icon class"
+msgstr "ikon klassi"
+
+msgid "order"
+msgstr "tartib"
+
+msgid "active"
+msgstr "faol"
+
+msgid "created at"
+msgstr "yaratilgan"
+
+msgid "updated at"
+msgstr "yangilangan"
+
+msgid "Category"
+msgstr "Kategoriya"
+
+msgid "Categories"
+msgstr "Kategoriyalar"
+
+msgid "Product"
+msgstr "Mahsulot"
+
+msgid "Products"
+msgstr "Mahsulotlar"
+
+msgid "category"
+msgstr "kategoriya"
+
+msgid "price"
+msgstr "narxi"
+
+msgid "discount percentage"
+msgstr "chegirma foizi"
+
+msgid "stock quantity"
+msgstr "ombordagi miqdori"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "brand"
+msgstr "brend"
+
+msgid "weight (kg)"
+msgstr "og'irligi (kg)"
+
+msgid "meta title"
+msgstr "meta sarlavha"
+
+msgid "meta description"
+msgstr "meta tavsif"
+
+msgid "featured"
+msgstr "taniqli"
+
+msgid "views"
+msgstr "ko'rishlar"
+
+msgid "sales"
+msgstr "sotuvlar"
+
+
+msgid "Subtotal"
+msgstr "Oraliq jami"
+
+msgid "Delivery"
+msgstr "Yetkazib berish"
+
+msgid "Calculated"
+msgstr "Hisoblanadi"
+
+msgid "Total"
+msgstr "Jami"
+
+msgid "Your Rating"
+msgstr "Sizning bahoyingiz"
+
+msgid "stars"
+msgstr "yulduz"
+
+msgid "star"
+msgstr "yulduz"
+
+msgid "Click to rate this product"
+msgstr "Mahsulotni baholash uchun bosing"
+
+msgid "Review Title"
+msgstr "Sharh sarlavhasi"
+
+msgid "Your Review"
+msgstr "Sizning sharhingiz"
+
+msgid "Share your experience with this product"
+msgstr "Ushbu mahsulot haqidagi tajribangiz bilan bo'lishing"
+
+msgid "Add Photos"
+msgstr "Rasmlar qo'shish"
+
+msgid "Optional"
+msgstr "Ixtiyoriy"
+
+msgid "You can upload multiple images"
+msgstr "Siz bir nechta rasm yuklashingiz mumkin"
+
+msgid "Submit Review"
+msgstr "Sharhni yuborish"
+
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+msgid "Review Guidelines"
+msgstr "Sharh qoidalari"
+
+msgid "Be honest and detailed in your review"
+msgstr "Sharhingizda halol va batafsil bo'ling"
+
+msgid "Focus on the product and your experience with it"
+msgstr "Mahsulotga va u bilan tajribangizga e'tibor bering"
+
+msgid "Avoid inappropriate language or personal attacks"
+msgstr "Nomaqbul til yoki shaxsiy hujumlardan saqlaning"
+
+msgid "Your review will be published after moderation"
+msgstr "Sharhingiz moderatsiyadan so'ng nashr etiladi"
+
+msgid "Rate this product"
+msgstr "Mahsulotni baholash"
+
+msgid "FREE"
+msgstr "BEPUL"
+
+msgid "Spend %(amount)s more for FREE delivery!"
+msgstr "Bepul yetkazib berish uchun yana %(amount)s xarid qiling!"
+
+msgid "All Products"
+msgstr "Barcha mahsulotlar"
+
+msgid "On Sale"
+msgstr "Chegirmada"
+
+msgid "Popular"
+msgstr "Mashhur"
+
+msgid "View products"
+msgstr "Mahsulotlarni ko'rish"
+
+msgid "No categories available."
+msgstr "Kategoriyalar mavjud emas."

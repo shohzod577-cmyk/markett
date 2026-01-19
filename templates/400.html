@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}400 - {% trans "Bad Request" %}{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <div class="error-illustration mb-4">
+                    <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="150" cy="150" r="140" fill="#FEF9E7"/>
+                        <text x="150" y="180" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#f59e0b" text-anchor="middle">400</text>
+                    </svg>
+                </div>
+                
+                <h1 class="error-title">{% trans "Bad Request" %}</h1>
+                <p class="error-description">
+                    {% trans "The request could not be understood by the server. Please check your input and try again." %}
+                </p>
+                
+                <div class="error-actions mt-5">
+                    <a href="{% url 'home' %}" class="btn btn-primary-modern btn-lg me-3">
+                        <i class="bi bi-house-door me-2"></i>{% trans "Go Home" %}
+                    </a>
+                    <a href="javascript:history.back()" class="btn btn-outline-primary btn-lg">
+                        <i class="bi bi-arrow-left me-2"></i>{% trans "Go Back" %}
+                    </a>
+                </div>
+                
+                <div class="error-tips mt-5">
+                    <h5 class="mb-3">{% trans "Common Issues" %}</h5>
+                    <ul class="list-unstyled text-start" style="max-width: 400px; margin: 0 auto;">
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            {% trans "Check the URL for typos" %}
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            {% trans "Make sure all required fields are filled" %}
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-check-circle text-success me-2"></i>
+                            {% trans "Try refreshing the page" %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-page {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.error-illustration {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.error-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary, #1a1a1a);
+    margin-bottom: 1rem;
+}
+
+.error-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary, #666);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.error-tips ul li {
+    color: var(--text-secondary, #666);
+    font-size: 0.95rem;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="woodGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A0522D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3009;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#B0E0E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0E68C;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    
+    <clipPath id="circleClip">
+      <circle cx="100" cy="100" r="95"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Main circular background with shadow -->
+  <circle cx="100" cy="100" r="98" fill="url(#woodGradient)" stroke="url(#goldGradient)" stroke-width="4" filter="url(#shadow)"/>
+  
+  <!-- Inner golden border -->
+  <circle cx="100" cy="100" r="93" fill="none" stroke="url(#goldGradient)" stroke-width="3"/>
+  
+  <!-- Sky background -->
+  <circle cx="100" cy="100" r="88" fill="url(#skyGradient)" clip-path="url(#circleClip)"/>
+  
+  <!-- Crescent moon (top left) -->
+  <g transform="translate(55, 45)">
+    <path d="M 15 8 A 12 12 0 1 0 15 32 A 9 9 0 1 1 15 8 Z" 
+          fill="url(#goldGradient)" stroke="#FFD700" stroke-width="1.5" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Star (top center) -->
+  <g transform="translate(100, 42)">
+    <polygon points="0,-8 2,-3 7,-3 3,0 5,5 0,2 -5,5 -3,0 -7,-3 -2,-3" 
+             fill="url(#goldGradient)" stroke="#FFD700" stroke-width="1" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Decorative stars (smaller) -->
+  <g fill="url(#goldGradient)" filter="url(#glow)">
+    <polygon points="35,55 36,58 39,58 37,60 38,63 35,61 32,63 33,60 31,58 34,58" opacity="0.8"/>
+    <polygon points="165,55 166,58 169,58 167,60 168,63 165,61 162,63 163,60 161,58 164,58" opacity="0.8"/>
+  </g>
+  
+  <!-- Mosque dome (center top) -->
+  <g transform="translate(100, 48)">
+    <ellipse cx="0" cy="0" rx="10" ry="7" fill="url(#goldGradient)" filter="url(#glow)"/>
+    <circle cx="0" cy="-7" r="2.5" fill="url(#goldGradient)"/>
+    <path d="M 0 -9.5 L 0 -13 L -1 -14.5 L 1 -14.5 Z" fill="url(#goldGradient)"/>
+  </g>
+  
+  <!-- Main text panel (wooden with green center) -->
+  <rect x="30" y="75" width="140" height="50" rx="15" fill="url(#woodGradient)" stroke="url(#goldGradient)" stroke-width="3" filter="url(#shadow)"/>
+  
+  <!-- Green inner panel -->
+  <rect x="38" y="100" width="124" height="20" rx="10" fill="url(#greenGradient)" stroke="url(#goldGradient)" stroke-width="2"/>
+  
+  <!-- HALOL SAVDO text (top part) -->
+  <text x="100" y="95" font-family="Arial Black, sans-serif" font-size="16" font-weight="bold" 
+        text-anchor="middle" fill="url(#goldGradient)" filter="url(#glow)" letter-spacing="1">
+    HALOL SAVDO
+  </text>
+  
+  <!-- BARAKA MARKET text (green panel) -->
+  <text x="100" y="113" font-family="Arial Black, sans-serif" font-size="11" font-weight="bold" 
+        text-anchor="middle" fill="url(#goldGradient)" letter-spacing="1.5">
+    BARAKA MARKET
+  </text>
+  
+  <!-- Bottom green banner -->
+  <rect x="25" y="138" width="150" height="25" rx="12" fill="url(#greenGradient)" 
+        stroke="url(#goldGradient)" stroke-width="2.5" filter="url(#shadow)"/>
+  
+  <!-- Star icon (left) -->
+  <g transform="translate(42, 150.5)">
+    <polygon points="0,-4 1,-2 3,-2 2,0 2,2 0,1 -2,2 -2,0 -3,-2 -1,-2" 
+             fill="url(#goldGradient)" filter="url(#glow)"/>
+  </g>
+  
+  <!-- HALOL SAVDO - BARAKA, OMAD KELTIRADI! -->
+  <text x="100" y="153" font-family="Arial, sans-serif" font-size="9" font-weight="bold" 
+        text-anchor="middle" fill="url(#goldGradient)" letter-spacing="0.5">
+    HALOL SAVDO - BARAKA, OMAD!
+  </text>
+  
+  <!-- Star icon (right) -->
+  <g transform="translate(158, 150.5)">
+    <polygon points="0,-4 1,-2 3,-2 2,0 2,2 0,1 -2,2 -2,0 -3,-2 -1,-2" 
+             fill="url(#goldGradient)" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Decorative wheat at bottom -->
+  <g transform="translate(100, 175)" stroke="url(#goldGradient)" stroke-width="2" fill="none">
+    <path d="M -12 0 L -12 -8"/>
+    <path d="M 12 0 L 12 -8"/>
+    <ellipse cx="-12" cy="-9" rx="2.5" ry="3" fill="url(#goldGradient)"/>
+    <ellipse cx="12" cy="-9" rx="2.5" ry="3" fill="url(#goldGradient)"/>
+    <ellipse cx="-12" cy="-12" rx="2" ry="2.5" fill="url(#goldGradient)" opacity="0.8"/>
+    <ellipse cx="12" cy="-12" rx="2" ry="2.5" fill="url(#goldGradient)" opacity="0.8"/>
+  </g>
+  
+  <!-- Outer decorative ring -->
+  <circle cx="100" cy="100" r="88" fill="none" stroke="url(#goldGradient)" stroke-width="0.8" opacity="0.5" stroke-dasharray="4,4"/>
+  
+  <!-- 3D highlight effect -->
+  <circle cx="100" cy="100" r="93" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.3" 
+          stroke-dasharray="10,10" transform="rotate(-45 100 100)"/>
+</svg>

@@ -90,7 +90,6 @@ class CartItem(models.Model):
         validators=[MinValueValidator(1)]
     )
 
-    # Price snapshot (at time of adding to cart)
     price_snapshot = models.DecimalField(
         _('price snapshot'),
         max_digits=15,

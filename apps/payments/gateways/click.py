@@ -37,10 +37,8 @@ class ClickPaymentGateway(BasePaymentGateway):
         Create Click payment.
         """
         try:
-            # Convert amount to tiyin (1 UZS = 100 tiyin)
             amount_tiyin = int(amount * 100)
 
-            # Generate payment URL
             payment_url = (
                 f"https://my. click.uz/services/pay"
                 f"?service_id={self.service_id}"
@@ -69,8 +67,6 @@ class ClickPaymentGateway(BasePaymentGateway):
         Verify Click payment status.
         """
         try:
-            # In production, you would call Click API to verify
-            # For now, return mock verification
             return {
                 'is_successful': True,
                 'status': 'completed',
@@ -99,9 +95,9 @@ class ClickPaymentGateway(BasePaymentGateway):
         try:
             action = payload.get('action')
 
-            if action == 0:  # PREPARE
+            if action == 0:
                 return self._handle_prepare(payload)
-            elif action == 1:  # COMPLETE
+            elif action == 1:
                 return self._handle_complete(payload)
             else:
                 raise PaymentGatewayError(f"Unknown action: {action}")
@@ -117,19 +113,16 @@ class ClickPaymentGateway(BasePaymentGateway):
         Handle PREPARE request from Click.
         Validate that payment can be processed.
         """
-        # Validate signature
         if not self._validate_click_signature(payload):
             return {
                 'error': -1,
                 'error_note': 'Invalid signature'
             }
 
-        # Extract data
         click_trans_id = payload.get('click_trans_id')
-        merchant_trans_id = payload.get('merchant_trans_id')  # This is our order_id
-        amount = Decimal(payload.get('amount', 0)) / 100  # Convert from tiyin
+        merchant_trans_id = payload.get('merchant_trans_id')
+        amount = Decimal(payload.get('amount', 0)) / 100
 
-        # Validate order exists and amount matches
         from apps.orders.models import Order
         try:
             order = Order.objects.get(order_number=merchant_trans_id)
@@ -146,7 +139,6 @@ class ClickPaymentGateway(BasePaymentGateway):
                     'error_note': 'Already paid'
                 }
 
-            # Success - ready to process
             return {
                 'error': 0,
                 'error_note': 'Success',
@@ -166,7 +158,6 @@ class ClickPaymentGateway(BasePaymentGateway):
         Handle COMPLETE request from Click.
         Finalize the payment.
         """
-        # Validate signature
         if not self._validate_click_signature(payload):
             return {
                 'error': -1,
@@ -175,7 +166,6 @@ class ClickPaymentGateway(BasePaymentGateway):
 
         merchant_trans_id = payload.get('merchant_trans_id')
 
-        # Mark order as paid
         from apps.orders.models import Order
         try:
             order = Order.objects.get(order_number=merchant_trans_id)
@@ -199,10 +189,8 @@ class ClickPaymentGateway(BasePaymentGateway):
         """
         Validate Click webhook signature.
         """
-        # Extract signature from payload
         received_sign_string = payload.get('sign_string', '')
 
-        # Generate expected signature
         sign_string = (
             f"{payload.get('click_trans_id')}"
             f"{self.service_id}"
@@ -227,8 +215,6 @@ class ClickPaymentGateway(BasePaymentGateway):
         Refund Click payment.
         Note: Click refunds typically processed manually.
         """
-        # Click doesn't have automated refund API
-        # This would typically be handled through Click merchant dashboard
         return {
             'success': False,
             'message': 'Click refunds must be processed manually through merchant dashboard',

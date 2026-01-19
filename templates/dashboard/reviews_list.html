@@ -1,0 +1,99 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Reviews - Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Reviews Moderation</h1>
+</div>
+
+<!-- Filters -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-10">
+                <select class="form-select" name="status">
+                    <option value="">All Reviews</option>
+                    <option value="pending" {% if request.GET.status == 'pending' %}selected{% endif %}>Pending</option>
+                    <option value="approved" {% if request.GET.status == 'approved' %}selected{% endif %}>Approved</option>
+                    <option value="flagged" {% if request.GET.status == 'flagged' %}selected{% endif %}>Flagged</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Filter</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Reviews List -->
+<div class="card">
+    <div class="card-body">
+        {% for review in reviews %}
+        <div class="border-bottom pb-3 mb-3">
+            <div class="d-flex justify-content-between align-items-start">
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center mb-2">
+                        <strong>{{ review.user.email }}</strong>
+                        <span class="mx-2">•</span>
+                        <span class="text-warning">
+                            {% for i in "12345"|slice:":"|make_list %}
+                                {% if forloop.counter <= review.rating %}
+                                <i class="bi bi-star-fill"></i>
+                                {% else %}
+                                <i class="bi bi-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                        <span class="mx-2">•</span>
+                        <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                    </div>
+                    <div class="mb-2">
+                        <a href="{% url 'products:detail' slug=review.product.slug %}" target="_blank">
+                            <strong>{{ review.product.name }}</strong>
+                        </a>
+                    </div>
+                    {% if review.title %}
+                    <h6>{{ review.title }}</h6>
+                    {% endif %}
+                    <p class="mb-2">{{ review.comment }}</p>
+                    <div>
+                        {% if review.is_approved %}
+                        <span class="badge bg-success">Approved</span>
+                        {% elif review.is_flagged %}
+                        <span class="badge bg-danger">Flagged</span>
+                        {% else %}
+                        <span class="badge bg-warning">Pending</span>
+                        {% endif %}
+                        
+                        {% if review.is_verified_purchase %}
+                        <span class="badge bg-info">Verified Purchase</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="ms-3">
+                    <form method="post" action="{% url 'dashboard:review_moderate' review_id=review.id %}" class="d-inline">
+                        {% csrf_token %}
+                        {% if not review.is_approved %}
+                        <button type="submit" name="action" value="approve" class="btn btn-sm btn-success">
+                            <i class="bi bi-check-lg"></i> Approve
+                        </button>
+                        {% endif %}
+                        {% if not review.is_flagged %}
+                        <button type="submit" name="action" value="flag" class="btn btn-sm btn-warning">
+                            <i class="bi bi-flag"></i> Flag
+                        </button>
+                        {% endif %}
+                        <button type="submit" name="action" value="reject" class="btn btn-sm btn-danger">
+                            <i class="bi bi-x-lg"></i> Reject
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center py-4">No reviews found</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

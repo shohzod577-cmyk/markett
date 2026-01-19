@@ -1,5 +1,5 @@
 # Python
-*. py[cod]
+*.py[cod]
 *$py.class
 *.so
 .Python
@@ -19,15 +19,17 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+__pycache__/
+*.pyc
 
 # Django
 *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-/media
-/staticfiles
-/static_root
+/media/
+/staticfiles/
+/static_root/
 
 # Environment
 .env
@@ -35,19 +37,22 @@ db.sqlite3-journal
 env/
 venv/
 ENV/
-env. bak/
+env.bak/
 venv.bak/
 
 # IDEs
 .vscode/
-. idea/
+.idea/
 *.swp
-*. swo
+*.swo
 *~
 .DS_Store
 
-# PyCharm
-.idea/
+# Backups
+backup/
+
+# Scripts (optional - faqat o'zingiz kerakli scriptlarni qoldiring)
+remove_comments.py
 
 # VS Code
 .vscode/

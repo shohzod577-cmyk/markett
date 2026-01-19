@@ -1,0 +1,52 @@
+Buyurtma fakturasi - {{ order.order_number }}
+
+========================================
+HALOL RIZQ SAVDO MARKAZI
+========================================
+
+To'lov muvaffaqiyatli amalga oshirildi!
+
+Hurmatli {{ order.customer_name }},
+
+Buyurtmangiz uchun rahmat! Sizning to'lovingiz muvaffaqiyatli qabul qilindi.
+
+BUYURTMA TAFSILOTLARI:
+----------------------------------------
+Buyurtma raqami: {{ order.order_number }}
+Buyurtma sanasi: {{ order.created_at|date:"d.m.Y H:i" }}
+To'lov usuli: {{ order.get_payment_method_display }}
+Holat: To'langan
+
+MAHSULOTLAR:
+----------------------------------------
+{% for item in order.items.all %}
+{{ item.product_name }}
+Soni: {{ item.quantity }} x {{ item.price|floatformat:0 }} so'm = {{ item.total_price|floatformat:0 }} so'm
+{% endfor %}
+
+JAMI HISOBLAR:
+----------------------------------------
+Oraliq jami: {{ order.subtotal|floatformat:0 }} so'm
+Yetkazib berish: {{ order.delivery_fee|floatformat:0 }} so'm
+{% if order.discount > 0 %}
+Chegirma: -{{ order.discount|floatformat:0 }} so'm
+{% endif %}
+----------------------------------------
+JAMI TO'LOV: {{ order.total|floatformat:0 }} so'm
+
+YETKAZIB BERISH MANZILI:
+----------------------------------------
+{{ order.delivery_address }}
+{{ order.delivery_city }}, {{ order.delivery_region }}
+Tel: {{ order.customer_phone }}
+
+BUYURTMANI KUZATISH:
+{{ site_url }}/orders/{{ order.id }}/
+
+YORDAM:
+Telefon: +998 71 123 45 67
+Email: support@halolrizq.uz
+
+Bu avtomatik yuborilgan xabar. Iltimos, javob qaytarmang.
+
+© 2026 Halol Rizq Savdo Markazi. Barcha huquqlar himoyalangan.

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Yordam markazi" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-center mb-5">{% trans "Yordam markazi" %}</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-box-seam fs-1 text-primary mb-3"></i>
+                    <h4>{% trans "Buyurtma berish" %}</h4>
+                    <p>Buyurtma qanday beriladi va to'lov usullari haqida ma'lumot</p>
+                    <a href="{% url 'faq' %}" class="btn btn-outline-primary">{% trans "Batafsil" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-truck fs-1 text-success mb-3"></i>
+                    <h4>{% trans "Yetkazib berish" %}</h4>
+                    <p>Yetkazib berish shartlari va narxlari haqida</p>
+                    <a href="{% url 'shipping_info' %}" class="btn btn-outline-success">{% trans "Batafsil" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-arrow-return-left fs-1 text-warning mb-3"></i>
+                    <h4>{% trans "Qaytarish" %}</h4>
+                    <p>Mahsulotlarni qaytarish va almashtirish shartlari</p>
+                    <a href="{% url 'returns' %}" class="btn btn-outline-warning">{% trans "Batafsil" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-search fs-1 text-info mb-3"></i>
+                    <h4>{% trans "Buyurtmani kuzatish" %}</h4>
+                    <p>Buyurtma holatini tekshirish</p>
+                    <a href="{% url 'track_order' %}" class="btn btn-outline-info">{% trans "Kuzatish" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-question-circle fs-1 text-secondary mb-3"></i>
+                    <h4>{% trans "FAQ" %}</h4>
+                    <p>Ko'p so'raladigan savollar va javoblar</p>
+                    <a href="{% url 'faq' %}" class="btn btn-outline-secondary">{% trans "O'qish" %}</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 text-center">
+                <div class="card-body">
+                    <i class="bi bi-chat-dots fs-1 text-danger mb-3"></i>
+                    <h4>{% trans "Bog'lanish" %}</h4>
+                    <p>Bizga xabar yuboring</p>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-danger">{% trans "Xabar yuborish" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card bg-primary text-white mt-5">
+        <div class="card-body text-center py-5">
+            <h3>{% trans "24/7 Qo'llab-quvvatlash" %}</h3>
+            <p class="lead">{% trans "Har qanday savol bo'yicha biz bilan bog'laning" %}</p>
+            <div class="d-flex justify-content-center gap-4 mt-4">
+                <div>
+                    <i class="bi bi-telephone-fill fs-3"></i>
+                    <p class="mb-0 mt-2">+998 71 123 45 67</p>
+                </div>
+                <div>
+                    <i class="bi bi-envelope-fill fs-3"></i>
+                    <p class="mb-0 mt-2">support@halolrizq.uz</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

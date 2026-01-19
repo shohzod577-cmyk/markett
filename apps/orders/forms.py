@@ -2,8 +2,45 @@
 Order and checkout forms.
 """
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import Order
 from apps.users.models import Address
+
+
+REGIONS = [
+    ('', _('Select region')),
+    ('tashkent_city', _('Tashkent City')),
+    ('tashkent', _('Tashkent Region')),
+    ('andijan', _('Andijan')),
+    ('bukhara', _('Bukhara')),
+    ('fergana', _('Fergana')),
+    ('jizzakh', _('Jizzakh')),
+    ('namangan', _('Namangan')),
+    ('navoiy', _('Navoiy')),
+    ('kashkadarya', _('Kashkadarya')),
+    ('samarkand', _('Samarkand')),
+    ('sirdaryo', _('Sirdaryo')),
+    ('surkhandarya', _('Surkhandarya')),
+    ('khorezm', _('Khorezm')),
+    ('karakalpakstan', _('Karakalpakstan')),
+]
+
+CITIES = [
+    ('', _('Select city')),
+    ('tashkent', _('Tashkent')),
+    ('andijan', _('Andijan')),
+    ('bukhara', _('Bukhara')),
+    ('fergana', _('Fergana')),
+    ('jizzakh', _('Jizzakh')),
+    ('karshi', _('Karshi')),
+    ('namangan', _('Namangan')),
+    ('navoiy', _('Navoiy')),
+    ('nukus', _('Nukus')),
+    ('samarkand', _('Samarkand')),
+    ('termez', _('Termez')),
+    ('urgench', _('Urgench')),
+    ('guliston', _('Guliston')),
+]
 
 
 class CheckoutForm(forms.Form):
@@ -11,46 +48,51 @@ class CheckoutForm(forms.Form):
     Checkout form with delivery and payment information.
     """
 
-    # Customer information
     customer_name = forms.CharField(
         max_length=200,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Full Name'})
+        label=_('Customer name'),
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': _('Full Name')})
     )
     customer_email = forms.EmailField(
-        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'})
+        label=_('Customer email'),
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _('Email')})
     )
     customer_phone = forms.CharField(
         max_length=20,
+        label=_('Customer phone'),
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': '+998 XX XXX XX XX'})
     )
 
-    # Delivery address
     use_saved_address = forms.BooleanField(
         required=False,
+        label=_('Use saved address'),
         widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
     )
     saved_address = forms.ModelChoiceField(
         queryset=Address.objects.none(),
         required=False,
+        label=_('Saved address'),
         widget=forms.Select(attrs={'class': 'form-select'})
     )
 
     delivery_address = forms.CharField(
+        label=_('Delivery address'),
         widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         required=False
     )
-    delivery_city = forms.CharField(
-        max_length=100,
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+    delivery_city = forms.ChoiceField(
+        choices=CITIES,
+        label=_('Delivery city'),
+        widget=forms.Select(attrs={'class': 'form-select'}),
         required=False
     )
-    delivery_region = forms.CharField(
-        max_length=100,
+    delivery_region = forms.ChoiceField(
+        choices=REGIONS,
         required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control'})
+        label=_('Delivery region'),
+        widget=forms.Select(attrs={'class': 'form-select'})
     )
 
-    # Geolocation
     latitude = forms.DecimalField(
         required=False,
         widget=forms.HiddenInput()
@@ -60,16 +102,16 @@ class CheckoutForm(forms.Form):
         widget=forms.HiddenInput()
     )
 
-    # Payment method
     payment_method = forms.ChoiceField(
+        label=_('Payment method'),
         choices=Order._meta.get_field('payment_method').choices,
         widget=forms.RadioSelect(attrs={'class': 'form-check-input'})
     )
 
-    # Notes
     customer_notes = forms.CharField(
         required=False,
-        widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Any special instructions?'})
+        label=_('Customer notes'),
+        widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': _('Any special instructions?')})
     )
 
     def __init__(self, *args, **kwargs):

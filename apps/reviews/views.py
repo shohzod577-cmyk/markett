@@ -19,7 +19,6 @@ def create_review_view(request, product_id):
     """
     product = get_object_or_404(Product, id=product_id)
 
-    # Check if user purchased this product
     has_purchased = Order.objects.filter(
         user=request.user,
         items__product=product,
@@ -30,7 +29,6 @@ def create_review_view(request, product_id):
         messages.error(request, 'You can only review products you have purchased.')
         return redirect('products:detail', slug=product.slug)
 
-    # Check if already reviewed
     if Review.objects.filter(user=request.user, product=product).exists():
         messages.warning(request, 'You have already reviewed this product.')
         return redirect('products:detail', slug=product.slug)
@@ -43,7 +41,6 @@ def create_review_view(request, product_id):
             review.product = product
             review.save()
 
-            # Get the order for verification
             order = Order.objects.filter(
                 user=request.user,
                 items__product=product,
@@ -53,7 +50,6 @@ def create_review_view(request, product_id):
 
             review.save()
 
-            # Handle image uploads
             for f in request.FILES.getlist('images'):
                 from .models import ReviewImage
                 ReviewImage.objects.create(review=review, image=f)
@@ -83,19 +79,15 @@ def vote_review_view(request, review_id):
         if vote_type not in ['helpful', 'not_helpful']:
             return JsonResponse({'success': False, 'error': 'Invalid vote type'})
 
-        # Check if already voted
         existing_vote = ReviewVote.objects.filter(review=review, user=request.user).first()
 
         if existing_vote:
-            # Update existing vote
             if existing_vote.vote_type != vote_type:
-                # Remove old vote count
                 if existing_vote.vote_type == ReviewVote.VOTE_HELPFUL:
                     review.helpful_count -= 1
                 else:
                     review.not_helpful_count -= 1
 
-                # Add new vote count
                 existing_vote.vote_type = vote_type
                 existing_vote.save()
 
@@ -106,7 +98,6 @@ def vote_review_view(request, review_id):
 
                 review.save()
         else:
-            # Create new vote
             ReviewVote.objects.create(
                 review=review,
                 user=request.user,

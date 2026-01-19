@@ -1,0 +1,139 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Order {{ order.order_number }} - Dashboard{% endblock %}
+
+{% block dashboard_content %}
+<div class="mb-4">
+    <a href="{% url 'dashboard:orders_list' %}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Back to Orders
+    </a>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Order #{{ order.order_number }}</h1>
+    <div>
+        {% if order.is_paid %}
+        <span class="badge bg-success fs-6">Paid</span>
+        {% else %}
+        <span class="badge bg-danger fs-6">Unpaid</span>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Order Details -->
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Order Items</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.items.all %}
+                            <tr>
+                                <td>{{ item.product_name }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>{{ item.unit_price|floatformat:0 }} {{ order.currency }}</td>
+                                <td>{{ item.subtotal|floatformat:0 }} {{ order.currency }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
+                                <td><strong>{{ order.subtotal|floatformat:0 }} {{ order.currency }}</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-end">Delivery Fee:</td>
+                                <td>{{ order.delivery_fee|floatformat:0 }} {{ order.currency }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                <td><strong>{{ order.total_amount|floatformat:0 }} {{ order.currency }}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Status -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Update Order Status</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="update_status">
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" name="status" required>
+                            {% for value, label in status_choices %}
+                            <option value="{{ value }}" {% if order.status == value %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Notes (optional)</label>
+                        <textarea class="form-control" name="notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Status</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer & Delivery Info -->
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Customer Information</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Name:</strong><br>{{ order.customer_name }}</p>
+                <p><strong>Email:</strong><br>{{ order.customer_email }}</p>
+                <p><strong>Phone:</strong><br>{{ order.customer_phone }}</p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Delivery Address</h5>
+            </div>
+            <div class="card-body">
+                <p>{{ order.delivery_address }}</p>
+                <p><strong>City:</strong> {{ order.delivery_city }}</p>
+                {% if order.delivery_region %}
+                <p><strong>Region:</strong> {{ order.delivery_region }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Order Timeline</h5>
+            </div>
+            <div class="card-body">
+                <p><strong>Created:</strong><br>{{ order.created_at|date:"M d, Y H:i" }}</p>
+                {% if order.is_paid %}
+                <p><strong>Paid:</strong><br>{{ order.paid_at|date:"M d, Y H:i" }}</p>
+                {% endif %}
+                {% if order.delivered_at %}
+                <p><strong>Delivered:</strong><br>{{ order.delivered_at|date:"M d, Y H:i" }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

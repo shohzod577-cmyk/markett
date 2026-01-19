@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Ko'p so'raladigan savollar" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">{% trans "Ko'p so'raladigan savollar (FAQ)" %}</h1>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Buyurtma qanday beriladi?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Mahsulotni tanlang, savatga qo'shing va "Buyurtma berish" tugmasini bosing. Keyin yetkazib berish ma'lumotlarini kiriting va to'lov usulini tanlang.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Yetkazib berish qancha vaqt oladi?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Toshkent shahri ichida 1-2 kun, viloyatlarga 2-3 kun ichida yetkazib beriladi.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            Qanday to'lov usullari mavjud?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Naqd pul, plastik karta (Visa, Mastercard, Uzcard, Humo), Click, Payme va boshqa onlayn to'lov tizimlari orqali to'lash mumkin.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Mahsulotni qaytarish mumkinmi?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Ha, 14 kun ichida mahsulotni qaytarishingiz yoki almashtirishingiz mumkin. Mahsulot ishlatilmagan va asl qadoqda bo'lishi kerak.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Yetkazib berish narxi qancha?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            300,000 so'mdan ortiq buyurtmalar uchun yetkazib berish bepul. 300,000 so'mdan kam buyurtmalar uchun 25,000 so'm.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            Buyurtmani qanday kuzatish mumkin?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Buyurtma raqamingiz bilan "Buyurtmani kuzatish" sahifasidan buyurtma holatini tekshirishingiz mumkin.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-4 bg-light">
+                <div class="card-body text-center">
+                    <h5>{% trans "Savolingizga javob topolmadingizmi?" %}</h5>
+                    <p>{% trans "Bizga murojaat qiling, yordam beramiz!" %}</p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">
+                        <i class="bi bi-envelope me-2"></i>{% trans "Bog'lanish" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

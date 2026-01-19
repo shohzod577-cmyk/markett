@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Yetkazib berish ma'lumoti" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">{% trans "Yetkazib berish ma'lumoti" %}</h1>
+            
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h3><i class="bi bi-truck text-primary me-2"></i>{% trans "Yetkazib berish shartlari" %}</h3>
+                    
+                    <h5 class="mt-4">{% trans "Toshkent shahri" %}</h5>
+                    <ul>
+                        <li>Yetkazib berish muddati: 1-2 ish kuni</li>
+                        <li>Narx: 300,000 so'mdan ortiq buyurtmalarda BEPUL</li>
+                        <li>300,000 so'mdan kam buyurtmalarda: 25,000 so'm</li>
+                        <li>Eshikgacha yetkazib berish xizmati</li>
+                    </ul>
+                    
+                    <h5 class="mt-4">{% trans "Viloyatlar" %}</h5>
+                    <ul>
+                        <li>Yetkazib berish muddati: 2-3 ish kuni</li>
+                        <li>Narx: 500,000 so'mdan ortiq buyurtmalarda BEPUL</li>
+                        <li>500,000 so'mdan kam buyurtmalarda: 35,000 - 50,000 so'm</li>
+                    </ul>
+                    
+                    <h5 class="mt-4">{% trans "Tezkor yetkazib berish" %}</h5>
+                    <p>Agar sizga mahsulot shoshilinch kerak bo'lsa, "Tezkor yetkazib berish" xizmatidan foydalanishingiz mumkin:</p>
+                    <ul>
+                        <li>Toshkent: 3-6 soat ichida (qo'shimcha 40,000 so'm)</li>
+                        <li>Faqat ish kunlari 9:00 dan 18:00 gacha</li>
+                    </ul>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>Eslatma:</strong> Yetkazib berish muddatlari buyurtma qilingan vaqtdan keyin boshlanadi va ish kunlariga nisbatan hisoblanadi.
+                    </div>
+                    
+                    <h3 class="mt-5"><i class="bi bi-box-seam text-success me-2"></i>{% trans "Mahsulotlarni qabul qilish" %}</h3>
+                    <ol>
+                        <li>Kuryer mahsulotni yetkazib kelganda, avval qadoqni tekshiring</li>
+                        <li>Agar qadoq shikastlangan bo'lsa, mahsulotni qabul qilmang</li>
+                        <li>Mahsulotni ochib, to'liq va sifatli ekanligini tekshiring</li>
+                        <li>Hujjatlarni imzolang va to'lovni amalga oshiring</li>
+                        <li>Kvitansiya yoki chekni saqlang</li>
+                    </ol>
+                    
+                    <div class="alert alert-warning mt-4">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        <strong>Muhim:</strong> Agar mahsulot buyurtmaga mos kelmasa yoki shikastlangan bo'lsa, uni qabul qilmang va darhol bizga xabar bering: +998 71 123 45 67
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

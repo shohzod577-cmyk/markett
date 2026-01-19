@@ -1,0 +1,13 @@
+<!doctype html>
+<html><body>
+<h1>{{ product.title }}</h1>
+<p>{{ product.description }}</p>
+<p>Price: {{ product.price }} {{ product.currency }}</p>
+{% if product.images.all %}
+  <div>
+  {% for img in product.images.all %}
+    <img src="{{ img.image.url }}" alt="{{ img.alt }}" style="max-width:200px;">
+  {% endfor %}
+  </div>
+{% endif %}
+</body></html>

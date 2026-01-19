@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Products' %} - Halol Rizq{% endblock %}
+
+{% block extra_css %}
+<style>
+.filters-sidebar {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 90px;
+}
+
+.filter-section {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+}
+
+.filter-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.price-range-inputs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.price-input {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 10px;
+    font-size: 14px;
+}
+
+.products-header {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.sort-select {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background: white;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.pagination-modern {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.page-link-modern {
+    padding: 10px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.page-link-modern:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.page-link-modern.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+@media (max-width: 991px) {
+    .filters-sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <!-- Sidebar Filters -->
+        <div class="col-lg-3 mb-4">
+            <div class="filters-sidebar">
+                <h2 class="section-title mb-4">
+                    <i class="bi bi-funnel"></i> {% trans 'Filters' %}
+                </h2>
+
+                <form method="get" action="{% url 'products:list' %}" id="filterForm">
+                    <!-- Search -->
+                    <div class="filter-section">
+                        <div class="filter-title">{% trans 'Search' %}</div>
+                        <input type="text" 
+                               name="search" 
+                               class="price-input w-100" 
+                               value="{{ request.GET.search }}" 
+                               placeholder="{% trans 'Product name...' %}">
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="filter-section">
+                        <div class="filter-title">{% trans 'Category' %}</div>
+                        <div class="filter-checkbox">
+                            <input type="radio" 
+                                   name="category" 
+                                   value="" 
+                                   id="cat-all"
+                                   {% if not request.GET.category %}checked{% endif %}
+                                   onchange="this.form.submit()">
+                            <label for="cat-all">{% trans 'All Categories' %}</label>
+                        </div>
+                        {% for category in categories %}
+                        <div class="filter-checkbox">
+                            <input type="radio" 
+                                   name="category" 
+                                   value="{{ category.slug }}" 
+                                   id="cat-{{ category.id }}"
+                                   {% if request.GET.category == category.slug %}checked{% endif %}
+                                   onchange="this.form.submit()">
+                            <label for="cat-{{ category.id }}">{{ category.name }}</label>
+                            <span class="ms-auto text-muted small">({{ category.products.count }})</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-section">
+                        <div class="filter-title">{% trans 'Price Range' %}</div>
+                        <div class="price-range-inputs">
+                            <input type="number" 
+                                   name="min_price" 
+                                   class="price-input" 
+                                   placeholder="{% trans 'Min' %}"
+                                   value="{{ request.GET.min_price }}">
+                            <span>—</span>
+                            <input type="number" 
+                                   name="max_price" 
+                                   class="price-input" 
+                                   placeholder="{% trans 'Max' %}"
+                                   value="{{ request.GET.max_price }}">
+                        </div>
+                    </div>
+
+                    <!-- Stock Status -->
+                    <div class="filter-section">
+                        <div class="filter-title">{% trans 'Availability' %}</div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" 
+                                   name="in_stock" 
+                                   id="inStock"
+                                   {% if request.GET.in_stock %}checked{% endif %}>
+                            <label for="inStock">{% trans 'In Stock Only' %}</label>
+                        </div>
+                        <div class="filter-checkbox">
+                            <input type="checkbox" 
+                                   name="on_sale" 
+                                   id="onSale"
+                                   {% if request.GET.on_sale %}checked{% endif %}>
+                            <label for="onSale">{% trans 'On Sale' %}</label>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <button type="submit" class="btn-primary-modern w-100 mb-2">
+                        <i class="bi bi-check2"></i> {% trans 'Apply Filters' %}
+                    </button>
+                    <a href="{% url 'products:list' %}" class="btn-outline-modern w-100 d-block text-center">
+                        <i class="bi bi-x"></i> {% trans 'Clear' %}
+                    </a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Products -->
+        <div class="col-lg-9">
+            <!-- Products Header -->
+            <div class="products-header">
+                <div>
+                    <h1 class="mb-1" style="font-size: 24px; font-weight: 700;">{% trans 'All Products' %}</h1>
+                    <p class="mb-0 text-muted small">
+                        {% trans 'Showing' %} {{ page_obj.start_index }}-{{ page_obj.end_index }} {% trans 'of' %} {{ page_obj.paginator.count }} {% trans 'products' %}
+                    </p>
+                </div>
+
+                <form method="get" class="d-flex align-items-center gap-2">
+                    <!-- Preserve filters -->
+                    {% for key, value in request.GET.items %}
+                        {% if key != 'sort' %}
+                        <input type="hidden" name="{{ key }}" value="{{ value }}">
+                        {% endif %}
+                    {% endfor %}
+
+                    <label class="mb-0 text-muted small">{% trans 'Sort by:' %}</label>
+                    <select name="sort" class="sort-select" onchange="this.form.submit()">
+                        <option value="">{% trans 'Newest' %}</option>
+                        <option value="price_asc" {% if request.GET.sort == 'price_asc' %}selected{% endif %}>{% trans 'Price: Low to High' %}</option>
+                        <option value="price_desc" {% if request.GET.sort == 'price_desc' %}selected{% endif %}>{% trans 'Price: High to Low' %}</option>
+                        <option value="name" {% if request.GET.sort == 'name' %}selected{% endif %}>{% trans 'Name: A-Z' %}</option>
+                        <option value="-rating" {% if request.GET.sort == '-rating' %}selected{% endif %}>{% trans 'Top Rated' %}</option>
+                    </select>
+                </form>
+            </div>
+
+            <!-- Products Grid -->
+            {% if page_obj %}
+            <div class="products-grid">
+                {% for product in page_obj %}
+                    {% include 'products/product_card.html' %}
+                {% endfor %}
+            </div>
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+            <nav class="pagination-modern">
+                {% if page_obj.has_previous %}
+                <a href="?page=1{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" class="page-link-modern">
+                    <i class="bi bi-chevron-double-left"></i> {% trans 'First' %}
+                </a>
+                <a href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" class="page-link-modern">
+                    <i class="bi bi-chevron-left"></i> {% trans 'Previous' %}
+                </a>
+                {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                    <span class="page-link-modern active">{{ num }}</span>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" class="page-link-modern">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" class="page-link-modern">
+                    {% trans 'Next' %} <i class="bi bi-chevron-right"></i>
+                </a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}" class="page-link-modern">
+                    {% trans 'Last' %} <i class="bi bi-chevron-double-right"></i>
+                </a>
+                {% endif %}
+            </nav>
+            {% endif %}
+
+            {% else %}
+            <div class="text-center py-5">
+                <i class="bi bi-inbox" style="font-size: 96px; color: var(--text-muted);"></i>
+                <h3 class="mt-4 mb-2">{% trans 'No products found' %}</h3>
+                <p class="text-muted">{% trans 'Try adjusting your filters or search query' %}</p>
+                <a href="{% url 'products:list' %}" class="btn-primary-modern mt-3">
+                    {% trans 'Clear Filters' %}
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

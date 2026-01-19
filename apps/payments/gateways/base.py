@@ -139,7 +139,6 @@ class BasePaymentGateway(ABC):
             data: Transaction data
             success: Transaction success status
         """
-        # This can be extended to log to database or external service
         import logging
         logger = logging.getLogger(self.gateway_name)
 

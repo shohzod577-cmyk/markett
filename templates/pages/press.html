@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Press" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4">{% trans "Matbuot markazi" %}</h1>
+        <p class="lead">{% trans "Halol Rizq haqida oxirgi yangiliklar va ma'lumotlar" %}</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="mb-4">{% trans "Press-relizlar" %}</h2>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <small class="text-muted">10 Yanvar 2026</small>
+                    <h4 class="mt-2">Halol Rizq savdo markazi o'z eshiklarini ochdi</h4>
+                    <p>Bugun O'zbekistonda halol mahsulotlarni taqdim etuvchi yirik onlayn savdo platformasi - Halol Rizq savdo markazi rasmiy ishga tushdi...</p>
+                    <a href="#" class="btn btn-outline-primary">{% trans "To'liq o'qish" %}</a>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <small class="text-muted">25 Dekabr 2025</small>
+                    <h4 class="mt-2">Yangi yil chegirmalari boshlanadi</h4>
+                    <p>Halol Rizq savdo markazi yangi yil munosabati bilan barcha mahsulotlarga 50% gacha chegirmalar e'lon qiladi...</p>
+                    <a href="#" class="btn btn-outline-primary">{% trans "To'liq o'qish" %}</a>
+                </div>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <small class="text-muted">15 Noyabr 2025</small>
+                    <h4 class="mt-2">Halol Rizq Iso'zbekiston bo'ylab kengaymoqda</h4>
+                    <p>Platformamiz barcha viloyatlarda yetkazib berish xizmatini boshladi. Endi butun O'zbekiston aholisi bizning xizmatlarimizdan foydalanishi mumkin...</p>
+                    <a href="#" class="btn btn-outline-primary">{% trans "To'liq o'qish" %}</a>
+                </div>
+            </div>
+            
+            <div class="card bg-light mt-5">
+                <div class="card-body">
+                    <h4>{% trans "Media uchun" %}</h4>
+                    <p>{% trans "Biz bilan bog'lanish uchun:" %}</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="bi bi-envelope-fill text-primary me-2"></i>
+                            <strong>Email:</strong> press@halolrizq.uz
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telephone-fill text-success me-2"></i>
+                            <strong>Telefon:</strong> +998 71 123 45 67
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telegram text-info me-2"></i>
+                            <strong>Telegram:</strong> @halolrizq_press
+                        </li>
+                    </ul>
+                    
+                    <hr class="my-4">
+                    
+                    <h5>{% trans "Yuklab olish" %}</h5>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a href="#" class="btn btn-outline-secondary">
+                            <i class="bi bi-download me-2"></i>Logo paket
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary">
+                            <i class="bi bi-download me-2"></i>Rasm banki
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary">
+                            <i class="bi bi-download me-2"></i>Prezentatsiya
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

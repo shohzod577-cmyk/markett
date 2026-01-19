@@ -5,6 +5,7 @@ Comprehensive order management with state machine pattern.
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 from django.core.validators import MinValueValidator
 from decimal import Decimal
 
@@ -17,7 +18,6 @@ class Order(models.Model):
     Central model for order lifecycle management.
     """
 
-    # Order statuses
     STATUS_PENDING = 'pending'
     STATUS_ACCEPTED = 'accepted'
     STATUS_PACKED = 'packed'
@@ -34,7 +34,6 @@ class Order(models.Model):
         (STATUS_CANCELLED, _('Cancelled')),
     ]
 
-    # Order identification
     order_number = models.CharField(
         _('order number'),
         max_length=50,
@@ -42,7 +41,6 @@ class Order(models.Model):
         editable=False
     )
 
-    # Customer
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
@@ -50,7 +48,6 @@ class Order(models.Model):
         verbose_name=_('user')
     )
 
-    # Order status
     status = models.CharField(
         _('status'),
         max_length=20,
@@ -58,17 +55,14 @@ class Order(models.Model):
         default=STATUS_PENDING
     )
 
-    # Contact information
     customer_name = models.CharField(_('customer name'), max_length=200)
     customer_email = models.EmailField(_('customer email'))
     customer_phone = models.CharField(_('customer phone'), max_length=20)
 
-    # Delivery address
     delivery_address = models.TextField(_('delivery address'))
     delivery_city = models.CharField(_('city'), max_length=100)
     delivery_region = models.CharField(_('region'), max_length=100, blank=True)
 
-    # Geolocation
     latitude = models.DecimalField(
         _('latitude'),
         max_digits=9,
@@ -84,7 +78,6 @@ class Order(models.Model):
         null=True
     )
 
-    # Pricing
     currency = models.CharField(
         _('currency'),
         max_length=3,
@@ -126,7 +119,6 @@ class Order(models.Model):
         validators=[MinValueValidator(0)]
     )
 
-    # Payment
     payment_method = models.CharField(
         _('payment method'),
         max_length=50,
@@ -142,11 +134,9 @@ class Order(models.Model):
     is_paid = models.BooleanField(_('paid'), default=False)
     paid_at = models.DateTimeField(_('paid at'), blank=True, null=True)
 
-    # Notes
     customer_notes = models.TextField(_('customer notes'), blank=True)
     admin_notes = models.TextField(_('admin notes'), blank=True)
 
-    # Cancellation
     cancelled_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -158,7 +148,6 @@ class Order(models.Model):
     cancellation_reason = models.TextField(_('cancellation reason'), blank=True)
     cancelled_at = models.DateTimeField(_('cancelled at'), blank=True, null=True)
 
-    # Timestamps
     created_at = models.DateTimeField(_('created at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now=True)
     delivered_at = models.DateTimeField(_('delivered at'), blank=True, null=True)
@@ -181,8 +170,7 @@ class Order(models.Model):
         """Generate order number if not exists."""
         if not self.order_number:
             import uuid
-            from datetime import datetime
-            timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+            timestamp = timezone.now().strftime('%Y%m%d%H%M%S')
             unique_id = str(uuid.uuid4().hex)[:6].upper()
             self.order_number = f"ORD-{timestamp}-{unique_id}"
         super().save(*args, **kwargs)
@@ -227,7 +215,6 @@ class Order(models.Model):
         self.cancelled_at = timezone.now()
         self.save(update_fields=['status', 'cancelled_by', 'cancellation_reason', 'cancelled_at'])
 
-        # Restore product stock
         for item in self.items.all():
             item.product.stock += item.quantity
             item.product.save(update_fields=['stock'])
@@ -260,11 +247,9 @@ class OrderItem(models.Model):
         verbose_name=_('variant')
     )
 
-    # Product snapshot (at time of order)
     product_name = models.CharField(_('product name'), max_length=255)
     product_sku = models.CharField(_('SKU'), max_length=100)
 
-    # Pricing snapshot
     unit_price = models.DecimalField(
         _('unit price'),
         max_digits=15,

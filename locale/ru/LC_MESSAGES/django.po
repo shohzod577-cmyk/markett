@@ -1,0 +1,781 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+
+msgid "Search products..."
+msgstr "Поиск товаров..."
+
+msgid "My Profile"
+msgstr "Мой профиль"
+
+msgid "My Orders"
+msgstr "Мои заказы"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Login"
+msgstr "Войти"
+
+msgid "Sign Up"
+msgstr "Регистрация"
+
+msgid "Shopping Cart"
+msgstr "Корзина"
+
+msgid "Proceed to Checkout"
+msgstr "Оформить заказ"
+
+msgid "Continue Shopping"
+msgstr "Продолжить покупки"
+
+msgid "Products"
+msgstr "Товары"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Price"
+msgstr "Цена"
+
+msgid "Add to Cart"
+msgstr "В корзину"
+
+msgid "Buy Now"
+msgstr "Купить сейчас"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Reviews"
+msgstr "Отзывы"
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgid "Stock"
+msgstr "На складе"
+
+msgid "Brand"
+msgstr "Бренд"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Total"
+msgstr "Итого"
+
+msgid "each"
+msgstr "за штуку"
+
+msgid "Subtotal"
+msgstr "Промежуточный итог"
+
+msgid "Delivery"
+msgstr "Доставка"
+
+msgid "Order"
+msgstr "Заказ"
+
+msgid "Orders"
+msgstr "Заказы"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Payment"
+msgstr "Оплата"
+
+msgid "Shipping"
+msgstr "Доставка"
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Phone"
+msgstr "Телефон"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+msgid "Register"
+msgstr "Регистрация"
+
+msgid "Forgot Password?"
+msgstr "Забыли пароль?"
+
+msgid "Remember Me"
+msgstr "Запомнить меня"
+
+msgid "Submit"
+msgstr "Отправить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Edit"
+msgstr "Редактировать"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Filter"
+msgstr "Фильтр"
+
+msgid "Sort By"
+msgstr "Сортировать"
+
+msgid "View All"
+msgstr "Посмотреть все"
+
+msgid "Featured Products"
+msgstr "Избранные товары"
+
+msgid "New Arrivals"
+msgstr "Новинки"
+
+msgid "Best Sellers"
+msgstr "Бестселлеры"
+
+msgid "On Sale"
+msgstr "Распродажа"
+
+msgid "Welcome to Market"
+msgstr "Добро пожаловать в Market"
+
+msgid "Discover amazing products at great prices"
+msgstr "Откройте для себя удивительные товары по отличным ценам"
+
+msgid "Start Shopping"
+msgstr "Начать покупки"
+
+msgid "No featured products available."
+msgstr "Избранные товары недоступны."
+
+msgid "Shop by Category"
+msgstr "Покупки по категориям"
+
+msgid "items"
+msgstr "шт."
+
+msgid "Fast Delivery"
+msgstr "Быстрая доставка"
+
+msgid "Quick and reliable shipping"
+msgstr "Быстрая и надежная доставка"
+
+msgid "Secure Payment"
+msgstr "Безопасная оплата"
+
+msgid "Multiple payment options"
+msgstr "Множество вариантов оплаты"
+
+msgid "Easy Returns"
+msgstr "Легкий возврат"
+
+msgid "Hassle-free return policy"
+msgstr "Беспроблемная политика возврата"
+
+msgid "24/7 Support"
+msgstr "Поддержка 24/7"
+
+msgid "Always here to help"
+msgstr "Всегда готовы помочь"
+
+msgid "Your trusted e-commerce platform in Central Asia. Quality products, fast delivery, secure payments."
+msgstr "Ваша надежная платформа электронной коммерции в Центральной Азии. Качественные товары, быстрая доставка, безопасные платежи."
+
+msgid "Quick Links"
+msgstr "Быстрые ссылки"
+
+msgid "Shop"
+msgstr "Магазин"
+
+msgid "About Us"
+msgstr "О нас"
+
+msgid "Contact"
+msgstr "Контакты"
+
+msgid "Customer Service"
+msgstr "Обслуживание клиентов"
+
+msgid "Help Center"
+msgstr "Центр помощи"
+
+msgid "Track Order"
+msgstr "Отследить заказ"
+
+msgid "Returns"
+msgstr "Возвраты"
+
+msgid "Shipping Info"
+msgstr "Информация о доставке"
+
+msgid "Contact Us"
+msgstr "Свяжитесь с нами"
+
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+msgid "Terms of Service"
+msgstr "Условия использования"
+
+msgid "each"
+msgstr "за шт."
+
+msgid "Clear Cart"
+msgstr "Очистить корзину"
+
+msgid "Order Summary"
+msgstr "Итоги заказа"
+
+msgid "Items"
+msgstr "Товары"
+
+msgid "Calculated at checkout"
+msgstr "Рассчитывается при оформлении"
+
+msgid "Your cart is empty"
+msgstr "Ваша корзина пуста"
+
+msgid "Add some products to get started!"
+msgstr "Добавьте товары, чтобы начать!"
+
+msgid "Product name..."
+msgstr "Название товара..."
+
+msgid "All Categories"
+msgstr "Все категории"
+
+msgid "Price Range"
+msgstr "Диапазон цен"
+
+msgid "Min"
+msgstr "Мин."
+
+msgid "Max"
+msgstr "Макс."
+
+msgid "In Stock Only"
+msgstr "Только в наличии"
+
+msgid "Apply Filters"
+msgstr "Применить фильтры"
+
+msgid "Clear"
+msgstr "Очистить"
+
+msgid "Showing"
+msgstr "Показано"
+
+msgid "of"
+msgstr "из"
+
+msgid "products"
+msgstr "товаров"
+
+msgid "Sort by:"
+msgstr "Сортировать:"
+
+msgid "Newest"
+msgstr "Новинки"
+
+msgid "Price: Low to High"
+msgstr "Цена: по возрастанию"
+
+msgid "Price: High to Low"
+msgstr "Цена: по убыванию"
+
+msgid "Most Popular"
+msgstr "Самые популярные"
+
+msgid "Top Rated"
+msgstr "Лучшие оценки"
+
+msgid "No products found"
+msgstr "Товары не найдены"
+
+msgid "Try adjusting your filters"
+msgstr "Попробуйте изменить фильтры"
+
+msgid "First"
+msgstr "Первая"
+
+msgid "Previous"
+msgstr "Предыдущая"
+
+msgid "Next"
+msgstr "Следующая"
+
+msgid "Last"
+msgstr "Последняя"
+
+msgid "Out of Stock"
+msgstr "Нет в наличии"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "reviews"
+msgstr "отзывов"
+
+msgid "In Stock"
+msgstr "В наличии"
+
+msgid "available"
+msgstr "доступно"
+
+msgid "Quantity"
+msgstr "Количество"
+
+msgid "Options"
+msgstr "Варианты"
+
+msgid "Views"
+msgstr "Просмотры"
+
+msgid "Product Description"
+msgstr "Описание товара"
+
+msgid "Customer Reviews"
+msgstr "Отзывы покупателей"
+
+msgid "Write a Review"
+msgstr "Написать отзыв"
+
+msgid "Verified Purchase"
+msgstr "Подтвержденная покупка"
+
+msgid "Was this review helpful?"
+msgstr "Был ли этот отзыв полезен?"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "No reviews yet. Be the first to review this product!"
+msgstr "Отзывов пока нет. Будьте первым, кто оставит отзыв!"
+
+msgid "Related Products"
+msgstr "Похожие товары"
+
+msgid "Special Offers"
+msgstr "Специальные предложения"
+
+msgid "Winter Sale"
+msgstr "Зимняя распродажа"
+
+msgid "Up to 50% off on selected items"
+msgstr "Скидки до 50% на отдельные товары"
+
+msgid "Shop Now"
+msgstr "Купить сейчас"
+
+msgid "Explore"
+msgstr "Изучить"
+
+msgid "Featured Products"
+msgstr "Избранные товары"
+
+msgid "Check out our latest products"
+msgstr "Посмотрите наши новые товары"
+
+msgid "View All"
+msgstr "Смотреть все"
+
+msgid "No featured products available"
+msgstr "Избранные товары недоступны"
+
+msgid "Shop by Categories"
+msgstr "Покупки по категориям"
+
+msgid "Browse our wide range of product categories"
+msgstr "Просмотрите наш широкий ассортимент категорий товаров"
+
+msgid "No categories available"
+msgstr "Категории недоступны"
+
+msgid "New Arrivals"
+msgstr "Новинки"
+
+msgid "Latest Blogs"
+msgstr "Последние статьи"
+
+msgid "Useful articles and news"
+msgstr "Полезные статьи и новости"
+
+msgid "Read More"
+msgstr "Читать далее"
+
+msgid "To'liq o'qish"
+msgstr "Читать полностью"
+
+msgid "Tags"
+msgstr "Теги"
+
+msgid "Share"
+msgstr "Поделиться"
+
+msgid "Back to Blog"
+msgstr "Назад к блогу"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Market Admin"
+msgstr "Market Admin"
+
+msgid "View Store"
+msgstr "Посмотреть магазин"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Orders"
+msgstr "Заказы"
+
+msgid "Products"
+msgstr "Товары"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "Reviews"
+msgstr "Отзывы"
+
+msgid "Halol Savdo - Baraka Keltiradi!"
+msgstr "Халол Савдо - Приносит Благодать!"
+
+msgid "Eng arzon narxlar"
+msgstr "Самые низкие цены"
+
+msgid "Tez yetkazib berish"
+msgstr "Быстрая доставка"
+
+msgid "Sifatli mahsulotlar"
+msgstr "Качественные товары"
+
+msgid "Ishonchli xizmat"
+msgstr "Надежный сервис"
+
+msgid "Xarid qilish"
+msgstr "Купить"
+
+msgid "HALOL SAVDO"
+msgstr "ХАЛОЛ САВДО"
+
+msgid "BARAKA MARKET"
+msgstr "БАРАКА МАРКЕТ"
+# Checkout page translations
+msgid "Checkout"
+msgstr "Оформление заказа"
+
+msgid "Cart"
+msgstr "Корзина"
+
+msgid "Information"
+msgstr "Информация"
+
+msgid "Payment"
+msgstr "Оплата"
+
+msgid "Customer Information"
+msgstr "Информация о клиенте"
+
+msgid "Customer name"
+msgstr "Имя клиента"
+
+msgid "Full Name"
+msgstr "Полное имя"
+
+msgid "Customer email"
+msgstr "Email клиента"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Customer phone"
+msgstr "Телефон клиента"
+
+msgid "Delivery Address"
+msgstr "Адрес доставки"
+
+msgid "Use saved address"
+msgstr "Использовать сохраненный адрес"
+
+msgid "Saved address"
+msgstr "Сохраненный адрес"
+
+msgid "Delivery address"
+msgstr "Адрес доставки"
+
+msgid "Select city"
+msgstr "Выберите город"
+
+msgid "Delivery city"
+msgstr "Город"
+
+msgid "Select region"
+msgstr "Выберите область"
+
+msgid "Delivery region"
+msgstr "Область"
+
+msgid "Tashkent City"
+msgstr "Город Ташкент"
+
+msgid "Tashkent Region"
+msgstr "Ташкентская область"
+
+msgid "Andijan"
+msgstr "Андижан"
+
+msgid "Bukhara"
+msgstr "Бухара"
+
+msgid "Fergana"
+msgstr "Фергана"
+
+msgid "Jizzakh"
+msgstr "Джизак"
+
+msgid "Namangan"
+msgstr "Наманган"
+
+msgid "Navoiy"
+msgstr "Навои"
+
+msgid "Kashkadarya"
+msgstr "Кашкадарья"
+
+msgid "Samarkand"
+msgstr "Самарканд"
+
+msgid "Sirdaryo"
+msgstr "Сырдарья"
+
+msgid "Surkhandarya"
+msgstr "Сурхандарья"
+
+msgid "Khorezm"
+msgstr "Хорезм"
+
+msgid "Karakalpakstan"
+msgstr "Каракалпакстан"
+
+msgid "Tashkent"
+msgstr "Ташкент"
+
+msgid "Karshi"
+msgstr "Карши"
+
+msgid "Nukus"
+msgstr "Нукус"
+
+msgid "Termez"
+msgstr "Термез"
+
+msgid "Urgench"
+msgstr "Ургенч"
+
+msgid "Guliston"
+msgstr "Гулистан"
+
+msgid "Select Location on Map (Optional)"
+msgstr "Выберите местоположение на карте (необязательно)"
+
+msgid "Payment Method"
+msgstr "Способ оплаты"
+
+msgid "Cash on Delivery"
+msgstr "Наличными при доставке"
+
+msgid "Plastic Card"
+msgstr "Пластиковая карта"
+
+msgid "Click"
+msgstr "Click"
+
+msgid "Payme"
+msgstr "Payme"
+
+msgid "Uzum Bank"
+msgstr "Uzum Bank"
+
+msgid "Credit/Debit Card"
+msgstr "Банковская карта"
+
+msgid "Additional Notes"
+msgstr "Дополнительные заметки"
+
+msgid "Customer notes"
+msgstr "Заметки клиента"
+
+msgid "Any special instructions?"
+msgstr "Есть особые указания?"
+
+msgid "Place Order"
+msgstr "Оформить заказ"
+
+msgid "Order Summary"
+msgstr "Итоги заказа"
+
+msgid "Basic Information"
+msgstr "Основная информация"
+
+msgid "Pricing"
+msgstr "Ценообразование"
+
+msgid "Inventory"
+msgstr "Склад"
+
+msgid "SEO"
+msgstr "SEO"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Statistics"
+msgstr "Статистика"
+
+msgid "Display"
+msgstr "Отображение"
+
+msgid "Preview"
+msgstr "Предпросмотр"
+
+msgid "Deactivate selected categories"
+msgstr "Деактивировать выбранные категории"
+
+msgid "name"
+msgstr "название"
+
+msgid "slug"
+msgstr "slug"
+
+msgid "description"
+msgstr "описание"
+
+msgid "short description"
+msgstr "краткое описание"
+
+msgid "parent category"
+msgstr "родительская категория"
+
+msgid "image"
+msgstr "изображение"
+
+msgid "icon class"
+msgstr "класс иконки"
+
+msgid "order"
+msgstr "порядок"
+
+msgid "active"
+msgstr "активный"
+
+msgid "created at"
+msgstr "создан"
+
+msgid "updated at"
+msgstr "обновлен"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Product"
+msgstr "Товар"
+
+msgid "Products"
+msgstr "Товары"
+
+msgid "category"
+msgstr "категория"
+
+msgid "price"
+msgstr "цена"
+
+msgid "discount percentage"
+msgstr "процент скидки"
+
+msgid "stock quantity"
+msgstr "количество на складе"
+
+msgid "SKU"
+msgstr "SKU"
+
+msgid "brand"
+msgstr "бренд"
+
+msgid "weight (kg)"
+msgstr "вес (кг)"
+
+msgid "meta title"
+msgstr "мета заголовок"
+
+msgid "meta description"
+msgstr "мета описание"
+
+msgid "featured"
+msgstr "рекомендуемый"
+
+msgid "views"
+msgstr "просмотры"
+
+msgid "sales"
+msgstr "продажи"
+
+
+msgid "Subtotal"
+msgstr "Промежуточный итог"
+
+msgid "Delivery"
+msgstr "Доставка"
+
+msgid "Calculated"
+msgstr "Рассчитывается"
+
+msgid "Total"
+msgstr "Итого"
+
+msgid "Rate this product"
+msgstr "������� �����"

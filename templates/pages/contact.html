@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Bog'lanish" %} - Halol Rizq{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="mb-4">{% trans "Biz bilan bog'laning" %}</h1>
+            
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="bi bi-telephone-fill text-primary fs-1 mb-3"></i>
+                            <h5>{% trans "Telefon" %}</h5>
+                            <p>+998 71 123 45 67<br>+998 90 123 45 67</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="bi bi-envelope-fill text-success fs-1 mb-3"></i>
+                            <h5>{% trans "Email" %}</h5>
+                            <p>info@halolrizq.uz<br>support@halolrizq.uz</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center h-100">
+                        <div class="card-body">
+                            <i class="bi bi-geo-alt-fill text-danger fs-1 mb-3"></i>
+                            <h5>{% trans "Manzil" %}</h5>
+                            <p>Toshkent shahar<br>Amir Temur ko'chasi 1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="mb-4">{% trans "Xabar yuborish" %}</h3>
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{% trans "Ismingiz" %}</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">{% trans "Email" %}</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Telefon" %}</label>
+                            <input type="tel" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Mavzu" %}</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Xabar" %}</label>
+                            <textarea class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-send-fill me-2"></i>{% trans "Yuborish" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

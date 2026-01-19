@@ -28,10 +28,8 @@ def checkout_view(request):
     if request.method == 'POST':
         form = CheckoutForm(request.POST, user=request.user)
         if form.is_valid():
-            # Get currency from session
             currency = request.session.get('currency', 'UZS')
 
-            # Create order
             order_service = OrderService()
             order = order_service.create_order_from_cart(
                 user=request.user,
@@ -40,22 +38,18 @@ def checkout_view(request):
                 currency=currency
             )
 
-            # Clear cart
             cart_service.clear_cart()
 
-            # Send confirmation email
             from core.services.email import EmailService
             EmailService().send_order_confirmation(order)
 
             messages.success(request, f'Order #{order.order_number} placed successfully!')
 
-            # Redirect to payment if not cash
             if order.payment_method != 'cash':
                 return redirect('payments:process', order_id=order.id)
 
             return redirect('orders:detail', order_id=order.id)
     else:
-        # Pre-fill form with user data
         initial_data = {
             'customer_name': request.user.get_full_name,
             'customer_email': request.user.email,
@@ -63,14 +57,22 @@ def checkout_view(request):
         }
         form = CheckoutForm(initial=initial_data, user=request.user)
 
-    # Calculate total
     currency = request.session.get('currency', 'UZS')
-    total = cart.get_total(currency)
+    
+    total_uzs = sum(item.get_subtotal() for item in cart.items.all())
+    
+    if currency != 'UZS':
+        from core.services.currency import CurrencyService
+        currency_service = CurrencyService()
+        total = currency_service.convert(total_uzs, 'UZS', currency)
+    else:
+        total = total_uzs
 
     context = {
         'form': form,
         'cart': cart,
         'total': total,
+        'total_uzs': total_uzs,
         'currency': currency,
     }
 
@@ -135,11 +137,9 @@ def download_invoice_view(request, order_id):
 
     order = get_object_or_404(Order, id=order_id, user=request.user)
 
-    # Generate PDF
     pdf_generator = PDFInvoiceGenerator(order)
     pdf_buffer = pdf_generator.generate()
 
-    # Return as download
     response = HttpResponse(pdf_buffer, content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="invoice_{order.order_number}.pdf"'
 

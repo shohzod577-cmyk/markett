@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="goldBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenBadge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3009;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Badge background circle -->
+  <circle cx="24" cy="24" r="22" fill="url(#greenBadge)" stroke="url(#goldBadge)" stroke-width="2" filter="url(#shadow)"/>
+  
+  <!-- Inner decorative circle -->
+  <circle cx="24" cy="24" r="18" fill="none" stroke="url(#goldBadge)" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Crescent moon -->
+  <g transform="translate(14, 14)">
+    <path d="M 10 6 A 8 8 0 1 0 10 22 A 6 6 0 1 1 10 6 Z" 
+          fill="url(#goldBadge)" stroke="#FFD700" stroke-width="0.8"/>
+  </g>
+  
+  <!-- Star -->
+  <g transform="translate(24, 18)">
+    <polygon points="6,2 7.5,6 11,6 8.5,8.5 10,12 6,9.5 2,12 3.5,8.5 1,6 4.5,6" 
+             fill="url(#goldBadge)" stroke="#FFD700" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Baraka wheat -->
+  <g transform="translate(30, 32)" stroke="url(#goldBadge)" stroke-width="1.5" fill="none">
+    <path d="M 0 0 L 0 -8"/>
+    <path d="M 0 -2 Q 2 -3 3 -4"/>
+    <path d="M 0 -2 Q -2 -3 -3 -4"/>
+    <ellipse cx="0" cy="-9" rx="2" ry="2.5" fill="url(#goldBadge)"/>
+  </g>
+  
+  <!-- Decorative stars around -->
+  <g fill="url(#goldBadge)" opacity="0.6">
+    <circle cx="8" cy="10" r="1"/>
+    <circle cx="40" cy="10" r="1"/>
+    <circle cx="8" cy="38" r="1"/>
+    <circle cx="40" cy="38" r="1"/>
+  </g>
+</svg>

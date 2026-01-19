@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Payment Success" %} - {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .success-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        padding: 40px 20px;
+    }
+
+    .success-card {
+        background: white;
+        border-radius: 20px;
+        padding: 50px 40px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+    .success-icon {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        animation: successBounce 0.6s ease-out;
+    }
+
+    .success-icon i {
+        font-size: 60px;
+        color: white;
+    }
+
+    @keyframes successBounce {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.2);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .success-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: #065f46;
+        margin-bottom: 15px;
+    }
+
+    .success-message {
+        font-size: 16px;
+        color: #047857;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .order-summary {
+        background: #f0fdf4;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 30px;
+        text-align: left;
+        border: 2px solid #10b981;
+    }
+
+    .order-summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #d1fae5;
+    }
+
+    .order-summary-row:last-child {
+        border-bottom: none;
+        font-weight: 700;
+        font-size: 18px;
+        color: #065f46;
+        padding-top: 15px;
+        margin-top: 10px;
+        border-top: 2px solid #10b981;
+    }
+
+    .actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .btn-action {
+        padding: 15px 30px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-action {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-primary-action:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        color: white;
+    }
+
+    .btn-secondary-action {
+        background: white;
+        border: 2px solid #e5e7eb;
+        color: #4b5563;
+    }
+
+    .btn-secondary-action:hover {
+        border-color: #667eea;
+        color: #667eea;
+        transform: translateY(-2px);
+    }
+
+    .info-box {
+        background: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: left;
+        margin-top: 25px;
+    }
+
+    .info-box i {
+        color: #3b82f6;
+        margin-right: 10px;
+    }
+
+    .info-box p {
+        margin: 0;
+        font-size: 14px;
+        color: #1e40af;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="success-container">
+    <div class="success-card">
+        <div class="success-icon">
+            <i class="bi bi-check-lg"></i>
+        </div>
+
+        <h1 class="success-title">{% trans "Payment Successful!" %}</h1>
+        <p class="success-message">
+            {% trans "Your payment has been processed successfully. An invoice has been sent to your email." %}
+        </p>
+
+        {% if order %}
+        <div class="order-summary">
+            <div class="order-summary-row">
+                <span>{% trans "Order Number" %}:</span>
+                <strong>{{ order.order_number }}</strong>
+            </div>
+            <div class="order-summary-row">
+                <span>{% trans "Payment Method" %}:</span>
+                <strong>{{ order.get_payment_method_display }}</strong>
+            </div>
+            <div class="order-summary-row">
+                <span>{% trans "Items" %}:</span>
+                <strong>{{ order.items.count }} {% trans "items" %}</strong>
+            </div>
+            <div class="order-summary-row">
+                <span>{% trans "Total Amount" %}:</span>
+                <strong>{{ order.total|floatformat:0 }} {% trans "sum" %}</strong>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="{% url 'orders:detail' order.id %}" class="btn-action btn-primary-action">
+                <i class="bi bi-receipt"></i>
+                {% trans "View Order" %}
+            </a>
+            <a href="{% url 'products:list' %}" class="btn-action btn-secondary-action">
+                <i class="bi bi-arrow-left"></i>
+                {% trans "Continue Shopping" %}
+            </a>
+        </div>
+
+        <div class="info-box">
+            <i class="bi bi-envelope-check-fill"></i>
+            <p>
+                <strong>{% trans "Email Sent:" %}</strong>
+                {% trans "Invoice and order details have been sent to" %} <strong>{{ order.customer_email }}</strong>
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
