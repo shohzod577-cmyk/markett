@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c4605a6-ed28-4ac6-9b75-c13f7c5cf47a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ebextensions/01_django.config" beforeDir="false" afterPath="$PROJECT_DIR$/.ebextensions/01_django.config" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" afterDir="false" />
@@ -14,7 +14,8 @@
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_deploy_zip.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_deploy_zip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/markett-v5-fixed.zip" beforeDir="false" afterPath="$PROJECT_DIR$/markett-v5-fixed.zip" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

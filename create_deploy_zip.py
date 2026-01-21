@@ -69,18 +69,29 @@ def create_eb_zip(output_filename='markett-v5-fixed.zip'):
                     continue
                     
                 if file_path.is_file():
-                    # Convert Windows path to Unix path (forward slashes)
-                    arcname = str(file_path).replace('\\', '/')
-                    zipf.write(file_path, arcname=arcname)
+                    # Convert Windows path to Unix path - use relative path from project root
+                    try:
+                        rel_path = file_path.relative_to(Path('.').resolve())
+                    except ValueError:
+                        rel_path = file_path
+                    arcname = str(rel_path).replace('\\', '/')
+                    # Create ZipInfo manually to ensure Unix paths
+                    zipinfo = zipfile.ZipInfo(arcname)
+                    zipinfo.external_attr = 0o644 << 16  # Unix file permissions
+                    with open(file_path, 'rb') as f:
+                        zipf.writestr(zipinfo, f.read(), compress_type=zipfile.ZIP_DEFLATED)
                     file_count += 1
         
         # Add individual files
         for file_name in include_files:
             file_path = Path(file_name)
             if file_path.exists():
-                # Use forward slashes
+                # Use forward slashes and Unix permissions
                 arcname = file_name.replace('\\', '/')
-                zipf.write(file_path, arcname=arcname)
+                zipinfo = zipfile.ZipInfo(arcname)
+                zipinfo.external_attr = 0o644 << 16
+                with open(file_path, 'rb') as f:
+                    zipf.writestr(zipinfo, f.read(), compress_type=zipfile.ZIP_DEFLATED)
                 print(f"Added: {file_name}")
                 file_count += 1
             else:
