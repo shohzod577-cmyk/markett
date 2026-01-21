@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-production')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,.elasticbeanstalk.com,.compute.amazonaws.com', cast=Csv())
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -68,9 +68,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# Database configuration
 if config('DB_ENGINE', default='') == 'django.db.backends.postgresql':
-    from decouple import config
-
     DATABASES = {
         'default': {
             'ENGINE': config('DB_ENGINE'),
@@ -81,7 +80,8 @@ if config('DB_ENGINE', default='') == 'django.db.backends.postgresql':
             'PORT': config('DB_PORT', cast=int),
         }
     }
-elif DEBUG:
+else:
+    # Use SQLite as fallback (for local dev and Elastic Beanstalk initial deploy)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

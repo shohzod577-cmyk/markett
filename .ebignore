@@ -1,0 +1,63 @@
+# Virtual environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Database
+*.sqlite3
+*.db
+db.sqlite3
+
+# Media files (uploads)
+media/
+
+# Backup files
+backup/
+*.bak
+
+# Local settings
+.env
+.env.local
+*.local
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Documentation
+*.md
+!README.md
+
+# Scripts
+scripts/
+compile_translations.py
+remove_comments.py
+
+# Git
+.git/
+.gitignore
+
+# Market MVP (old version)
+market_mvp/
+
+# Deployment files (not needed on EB)
+deployment/
