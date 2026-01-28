@@ -41,8 +41,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'core.middleware.CurrencyMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    # custom middlewarelar eng pastda bo‘lsin!
+    'core.middleware.CurrencyMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
