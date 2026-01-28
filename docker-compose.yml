@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: marketdb
+      POSTGRES_USER: marketuser
+      POSTGRES_PASSWORD: marketpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DEBUG=0
+      - DJANGO_ALLOWED_HOSTS=*
+      - DB_NAME=marketdb
+      - DB_USER=marketuser
+      - DB_PASSWORD=marketpass
+      - DB_HOST=db
+      - DB_PORT=5432
+
+volumes:
+  postgres_data:
