@@ -8,9 +8,10 @@ def cart(request):
     """
     Add cart to template context.
     """
-    if request.user.is_authenticated:
+    user = getattr(request, 'user', None)
+    if user and hasattr(user, 'is_authenticated') and user.is_authenticated:
         try:
-            user_cart = Cart.objects.get(user=request.user)
+            user_cart = Cart.objects.get(user=user)
             cart_count = user_cart.items_count
         except Cart.DoesNotExist:
             cart_count = 0
