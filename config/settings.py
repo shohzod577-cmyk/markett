@@ -11,8 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-production')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1,.elasticbeanstalk.com,.compute.amazonaws.com', cast=Csv())
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.elasticbeanstalk.com',
+    '.compute.amazonaws.com',
+    '34.237.147.210',  # server IP manzilingiz
+]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
