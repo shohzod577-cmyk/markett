@@ -255,8 +255,9 @@ class ProductLike(models.Model):
         related_name='likes',
         verbose_name=_('product')
     )
+    from django.conf import settings
     user = models.ForeignKey(
-        'users.User',
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='liked_products',
         verbose_name=_('user')

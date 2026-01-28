@@ -11,6 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-change-this-in-production')
 DEBUG = config('DEBUG', default=False, cast=bool)
+
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
@@ -18,6 +19,9 @@ ALLOWED_HOSTS = [
     '.compute.amazonaws.com',
     '34.237.147.210',  # server IP manzilingiz
 ]
+
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*', cast=Csv())
+# 739dbdd (WIP: all local changes before rebase)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -200,3 +204,44 @@ CACHES = {
 }
 
 CACHE_MIDDLEWARE_SECONDS = 600
+
+# LOGGING konfiguratsiyasi
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{asctime}] {levelname} {name} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR / 'django.log',
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file', 'console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
