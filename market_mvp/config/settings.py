@@ -63,6 +63,16 @@ if config('DB_ENGINE', default='') == 'django.db.backends.postgresql':
             'PORT': config('DB_PORT', default='5432'),
         }
     }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': 'markett_db',
+    #         'USER': 'markett_user',
+    #         'PASSWORD': 'your-db-password',
+    #         'HOST': 'db',
+    #         'PORT': '5432',
+    #     }
+    # }
 else:
     DATABASES = {
         'default': {
