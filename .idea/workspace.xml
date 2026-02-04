@@ -6,21 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c4605a6-ed28-4ac6-9b75-c13f7c5cf47a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/cart/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/dashboard/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/dashboard/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/dashboard/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/dashboard/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/orders/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/payments/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/payments/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/payments/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/products/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/products/migrations/0002_productlike.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/reviews/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/reviews/migrations/0002_productrating.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/users/migrations/0002_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" afterDir="false" />
@@ -29,13 +14,6 @@
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_mvp/apps/cart/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_mvp/apps/orders/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_mvp/apps/orders/migrations/0002_orderaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_mvp/apps/payments/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/market_mvp/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/market_mvp/config/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
