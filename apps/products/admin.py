@@ -45,7 +45,7 @@ class CategoryAdmin(admin.ModelAdmin):
     
     fieldsets = (
         (_('Basic Information'), {
-            'fields': ('name', 'slug', 'description', 'parent')
+            'fields': ('name', 'slug', 'description')
         }),
         (_('Display'), {
             'fields': ('image', 'image_preview_large', 'icon', 'order'),
