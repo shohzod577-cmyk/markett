@@ -1,0 +1,118 @@
+[
+  {
+    "id": "07a4c55cb93b4f9d80",
+    "name": "Palov va go‘shtli taomlar",
+    "products": [
+      "Palov",
+      "Manti",
+      "Lag‘mon",
+      "Kabob",
+      "Shashlik",
+      "Qozon kabob",
+      "Beshbarmak"
+    ]
+  },
+  {
+    "id": "1d261a83261141dda",
+    "name": "Guruch mahsulotlari",
+    "products": [
+      "Guruch",
+      "Uzumli guruch",
+      "Osh uchun guruch",
+      "Qaynatilgan guruch",
+      "Guruch yormasi"
+    ]
+  },
+  {
+    "id": "1e1f31c8f7034b9abc",
+    "name": "Sut mahsulotlari",
+    "products": [
+      "Sut",
+      "Qatiq",
+      "Tvorog",
+      "Yogurt",
+      "Qaymoq",
+      "Smetana",
+      "Suzma",
+      "Pishloq"
+    ]
+  },
+  {
+    "id": "23bd75a0445347cbb",
+    "name": "Aralash oziq-ovqat",
+    "products": [
+      "Non",
+      "Tuxum",
+      "Kartoshka",
+      "Sabzi",
+      "Piyoz",
+      "Bodring",
+      "Pomidor",
+      "Pishloq",
+      "Kolbasa",
+      "Sosiska",
+      "Yog‘",
+      "Tuz",
+      "Murch",
+      "Ziravorlar"
+    ]
+  },
+  {
+    "id": "284e18e2e2874cbb87",
+    "name": "Aralash oziq-ovqat",
+    "products": [
+      "Non",
+      "Tuxum",
+      "Kartoshka",
+      "Sabzi",
+      "Piyoz",
+      "Bodring",
+      "Pomidor",
+      "Pishloq",
+      "Kolbasa",
+      "Sosiska",
+      "Yog‘",
+      "Tuz",
+      "Murch",
+      "Ziravorlar"
+    ]
+  },
+  {
+    "id": "3111659301b44cceb0",
+    "name": "Taomlar",
+    "products": [
+      "Makaron",
+      "Salat",
+      "Sho‘rva",
+      "Dimlama",
+      "Qovurma",
+      "Chuchvara"
+    ]
+  },
+  {
+    "id": "33669a6391ea4a798",
+    "name": "Tort va shirinliklar",
+    "products": [
+      "Tort",
+      "Pirog",
+      "Kek",
+      "Desertlar",
+      "Pechenye",
+      "Rulet"
+    ]
+  },
+  {
+    "id": "37be7802397d4dfa81",
+    "name": "Mevalar",
+    "products": [
+      "Apelsin",
+      "Mandarin",
+      "Limon",
+      "Olma",
+      "Banan",
+      "Uzum",
+      "Anor",
+      "Nok"
+    ]
+  }
+]
