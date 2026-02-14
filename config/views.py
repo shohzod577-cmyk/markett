@@ -22,11 +22,31 @@ def home_view(request):
         parent=None
     )[: 12]
 
+
+    # Generate star positions in Python
+    import random
+    stars = []
+    for i in range(250):
+        size = random.randint(2, 7)
+        opacity = round(random.uniform(0.5, 1.0), 2)
+        color = random.choice(['#fffbe6', '#fff', '#ffe066', '#fff9c4'])
+        blur = random.randint(2, 10)
+        twinkle = random.uniform(1.5, 4.5)
+        star = {
+            'top': random.randint(2, 97),
+            'left': random.randint(2, 97),
+            'size': size,
+            'opacity': opacity,
+            'color': color,
+            'filter': f'drop-shadow(0 0 {blur}px {color}) brightness(1.7)',
+            'twinkle': twinkle,
+        }
+        stars.append(star)
     context = {
         'featured_products': featured_products,
         'categories': categories,
+        'stars': stars,
     }
-
     return render(request, 'home.html', context)
 
 

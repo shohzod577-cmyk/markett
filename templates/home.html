@@ -4,18 +4,29 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section">
+<section class="hero-section" style="background: linear-gradient(180deg, #4caf50 0%, #388e3c 60%, #1b5e20 100%);">
+        <!-- 100 ta random joylashgan va yorqin yulduzchalar -->
+        <style>
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        </style>
+        {% for star in stars %}
+            <svg class="star-effect" style="top: {{ star.top }}%; left: {{ star.left }}%; width: {{ star.size }}px; height: {{ star.size }}px; position: absolute; filter: {{ star.filter }}; opacity: {{ star.opacity }}; animation: twinkle {{ star.twinkle }}s infinite alternate;" viewBox="0 0 22 22"><polygon fill="{{ star.color }}" points="11,2 13,7 20,7 14,12 16,20 11,15 6,20 8,12 2,7 9,7"/></svg>
+        {% endfor %}
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <h1 class="hero-title" style="font-family: 'Righteous', cursive; font-size: 3.5rem; background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); margin-bottom: 1.5rem;">🌟 {% trans "Halol Savdo - Baraka Keltiradi!" %}</h1>
-                <p class="hero-subtitle" style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #2D5016; font-weight: 600; margin-bottom: 2rem; line-height: 1.6;">
+                <h1 class="hero-title" style="font-family: 'Righteous', cursive; font-size: 3.5rem; background: linear-gradient(135deg, #fffde4 0%, #b2ff59 60%, #00e676 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 2px 2px 8px #388e3c; margin-bottom: 1.5rem;">🌟 {% trans "Halol Savdo - Baraka Keltiradi!" %}</h1>
+                <p class="hero-subtitle" style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; color: #e8f5e9; font-weight: 600; margin-bottom: 2rem; line-height: 1.6; text-shadow: 0 1px 6px #1b5e20;">
                     ✅ {% trans "Eng arzon narxlar" %}<br>
                     🚚 {% trans "Tez yetkazib berish" %}<br>
                     ⭐ {% trans "Sifatli mahsulotlar" %}<br>
                     🤝 {% trans "Ishonchli xizmat" %}
                 </p>
-                <a href="{% url 'products:list' %}" class="btn btn-primary-modern btn-lg" style="font-family: 'Poppins', sans-serif; font-weight: 700; padding: 15px 40px; font-size: 1.1rem; box-shadow: 0 8px 20px rgba(255,215,0,0.4);">
+                <a href="{% url 'products:list' %}" class="btn btn-primary-modern btn-lg" style="font-family: 'Poppins', sans-serif; font-weight: 700; padding: 15px 40px; font-size: 1.1rem; background: linear-gradient(90deg, #b2ff59 0%, #00e676 100%); color: #1b5e20; border: none; box-shadow: 0 8px 24px #69f0ae;">
                     <i class="bi bi-bag-heart-fill me-2"></i>{% trans "Xarid qilish" %}
                 </a>
             </div>
@@ -140,24 +151,22 @@
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="special-offer-card" style="
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
                     border-radius: 20px;
                     padding: 40px;
                     position: relative;
                     overflow: hidden;
-                    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+                    box-shadow: 0 15px 35px rgba(67, 233, 123, 0.25);
                     transition: all 0.4s ease;
-                    border: 2px solid rgba(255,255,255,0.2);
-                " onmouseover="this.style.transform='translateY(-10px) scale(1.02)'; this.style.boxShadow='0 20px 45px rgba(102, 126, 234, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(102, 126, 234, 0.4)'">
+                    border: 2px solid rgba(56,249,215,0.18);
+                " onmouseover="this.style.transform='translateY(-10px) scale(1.02)'; this.style.boxShadow='0 20px 45px rgba(67, 233, 123, 0.35)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(67, 233, 123, 0.25)'">
                     <!-- Decorative elements -->
                     <div style="position: absolute; top: -30px; right: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%); border-radius: 50%;"></div>
                     <div style="position: absolute; bottom: -40px; left: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); border-radius: 50%;"></div>
-                    
                     <!-- Icon -->
                     <div style="display: inline-block; background: rgba(255,255,255,0.25); padding: 15px; border-radius: 15px; margin-bottom: 20px; backdrop-filter: blur(10px); box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
                         <i class="bi bi-snow" style="font-size: 48px; color: #fff; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));"></i>
                     </div>
-                    
                     <h3 style="color: #fff; font-size: 2rem; font-weight: 800; margin-bottom: 15px; text-shadow: 0 3px 10px rgba(0,0,0,0.3); position: relative; z-index: 2;">
                         {% trans "Winter Sale" %}
                     </h3>
@@ -175,36 +184,29 @@
                         position: relative;
                         z-index: 2;
                         border: 2px solid #fff;
-                    " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)'">
+                    " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)';">
                         <i class="bi bi-cart-fill me-2"></i>{% trans "Shop Now" %}
                     </a>
-                    
-                    <!-- Sparkle effects -->
-                    <i class="bi bi-star-fill" style="position: absolute; top: 25px; right: 80px; color: rgba(255,255,255,0.6); font-size: 20px; animation: twinkle 2s ease-in-out infinite;"></i>
-                    <i class="bi bi-star-fill" style="position: absolute; top: 60px; right: 30px; color: rgba(255,255,255,0.5); font-size: 16px; animation: twinkle 2.5s ease-in-out infinite;"></i>
-                    <i class="bi bi-star-fill" style="position: absolute; bottom: 40px; right: 50px; color: rgba(255,255,255,0.4); font-size: 14px; animation: twinkle 3s ease-in-out infinite;"></i>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="special-offer-card" style="
-                    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                    background: linear-gradient(135deg, #faffd1 0%, #f9ea8f 60%, #f9d423 100%);
                     border-radius: 20px;
                     padding: 40px;
                     position: relative;
                     overflow: hidden;
-                    box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+                    box-shadow: 0 15px 35px rgba(249, 212, 35, 0.18);
                     transition: all 0.4s ease;
-                    border: 2px solid rgba(255,255,255,0.2);
-                " onmouseover="this.style.transform='translateY(-10px) scale(1.02)'; this.style.boxShadow='0 20px 45px rgba(245, 87, 108, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(245, 87, 108, 0.4)'">
+                    border: 2px solid rgba(249,212,35,0.15);
+                " onmouseover="this.style.transform='translateY(-10px) scale(1.02)'; this.style.boxShadow='0 20px 45px rgba(249, 212, 35, 0.28)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(249, 212, 35, 0.18)'">
                     <!-- Decorative elements -->
                     <div style="position: absolute; top: -40px; left: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%); border-radius: 50%;"></div>
                     <div style="position: absolute; bottom: -30px; right: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%); border-radius: 50%;"></div>
-                    
                     <!-- Icon -->
                     <div style="display: inline-block; background: rgba(255,255,255,0.25); padding: 15px; border-radius: 15px; margin-bottom: 20px; backdrop-filter: blur(10px); box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
                         <i class="bi bi-stars" style="font-size: 48px; color: #fff; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));"></i>
                     </div>
-                    
                     <h3 style="color: #fff; font-size: 2rem; font-weight: 800; margin-bottom: 15px; text-shadow: 0 3px 10px rgba(0,0,0,0.3); position: relative; z-index: 2;">
                         {% trans "New Arrivals" %}
                     </h3>
@@ -222,14 +224,9 @@
                         position: relative;
                         z-index: 2;
                         border: 2px solid #fff;
-                    " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)'">
+                    " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 8px 20px rgba(0,0,0,0.2)';">
                         <i class="bi bi-search me-2"></i>{% trans "Explore" %}
                     </a>
-                    
-                    <!-- Sparkle effects -->
-                    <i class="bi bi-star-fill" style="position: absolute; top: 30px; left: 80px; color: rgba(255,255,255,0.6); font-size: 20px; animation: twinkle 2.2s ease-in-out infinite;"></i>
-                    <i class="bi bi-star-fill" style="position: absolute; top: 70px; left: 30px; color: rgba(255,255,255,0.5); font-size: 16px; animation: twinkle 2.7s ease-in-out infinite;"></i>
-                    <i class="bi bi-star-fill" style="position: absolute; bottom: 50px; left: 60px; color: rgba(255,255,255,0.4); font-size: 14px; animation: twinkle 3.2s ease-in-out infinite;"></i>
                 </div>
             </div>
         </div>

@@ -1,25 +1,152 @@
+/* Promo Card Modern Styles */
+.promo-card {
+  border-radius: 28px;
+  box-shadow: 0 8px 40px 0 rgba(60, 60, 180, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+  padding: 40px 36px 36px 36px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 32px;
+}
+.promo-card.purple {
+  background: linear-gradient(135deg, #7b8dfb 0%, #7b5ffb 100%);
+}
+.promo-card.pink {
+  background: linear-gradient(135deg, #ffb6ec 0%, #ff6a88 100%);
+}
+.promo-card .promo-icon {
+  background: rgba(255,255,255,0.18);
+  border-radius: 18px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 24px 0 rgba(255,255,255,0.13);
+}
+.promo-card .promo-stars {
+  position: absolute;
+  top: 24px;
+  right: 36px;
+  z-index: 2;
+  pointer-events: none;
+}
+.promo-card .promo-stars img {
+  width: 24px;
+  margin-left: 8px;
+  opacity: 0.7;
+  filter: blur(0.5px);
+}
+.promo-card .promo-stars img:first-child {
+  width: 36px;
+  opacity: 1;
+  filter: blur(0px);
+}
+.promo-card .promo-glow {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  width: 180px;
+  height: 100px;
+  background: radial-gradient(circle, #fff 0%, transparent 70%);
+  opacity: 0.18;
+  z-index: 1;
+}
+/* Star effect animation */
+.star-effect {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  animation: starTwinkle 2.5s infinite ease-in-out;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.7; filter: blur(0px); }
+  50% { opacity: 1; filter: blur(2px); }
+}
+
+/* Example: place stars in HTML with absolute positions */
+.star1 { top: 12%; left: 18%; width: 32px; height: 32px; }
+.star2 { top: 40%; left: 60%; width: 24px; height: 24px; animation-delay: 1s; }
+.star3 { top: 70%; left: 30%; width: 20px; height: 20px; animation-delay: 1.5s; }
+.star4 { top: 25%; left: 80%; width: 28px; height: 28px; animation-delay: 0.5s; }
+.star5 { top: 60%; left: 10%; width: 18px; height: 18px; animation-delay: 2s; }
 /* Market E-Commerce Platform - Modern Styles */
 
 :root{
-  --primary: #2563eb; /* blue-600 */
-  --accent: #06b6d4; /* teal */
-  --muted: #6b7280;  /* gray-500 */
-  --bg: #ffffff;
+  --primary: #2E7D32; /* premium green */
+  --primary-dark: #1B5E20;
+  --accent-gold: #FBC02D;
+  --neutral-bg: #F6F8F7;
   --surface: #f8fafc;
   --radius: 10px;
   --brand-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 *{box-sizing:border-box}
-body{
-  font-family:var(--brand-font);
-  color:#0f172a;
-  background:var(--surface);
-  margin:0;
+body {
+  font-family: var(--brand-font);
+  color: #1C1C1C;
+  background: var(--neutral-bg);
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.container{max-width:1200px;margin:0 auto;padding:0 16px}
+/* Yulduzcha effektini butun body emas, faqat hero-section uchun ishlatamiz */
 
+
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: url('/static/img/star-effect.png'); /* Add your star effect PNG/SVG here */
+  opacity: 0.18;
+  z-index: 0;
+}
+
+
+/* Hero section uchun premium gradient va yulduzcha effekt */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 40px 40px;
+  min-height: 520px;
+  box-shadow: 0 8px 40px 0 rgba(46, 125, 50, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.07);
+}
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 70%, rgba(251,192,45,0.12), transparent 60%);
+  pointer-events: none;
+  opacity: 0.13;
+  z-index: 1;
+}
+.hero-section .star-effect {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  animation: starTwinkle 2.5s infinite ease-in-out;
+}
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.7; filter: blur(0px); }
+  50% { opacity: 1; filter: blur(2px); }
+}
+
+.products-section {
+  background: #fff;
+}
 /* Navbar tweaks */
 .navbar{background:linear-gradient(90deg,var(--primary),#1e40af)}
 .navbar .navbar-brand{color:#fff}

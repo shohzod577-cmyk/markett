@@ -1,0 +1,85 @@
+Markett Django Loyihasi Tuzilmasi va Har Bir Faylning Vazifasi
+===============================================================
+
+1. Katalog va Asosiy Fayllar
+---------------------------
+- manage.py: Django loyihasini boshqarish uchun ishlatiladi (serverni ishga tushirish, migratsiya, superuser yaratish va h.k.).
+- requirements.txt: Loyihada ishlatiladigan barcha Python kutubxonalari ro'yxati.
+- db.sqlite3: Django loyihasining asosiy ma'lumotlar bazasi (SQLite).
+- Dockerfile, docker-compose.yml: Loyihani Docker konteynerda ishga tushirish uchun konfiguratsiya fayllari.
+- README.md, README_MODERN.md: Loyiha haqida umumiy ma'lumot va ishga tushirish bo'yicha ko'rsatmalar.
+
+2. Django Asosiy Papkalari
+--------------------------
+/config/
+- settings.py: Django loyihasining barcha asosiy sozlamalari (bazalar, ilovalar, til, statik fayllar va h.k.).
+- urls.py: Saytdagi barcha URL marshrutlarini belgilaydi.
+- wsgi.py, asgi.py: Server bilan bog'lanish uchun (WSGI/ASGI) fayllar.
+- celery.py: Asinxron vazifalar uchun Celery sozlamalari.
+
+/apps/
+- Har bir kichik ilova (cart, dashboard, orders, pages, payments, products, reviews, users) — o'zining model, view, template va static fayllariga ega.
+  - cart/: Savat funksiyasi.
+  - dashboard/: Admin panel yoki statistikalar.
+  - orders/: Buyurtmalarni boshqarish.
+  - pages/: Statik sahifalar (masalan, “Biz haqimizda”).
+  - payments/: To'lov tizimi.
+  - products/: Mahsulotlar va kategoriyalar.
+  - reviews/: Foydalanuvchi sharhlari.
+  - users/: Foydalanuvchi ro'yxatdan o'tishi, login va boshqalar.
+
+3. /core/
+---------
+- middleware.py: Maxsus Django middleware funksiyalari.
+- services/: Xizmat funksiyalari (masalan, email yuborish, to'lovni qayta ishlash).
+- utils/: Kichik yordamchi funksiyalar.
+
+4. /templates/
+--------------
+- base.html: Barcha sahifalar uchun asosiy shablon (header, footer, umumiy CSS/JS).
+- home.html: Bosh sahifa dizayni va funksiyasi.
+- products/product_card.html: Mahsulot kartasi uchun kichik shablon.
+- partials/footer.html: Footer (pastki qism) dizayni.
+- products/: Mahsulotlar, kategoriyalar, mahsulot detali, ro'yxat va boshqalar uchun shablonlar.
+
+5. /static/
+-----------
+- css/: Barcha saytga tegishli CSS fayllar (masalan, modern-style.css, style.css).
+- js/: JavaScript fayllari (interaktivlik uchun).
+- images/: Statik rasm fayllari (logo, banner, mahsulot rasmlari va h.k.).
+
+6. /locale/
+-----------
+- en, ru, uz/: Har bir til uchun tarjima fayllari (Django i18n).
+
+7. /deployment/
+---------------
+- deploy.sh, setup_server.sh, nginx.conf, gunicorn.service: Serverga joylash va ishga tushirish uchun skript va konfiguratsiyalar.
+
+8. /market_mvp/
+---------------
+- Bu kichikroq yoki test uchun alohida Django loyihasi bo'lishi mumkin (strukturasi yuqoridagiga o'xshash).
+
+9. Maxsus Fayllar
+-----------------
+- compile_translations.py, remove_comments.py: Tarjima fayllarini kompilyatsiya qilish yoki koddan izohlarni olib tashlash uchun maxsus Python skriptlar.
+- create_deploy_zip.py, create_minimal_zip.py, create_production_zip.py: Loyihani arxivlash va deploy qilish uchun skriptlar.
+
+10. Zaxira va Media
+-------------------
+- /backup/: Ma'lumotlar bazasi yoki fayllarning zaxira nusxalari.
+- /media/: Foydalanuvchilar yuklagan rasm va fayllar.
+
+Qisqacha:
+----------
+- config/: Boshqaruv va sozlamalar.
+- apps/: Har bir funksiya uchun alohida ilova.
+- core/: Umumiy yordamchi kodlar.
+- templates/: HTML shablonlar.
+- static/: CSS, JS, rasm va boshqa statik fayllar.
+- locale/: Tarjimalar.
+- deployment/: Serverga joylash uchun.
+- market_mvp/: Test yoki kichik loyiha.
+- backup, media/: Fayllar va zaxiralar.
+
+Agar aniq bir fayl yoki papka haqida chuqurroq texnik yoki amaliy tushuntirish kerak bo'lsa, nomini yozing — kod va vazifasini ham batafsil tushuntirib bera olaman!

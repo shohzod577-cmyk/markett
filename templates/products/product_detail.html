@@ -219,15 +219,7 @@
                                 <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
                             </div>
                             
-                            <div class="my-2">
-                                {% for i in "12345" %}
-                                    {% if forloop.counter <= review.rating %}
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    {% else %}
-                                    <i class="bi bi-star text-warning"></i>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                            <!-- Star rating removed -->
                             
                             <h6>{{ review.title }}</h6>
                             <p>{{ review.comment }}</p>
