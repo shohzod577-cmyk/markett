@@ -15,7 +15,7 @@
     --text-secondary: #5c5c5c;
     --text-muted: #8b8b8b;
     --border-color: #D5DBDB;
-    --bg-light: #ECF0F1;
+    --bg-light: #35D998;
     --bg-white: #ffffff;
     
     /* Status Colors */
@@ -77,7 +77,7 @@ a:hover {
    ================================================ */
 
 .modern-navbar {
-    background: linear-gradient(135deg, #9B59B6 0%, #3498DB 50%, #27AE60 100%);
+    background: #8C52FF;
     box-shadow: 0 2px 10px rgba(155,89,182,0.4);
     position: sticky;
     top: 0;
@@ -182,7 +182,7 @@ a:hover {
    ================================================ */
 
 .hero-section {
-    background: linear-gradient(135deg, #F0E68C 0%, #90EE90 50%, #87CEEB 100%);
+    background: #35D998;
     border-radius: var(--radius-xl);
     padding: 60px 40px;
     margin: 24px 0;
@@ -198,7 +198,7 @@ a:hover {
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+    background: #35D998;
     border-radius: 50%;
 }
 
@@ -241,7 +241,7 @@ a:hover {
    ================================================ */
 
 .product-card {
-    background: linear-gradient(135deg, #faffd1 0%, #e0ffe7 100%);
+    background: #35D998;
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: all var(--transition-base);
@@ -261,7 +261,7 @@ a:hover {
     position: relative;
     padding-top: 100%;
     overflow: hidden;
-    background: linear-gradient(135deg, #e0ffe7 0%, #faffd1 100%);
+    background: #35D998;
 }
 
 .product-image {
@@ -286,7 +286,7 @@ a:hover {
     position: absolute;
     top: 12px;
     left: 12px;
-    background: linear-gradient(90deg, #b2ff59 0%, #43e97b 100%);
+    background: #35D998;
     color: #1b5e20;
     padding: 6px 12px;
     border-radius: var(--radius-md);
@@ -297,12 +297,12 @@ a:hover {
 }
 
 .product-badge.sale {
-    background: linear-gradient(90deg, #f9d423 0%, #ff4e50 100%);
+    background: #35D998;
     color: #7a3b00;
 }
 
 .product-badge.new {
-    background: linear-gradient(90deg, #43e97b 0%, #b2ff59 100%);
+    background: #35D998;
     color: #1b5e20;
 }
 
@@ -310,7 +310,7 @@ a:hover {
     position: absolute;
     top: 12px;
     right: 12px;
-    background: linear-gradient(135deg, #e0ffe7 0%, #b2ff59 100%);
+    background: #35D998;
     border: 1.5px solid #43e97b;
     width: 36px;
     height: 36px;
