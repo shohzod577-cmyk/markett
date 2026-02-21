@@ -482,176 +482,59 @@ msgstr "Отзывы"
 msgid "Halol Savdo - Baraka Keltiradi!"
 msgstr "Халол Савдо - Приносит Благодать!"
 
-msgid "Eng arzon narxlar"
-msgstr "Самые низкие цены"
+msgid "Halal savdo – baraka olib keladi!"
+msgstr "Халяльная торговля — приносит благословение!"
 
-msgid "Tez yetkazib berish"
-msgstr "Быстрая доставка"
+msgid "Halol sifatli mahsulotlar"
+msgstr "Халяльные качественные товары"
 
-msgid "Sifatli mahsulotlar"
-msgstr "Качественные товары"
+msgid "Xaridni Boshlash"
+msgstr "Начать покупки"
 
-msgid "Ishonchli xizmat"
-msgstr "Надежный сервис"
+msgid "Quick Links"
+msgstr "Быстрые ссылки"
 
-msgid "Xarid qilish"
-msgstr "Купить"
+msgid "Shop"
+msgstr "Магазин"
 
-msgid "HALOL SAVDO"
-msgstr "ХАЛОЛ САВДО"
+msgid "About Us"
+msgstr "О нас"
 
-msgid "BARAKA MARKET"
-msgstr "БАРАКА МАРКЕТ"
-# Checkout page translations
-msgid "Checkout"
-msgstr "Оформление заказа"
+msgid "Contact"
+msgstr "Контакты"
 
-msgid "Cart"
-msgstr "Корзина"
+msgid "Customer Service"
+msgstr "Обслуживание клиентов"
 
-msgid "Information"
-msgstr "Информация"
+msgid "Help Center"
+msgstr "Центр помощи"
 
-msgid "Payment"
-msgstr "Оплата"
+msgid "Track Order"
+msgstr "Отследить заказ"
 
-msgid "Customer Information"
-msgstr "Информация о клиенте"
+msgid "Returns"
+msgstr "Возвраты"
 
-msgid "Customer name"
-msgstr "Имя клиента"
+msgid "Shipping Info"
+msgstr "Информация о доставке"
 
-msgid "Full Name"
-msgstr "Полное имя"
+msgid "Contact Us"
+msgstr "Свяжитесь с нами"
 
-msgid "Customer email"
-msgstr "Email клиента"
+msgid "All rights reserved."
+msgstr "Все права защищены."
 
-msgid "Email"
-msgstr "Email"
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
 
-msgid "Customer phone"
-msgstr "Телефон клиента"
+msgid "Terms of Service"
+msgstr "Условия использования"
 
-msgid "Delivery Address"
-msgstr "Адрес доставки"
+msgid "each"
+msgstr "за шт."
 
-msgid "Use saved address"
-msgstr "Использовать сохраненный адрес"
-
-msgid "Saved address"
-msgstr "Сохраненный адрес"
-
-msgid "Delivery address"
-msgstr "Адрес доставки"
-
-msgid "Select city"
-msgstr "Выберите город"
-
-msgid "Delivery city"
-msgstr "Город"
-
-msgid "Select region"
-msgstr "Выберите область"
-
-msgid "Delivery region"
-msgstr "Область"
-
-msgid "Tashkent City"
-msgstr "Город Ташкент"
-
-msgid "Tashkent Region"
-msgstr "Ташкентская область"
-
-msgid "Andijan"
-msgstr "Андижан"
-
-msgid "Bukhara"
-msgstr "Бухара"
-
-msgid "Fergana"
-msgstr "Фергана"
-
-msgid "Jizzakh"
-msgstr "Джизак"
-
-msgid "Namangan"
-msgstr "Наманган"
-
-msgid "Navoiy"
-msgstr "Навои"
-
-msgid "Kashkadarya"
-msgstr "Кашкадарья"
-
-msgid "Samarkand"
-msgstr "Самарканд"
-
-msgid "Sirdaryo"
-msgstr "Сырдарья"
-
-msgid "Surkhandarya"
-msgstr "Сурхандарья"
-
-msgid "Khorezm"
-msgstr "Хорезм"
-
-msgid "Karakalpakstan"
-msgstr "Каракалпакстан"
-
-msgid "Tashkent"
-msgstr "Ташкент"
-
-msgid "Karshi"
-msgstr "Карши"
-
-msgid "Nukus"
-msgstr "Нукус"
-
-msgid "Termez"
-msgstr "Термез"
-
-msgid "Urgench"
-msgstr "Ургенч"
-
-msgid "Guliston"
-msgstr "Гулистан"
-
-msgid "Select Location on Map (Optional)"
-msgstr "Выберите местоположение на карте (необязательно)"
-
-msgid "Payment Method"
-msgstr "Способ оплаты"
-
-msgid "Cash on Delivery"
-msgstr "Наличными при доставке"
-
-msgid "Plastic Card"
-msgstr "Пластиковая карта"
-
-msgid "Click"
-msgstr "Click"
-
-msgid "Payme"
-msgstr "Payme"
-
-msgid "Uzum Bank"
-msgstr "Uzum Bank"
-
-msgid "Credit/Debit Card"
-msgstr "Банковская карта"
-
-msgid "Additional Notes"
-msgstr "Дополнительные заметки"
-
-msgid "Customer notes"
-msgstr "Заметки клиента"
-
-msgid "Any special instructions?"
-msgstr "Есть особые указания?"
-
-msgid "Place Order"
-msgstr "Оформить заказ"
+msgid "Clear Cart"
+msgstr "Очистить корзину"
 
 msgid "Order Summary"
 msgstr "Итоги заказа"
@@ -779,3 +662,36 @@ msgstr "Итого"
 
 msgid "Rate this product"
 msgstr "������� �����"
+
+msgid "Eng arzon narxlar"
+msgstr "Самые низкие цены"
+
+msgid "Tez va ishonchli yetkazib berish"
+msgstr "Быстрая и надежная доставка"
+
+msgid "Ishonchli takliflar"
+msgstr "Надежные предложения"
+
+msgid "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
+msgstr "ХАЛЯЛЬНАЯ ТОРГОВЛЯ — К БЛАГУ И УДАЧЕ 🙌"
+
+msgid "Yangi Sabzavotlar"
+msgstr "Свежие овощи"
+
+msgid "Ko‘rish"
+msgstr "+ Смотреть"
+
+msgid "Sifatli Go‘sht"
+msgstr "Качественное мясо"
+
+msgid "Tanlash"
+msgstr "Выбрать"
+
+msgid "Ulgurji Takliflar"
+msgstr "Оптовые предложения"
+
+msgid "Qiziqarli Takliflar"
+msgstr "Интересные предложения"
+
+msgid "Ishonchli xizmat"
+msgstr "Надежный сервис"

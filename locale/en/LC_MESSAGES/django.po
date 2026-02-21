@@ -393,16 +393,19 @@ msgid "Related Products"
 msgstr "Related Products"
 
 msgid "Halol Savdo - Baraka Keltiradi!"
-msgstr "Halal Trade - Brings Blessings!"
+msgstr "Halal Trade – Brings Blessings!"
+
+msgid "Halal savdo – baraka olib keladi!"
+msgstr "Halal Trade – Brings Blessings!"
+
+msgid "Halol sifatli mahsulotlar"
+msgstr "Halal quality products"
 
 msgid "Eng arzon narxlar"
-msgstr "Lowest prices"
+msgstr "Best prices"
 
-msgid "Tez yetkazib berish"
-msgstr "Fast delivery"
-
-msgid "Sifatli mahsulotlar"
-msgstr "Quality products"
+msgid "Tez va ishonchli yetkazib berish"
+msgstr "Fast and reliable delivery"
 
 msgid "Ishonchli xizmat"
 msgstr "Reliable service"
@@ -415,4 +418,26 @@ msgstr "HALAL TRADE"
 
 msgid "BARAKA MARKET"
 msgstr "BLESSING MARKET"
+
+msgid "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
+msgstr "HALAL TRADE – BRINGS BLESSINGS! 🙌"
+
+msgid "Yangi Sabzavotlar"
+msgstr "Fresh Vegetables"
+
+msgid "Ko‘rish"
+msgstr "+ View"
+
+msgid "Sifatli Go‘sht"
+msgstr "Quality Meat"
+
+msgid "Tanlash"
+msgstr "Select"
+
+msgid "Ulgurji Takliflar"
+msgstr "Wholesale Offers"
+
+msgid "Qiziqarli Takliflar"
+msgstr "Interesting Offers"
+
 

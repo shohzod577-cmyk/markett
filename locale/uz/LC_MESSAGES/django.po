@@ -849,3 +849,48 @@ msgstr "Mahsulotlarni ko'rish"
 
 msgid "No categories available."
 msgstr "Kategoriyalar mavjud emas."
+
+msgid "Halal savdo – baraka olib keladi!"
+msgstr "Halal savdo – baraka olib keladi!"
+
+msgid "Halal sifatli mahsulotlar"
+msgstr "Halal sifatli mahsulotlar"
+
+msgid "Xaridni Boshlash"
+msgstr "Xaridni Boshlash"
+
+msgid "Eng arzon narxlar"
+msgstr "Eng arzon narxlar"
+
+msgid "Tez va ishonchli yetkazib berish"
+msgstr "Tez va ishonchli yetkazib berish"
+
+msgid "Halal sifatli mahsulotlar"
+msgstr "Halal sifatli mahsulotlar"
+
+msgid "Ishonchli takliflar"
+msgstr "Ishonchli takliflar"
+
+msgid "Ishonchli xizmat"
+msgstr "Ishonchli xizmat"
+
+msgid "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
+msgstr "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
+
+msgid "Yangi Sabzavotlar"
+msgstr "Yangi Sabzavotlar"
+
+msgid "Ko‘rish"
+msgstr "+ Ko‘rish"
+
+msgid "Sifatli Go‘sht"
+msgstr "Sifatli Go‘sht"
+
+msgid "Tanlash"
+msgstr "Tanlash"
+
+msgid "Ulgurji Takliflar"
+msgstr "Ulgurji Takliflar"
+
+msgid "Qiziqarli Takliflar"
+msgstr "Qiziqarli Takliflar"
