@@ -18,9 +18,7 @@
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" beforeDir="false" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" beforeDir="false" afterPath="$PROJECT_DIR$/locale/ru/LC_MESSAGES/django.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/locale/uz/LC_MESSAGES/django.mo" beforeDir="false" afterPath="$PROJECT_DIR$/locale/uz/LC_MESSAGES/django.mo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/uz/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/uz/LC_MESSAGES/django.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markett" beforeDir="false" afterPath="$PROJECT_DIR$/markett" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markett/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/markett/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markett/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/markett/.idea/workspace.xml" afterDir="false" />

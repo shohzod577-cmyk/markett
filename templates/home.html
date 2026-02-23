@@ -82,14 +82,14 @@
         <div class="row" style="margin-top: 32px;">
             <div class="col-md-4">
                 <div class="glass-bg neon-glow" style="padding: 24px; text-align: center; margin-bottom: 24px;">
-                    <img src="{% static 'img/vegetables.png' %}" alt="Yangi Sabzavotlar" style="width: 90px; margin-bottom: 12px;">
+                    <img src="{% static 'img/vegetables.png' %}" alt="{% trans 'Yangi Sabzavotlar' %}" style="width: 90px; margin-bottom: 12px;">
                     <h4 style="color: #aaffc3; font-weight: 700;">{% trans "Yangi Sabzavotlar" %}</h4>
                     <a href="#" class="btn btn-outline-light" style="margin-top: 8px; border-radius: 12px; border: 2px solid #14d94b; color: #14d94b; font-weight: 700;">+ {% trans "Ko‘rish" %}</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="glass-bg neon-glow" style="padding: 24px; text-align: center; margin-bottom: 24px;">
-                    <img src="{% static 'img/meat.png' %}" alt="Sifatli Go‘sht" style="width: 90px; margin-bottom: 12px;">
+                    <img src="{% static 'img/meat.png' %}" alt="{% trans 'Sifatli Go‘sht' %}" style="width: 90px; margin-bottom: 12px;">
                     <h4 style="color: #ffd700; font-weight: 700;">{% trans "Sifatli Go‘sht" %}</h4>
                     <a href="#" class="btn btn-outline-light" style="margin-top: 8px; border-radius: 12px; border: 2px solid #ffd700; color: #ffd700; font-weight: 700;">{% trans "Tanlash" %}</a>
                 </div>
@@ -152,22 +152,22 @@
                 {% trans "Featured Products" %}
                 <i class="bi bi-star-fill" style="color: #FFA500; font-size: 1.5rem; margin-left: 10px; animation: twinkle 2.3s ease-in-out infinite;"></i>
             </h2>
-            <p style="color: #aaffc3cc; font-size: 1.1rem; font-weight: 500; margin-top: 10px;">Eng yaxshi mahsulotlarimiz siz uchun!</p>
+            <p style="color: #aaffc3cc; font-size: 1.1rem; font-weight: 500; margin-top: 10px;">{% trans "Eng yaxshi mahsulotlarimiz siz uchun!" %}</p>
             <div style="width: 80px; height: 4px; background: linear-gradient(90deg, transparent 0%, #14d94b 50%, transparent 100%); margin: 15px auto 0;"></div>
         </div>
         <!-- Product Filter Tabs (Modern style) -->
         <div class="d-flex justify-content-center gap-3 mb-4 flex-wrap">
             <a href="{% url 'products:list' %}" class="btn" style="background: linear-gradient(90deg, #14d94b 0%, #aaffc3 100%); color: #0a0f1a; font-weight: 700; border-radius: 16px; padding: 10px 32px; box-shadow: 0 0 16px #14d94b55; border: none;">
-                {% trans "All Products" %}
+                {% trans "Barcha mahsulotlar" %}
             </a>
             <a href="{% url 'products:list' %}" class="btn" style="background: linear-gradient(90deg, #ffd700 0%, #fffbe6 100%); color: #0a0f1a; font-weight: 700; border-radius: 16px; padding: 10px 32px; box-shadow: 0 0 16px #ffd70055; border: none;">
-                {% trans "Categories" %}
+                {% trans "Kategoriyalar" %}
             </a>
             <a href="{% url 'products:list' %}?on_sale=true" class="btn" style="background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%); color: #fff; font-weight: 700; border-radius: 16px; padding: 10px 32px; box-shadow: 0 0 16px #ff980055; border: none;">
-                {% trans "On Sale" %}
+                {% trans "Rasprodaja" %}
             </a>
             <a href="{% url 'products:list' %}?sort=popular" class="btn" style="background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%); color: #0a0f1a; font-weight: 700; border-radius: 16px; padding: 10px 32px; box-shadow: 0 0 16px #43e97b55; border: none;">
-                {% trans "Popular" %}
+                {% trans "Mashhur" %}
             </a>
         </div>
         <div class="products" data-v-638ef030>
@@ -181,7 +181,7 @@
                         <i class="bi bi-box-seam" style="font-size: 48px; color: #fff;"></i>
                     </div>
                     <h3 style="color: #aaffc3; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">{% trans "No featured products available" %}</h3>
-                    <p style="color: #aaffc3bb; font-size: 1rem;">Tez orada yangi mahsulotlar qo'shiladi</p>
+                    <p style="color: #aaffc3bb; font-size: 1rem;">{% trans "Tez orada yangi mahsulotlar qo'shiladi" %}</p>
                 </div>
             {% endfor %}
         </div>
@@ -239,7 +239,7 @@
                         <i class="bi bi-grid-3x3-gap" style="font-size: 48px; color: #fff;"></i>
                     </div>
                     <h3 style="color: #aaffc3; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;">{% trans "No categories available" %}</h3>
-                    <p style="color: #aaffc3bb; font-size: 1rem;">Tez orada kategoriyalar qo'shiladi</p>
+                    <p style="color: #aaffc3bb; font-size: 1rem;">{% trans "Tez orada kategoriyalar qo'shiladi" %}</p>
                 </div>
             {% endfor %}
         </div>
