@@ -880,8 +880,8 @@ msgstr "Ishonchli takliflar"
 msgid "Ishonchli xizmat"
 msgstr "Ishonchli xizmat"
 
-msgid "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
-msgstr "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
+msgid "HALAL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
+msgstr "HALAL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
 
 msgid "Yangi Sabzavotlar"
 msgstr "Yangi Sabzavotlar"
@@ -900,3 +900,27 @@ msgstr "Ulgurji Takliflar"
 
 msgid "Qiziqarli Takliflar"
 msgstr "Qiziqarli Takliflar"
+
+msgid "Halal Trade – Brings Blessings!"
+msgstr "Halol savdo – Baraka keltiradi!"
+
+msgid "Best prices"
+msgstr "Eng yaxshi narxlar"
+
+msgid "Fast and reliable delivery"
+msgstr "Tez va ishonchli yetkazib berish"
+
+msgid "Halal quality products"
+msgstr "Halal sifatli mahsulotlar"
+
+msgid "Reliable service"
+msgstr "Ishonchli xizmat"
+
+msgid "Start Shopping"
+msgstr "Xaridni boshlash"
+
+msgid "HALAL TRADE"
+msgstr "HALOL SAVDO"
+
+msgid "HALAL BLESSINGS!"
+msgstr "HALOL BARAKA!"

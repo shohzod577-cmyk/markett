@@ -410,17 +410,14 @@ msgstr "Fast and reliable delivery"
 msgid "Ishonchli xizmat"
 msgstr "Reliable service"
 
-msgid "Xarid qilish"
-msgstr "Shop Now"
+msgid "Start Shopping"
+msgstr "Start Shopping"
 
-msgid "HALOL SAVDO"
+msgid "HALAL TRADE"
 msgstr "HALAL TRADE"
 
-msgid "BARAKA MARKET"
-msgstr "BLESSING MARKET"
-
-msgid "HALOL SAVDO – BARAKA, OMAD KELTIRADI 🙌"
-msgstr "HALAL TRADE – BRINGS BLESSINGS! 🙌"
+msgid "HALOL BLESSINGS!"
+msgstr "HALOL BLESSINGS!"
 
 msgid "Yangi Sabzavotlar"
 msgstr "Fresh Vegetables"

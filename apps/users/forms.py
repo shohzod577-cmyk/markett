@@ -73,12 +73,20 @@ class UserRegistrationForm(forms.ModelForm):
 
 class UserLoginForm(forms.Form):
     """
-    User login form.
+    User login form supporting username or email.
     """
+    username = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Saidbek'
+        })
+    )
     email = forms.EmailField(
+        required=False,
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Email Address'
+            'placeholder': 'ZTESYRXHYDYTX@gmail.com'
         })
     )
     password = forms.CharField(
@@ -87,6 +95,14 @@ class UserLoginForm(forms.Form):
             'placeholder': 'Password'
         })
     )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        email = cleaned_data.get('email')
+        if not username and not email:
+            raise forms.ValidationError('Please enter either username or email.')
+        return cleaned_data
 
 
 class UserProfileForm(forms.ModelForm):

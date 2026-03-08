@@ -43,15 +43,15 @@
                     <i class="bi bi-check-circle fs-4 d-block"></i>
                     Pending
                 </div>
-                <div class="{% if order.status in 'accepted,packed,on_the_way,delivered' %}text-success{% endif %}">
+                <div class="{% if order.status in status_accepted %}text-success{% endif %}">
                     <i class="bi bi-check-circle fs-4 d-block"></i>
                     Accepted
                 </div>
-                <div class="{% if order. status in 'packed,on_the_way,delivered' %}text-success{% endif %}">
+                <div class="{% if order.status in status_packed %}text-success{% endif %}">
                     <i class="bi bi-check-circle fs-4 d-block"></i>
                     Packed
                 </div>
-                <div class="{% if order.status in 'on_the_way,delivered' %}text-success{% endif %}">
+                <div class="{% if order.status in status_ontheway %}text-success{% endif %}">
                     <i class="bi bi-truck fs-4 d-block"></i>
                     On the Way
                 </div>
@@ -64,7 +64,7 @@
             <!-- Cancel Order Button -->
             {% if order.can_be_cancelled %}
             <div class="text-end mt-3">
-                <a href="{% url 'orders: cancel' order_id=order.id %}" class="btn btn-danger">
+                <a href="{% url 'orders:cancel' order_id=order.id %}" class="btn btn-danger">
                     <i class="bi bi-x-circle"></i> Cancel Order
                 </a>
             </div>
@@ -84,7 +84,7 @@
                     <div class="row align-items-center mb-3 pb-3 {% if not forloop.last %}border-bottom{% endif %}">
                         <div class="col-md-2">
                             {% if item.product.images.first %}
-                            <img src="{{ item.product.images.first. image.url }}" class="img-fluid rounded" alt="{{ item.product_name }}">
+                            <img src="{{ item.product.images.first.image.url }}" class="img-fluid rounded" alt="{{ item.product_name }}">
                             {% endif %}
                         </div>
                         <div class="col-md-6">

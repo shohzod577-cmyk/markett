@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Buyurtma berish demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    #order-modal {
+      display: none;
+      position: fixed;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: #222;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #0003;
+      z-index: 1000;
+      min-width: 250px;
+      text-align: center;
+    }
+    #order-btn {
+      margin-top: 20px;
+      padding: 12px 28px;
+      font-size: 18px;
+      border-radius: 8px;
+      background: #ffe066;
+      color: #222;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #cart-list {
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Savatdagi mahsulotlar</h2>
+  <ul id="cart-list">
+    <li>Mahsulot 1</li>
+    <li>Mahsulot 2</li>
+    <li>Mahsulot 3</li>
+  </ul>
+  <button id="order-btn">Buyurtma berish</button>
+  <div id="order-modal">
+    <span id="order-message"></span>
+    <br><br>
+    <button onclick="closeModal()">OK</button>
+  </div>
+  <script>
+    const cartList = document.getElementById('cart-list');
+    const orderBtn = document.getElementById('order-btn');
+    const orderModal = document.getElementById('order-modal');
+    const orderMessage = document.getElementById('order-message');
+
+    orderBtn.onclick = function() {
+      // Modal oynani ko'rsatish
+      orderMessage.innerText = "Buyurtmangiz tez orada yetkaziladi";
+      orderModal.style.display = "block";
+      // Savatni bo'shatish
+      cartList.innerHTML = "<li>Savat bo'sh</li>";
+    };
+
+    function closeModal() {
+      orderModal.style.display = "none";
+    }
+  </script>
+</body>
+</html>

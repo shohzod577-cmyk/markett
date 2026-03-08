@@ -10,6 +10,9 @@
       <change afterPath="$PROJECT_DIR$/markett/scripts/Markett.code-workspace" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/markett/static/img/star-effect.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/orders/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/orders/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/users/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/users/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/cart/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/apps/orders/__init__.py" afterDir="false" />
@@ -18,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/config/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/backup/Markett_20260108_194552/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/en/LC_MESSAGES/django.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locale/uz/LC_MESSAGES/django.po" beforeDir="false" afterPath="$PROJECT_DIR$/locale/uz/LC_MESSAGES/django.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markett" beforeDir="false" afterPath="$PROJECT_DIR$/markett" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markett/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/markett/.idea/vcs.xml" afterDir="false" />
@@ -28,6 +32,9 @@
       <change beforePath="$PROJECT_DIR$/markett/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/markett/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/markett/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/markett/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/orders/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/orders/order_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/payments/payment_process.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payments/payment_process.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/users/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

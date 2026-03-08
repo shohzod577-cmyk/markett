@@ -52,22 +52,36 @@ def login_view(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
+            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data['password']
 
-            user = authenticate(request, username=email, password=password)
+            user = None
+            from django.contrib.auth import get_user_model
+            User = get_user_model()
+            if username:
+                try:
+                    user_obj = User.objects.get(username=username)
+                    user = authenticate(request, username=user_obj.username, password=password)
+                except User.DoesNotExist:
+                    user = None
+            elif email:
+                try:
+                    user_obj = User.objects.get(email=email)
+                    user = authenticate(request, username=user_obj.username, password=password)
+                except User.DoesNotExist:
+                    user = None
 
             if user is not None:
-                if user.is_blocked:
+                if hasattr(user, 'is_blocked') and user.is_blocked:
                     messages.error(request, 'Your account has been blocked.')
                 else:
                     login(request, user)
-                    messages.success(request, f'Welcome back, {user.first_name or user.email}!')
-
+                    messages.success(request, f'Welcome back, {user.first_name or user.username or user.email}!')
                     next_url = request.GET.get('next', 'home')
                     return redirect(next_url)
             else:
-                messages.error(request, 'Invalid email or password.')
+                messages.error(request, 'Invalid credentials. Please try again.')
     else:
         form = UserLoginForm()
 

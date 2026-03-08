@@ -100,8 +100,15 @@ def order_detail_view(request, order_id):
     """
     order = get_object_or_404(Order, id=order_id, user=request.user)
 
+    status_accepted = ['accepted', 'packed', 'on_the_way', 'delivered']
+    status_packed = ['packed', 'on_the_way', 'delivered']
+    status_ontheway = ['on_the_way', 'delivered']
+
     context = {
         'order': order,
+        'status_accepted': status_accepted,
+        'status_packed': status_packed,
+        'status_ontheway': status_ontheway,
     }
 
     return render(request, 'orders/order_detail.html', context)

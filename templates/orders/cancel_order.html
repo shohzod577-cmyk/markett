@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container mt-5">
+    <h2>Order Cancellation</h2>
+    <p>Your order <strong>#{{ order.id }}</strong> is being cancelled.</p>
+    <p>If the product has already been shipped, cancellation may not be possible.</p>
+    <a href="/en/orders/" class="btn btn-primary">Back to Orders</a>
+  </div>
+{% endblock %}

@@ -1,0 +1,144 @@
+<!-- Til tanlash -->
+<div style="text-align:right; margin-bottom:12px;">
+  <select id="lang-select" style="padding:6px 12px; border-radius:8px;">
+    <option value="uz">O'zbek</option>
+    <option value="ru">Русский</option>
+    <option value="en" selected>English</option>
+  </select>
+</div>
+
+<section class="halal-hero-bg" style="min-height: 520px; display: flex; gap: 48px; align-items: flex-start; justify-content: center; background: linear-gradient(135deg, #164a4a 0%, #4fd1c5 100%); border-radius: 32px; box-shadow: 0 0 60px #164a4a99, 0 0 0 8px #4fd1c555; margin-bottom: 48px; padding: 48px 0 32px 0;">
+  <div class="halal-card" style="background: rgba(30,40,50,0.28); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18); border-radius: 24px; padding: 40px 36px; min-width: 370px; max-width: 420px;">
+    <h1 id="hero-title" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #ffe082; font-weight: 900; text-shadow: 0 2px 8px #000, 0 0 16px #ffd70055; margin-bottom: 1.2rem; letter-spacing: 1px;"></h1>
+    <ul id="hero-list" style="list-style: none; padding: 0; margin-bottom: 2.2rem; font-size: 1.18rem;"></ul>
+    <a id="start-shopping-btn" href="/uz/products/" style="display:inline-block; font-family: 'Poppins', sans-serif; font-weight: 700; padding: 14px 44px; font-size: 1.18rem; background: linear-gradient(90deg, #f7f6c5 0%, #bfa14a 100%); color: #222; border: none; border-radius: 24px; box-shadow: 0 2px 16px #ffd70055, 0 4px 16px #0002; transition: 0.2s; margin-top: 8px; text-shadow: 0 1px 0 #fff8;"></a>
+  </div>
+  <div class="halal-card" style="background: rgba(255,255,255,0.13); box-shadow: 0 8px 32px 0 rgba(31,38,135,0.13); border-radius: 24px; padding: 36px 32px 32px 32px; min-width: 420px; max-width: 480px; display: flex; flex-direction: column; align-items: center;">
+    <div style="margin-bottom: 12px;">
+      <img src="/static/img/mosque-gold.svg" alt="mosque" style="height: 54px; filter: drop-shadow(0 0 8px #ffd70088);">
+    </div>
+    <div style="background: #1a232b; border-radius: 18px; box-shadow: 0 4px 32px #0008; padding: 32px 18px 24px 18px; width: 100%; max-width: 370px; text-align: center; margin-bottom: 18px;">
+      <h2 id="halal-trade-title" style="margin: 0; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: #fffbe6; letter-spacing: 2px; text-shadow: 0 0 12px #ffd700, 0 2px 8px #000;"></h2>
+      <button id="halal-blessings-btn" style="margin-top: 22px; background: linear-gradient(90deg, #f7f6c5 0%, #bfa14a 100%); color: #222; font-weight: 700; font-size: 1.13rem; border-radius: 16px; padding: 12px 38px; border: none; box-shadow: 0 0 16px #ffd70088; text-shadow: 0 1px 0 #fff8;"></button>
+    </div>
+    <div style="display: flex; gap: 12px; margin-top: 8px;">
+      <img src="/static/img/coin1.svg" alt="coin" style="height: 38px;">
+      <img src="/static/img/coin2.svg" alt="coin" style="height: 38px;">
+      <img src="/static/img/coin3.svg" alt="coin" style="height: 38px;">
+    </div>
+  </div>
+</section>
+
+<script>
+const translations = {
+  uz: {
+    heroTitle: "Halol Trade – <span style='color:#ffd700;'>Baraka<br>Keltiradi!</span>",
+    list: [
+      "🪙 Eng yaxshi narxlar",
+      "✈️ Tez va ishonchli yetkazib berish",
+      "🛡️ Halol sifatli mahsulotlar",
+      "⚙️ Ishonchli xizmat"
+    ],
+    startShopping: "Xaridni Boshlash",
+    halalTrade: "HALOL TRADE",
+    blessings: "HALOL BARAKA!"
+  },
+  ru: {
+    heroTitle: "Halal Trade – <span style='color:#ffd700;'>Приносит<br>Благословение!</span>",
+    list: [
+      "🪙 Лучшие цены",
+      "✈️ Быстрая и надежная доставка",
+      "🛡️ Халяль качественные продукты",
+      "⚙️ Надежный сервис"
+    ],
+    startShopping: "Начать покупки",
+    halalTrade: "ХАЛЯЛЬ ТРЕЙД",
+    blessings: "ХАЛЯЛЬ БЛАГОСЛОВЕНИЕ!"
+  },
+  en: {
+    heroTitle: "Halal Trade – <span style='color:#ffd700;'>Brings<br>Blessings!</span>",
+    list: [
+      "🪙 Best prices",
+      "✈️ Fast and reliable delivery",
+      "🛡️ Halal quality products",
+      "⚙️ Reliable service"
+    ],
+    startShopping: "Start Shopping",
+    halalTrade: "HALAL TRADE",
+    blessings: "HALAL BLESSINGS!"
+  }
+};
+
+function renderTexts(lang) {
+  document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
+  document.getElementById('hero-list').innerHTML = translations[lang].list.map(item => `<li style="margin-bottom:12px;display:flex;align-items:center;font-weight:600;">${item}</li>`).join('');
+  document.getElementById('start-shopping-btn').textContent = translations[lang].startShopping;
+  document.getElementById('halal-trade-title').textContent = translations[lang].halalTrade;
+  document.getElementById('halal-blessings-btn').textContent = translations[lang].blessings;
+  document.getElementById('start-shopping-btn').href = `/${lang}/products/`;
+}
+
+const langSelect = document.getElementById('lang-select');
+renderTexts(langSelect.value);
+
+langSelect.addEventListener('change', function() {
+  renderTexts(this.value);
+});
+</script>
+
+<script>
+const translations = {
+  uz: {
+    heroTitle: "Halol Trade – <span style='color:#ffd700;'>Baraka<br>Keltiradi!</span>",
+    list: [
+      "🪙 Eng yaxshi narxlar",
+      "✈️ Tez va ishonchli yetkazib berish",
+      "🛡️ Halol sifatli mahsulotlar",
+      "⚙️ Ishonchli xizmat"
+    ],
+    startShopping: "Xaridni Boshlash",
+    halalTrade: "HALOL TRADE",
+    blessings: "HALOL BARAKA!"
+  },
+  ru: {
+    heroTitle: "Halal Trade – <span style='color:#ffd700;'>Приносит<br>Благословение!</span>",
+    list: [
+      "🪙 Лучшие цены",
+      "✈️ Быстрая и надежная доставка",
+      "🛡️ Халяль качественные продукты",
+      "⚙️ Надежный сервис"
+    ],
+    startShopping: "Начать покупки",
+    halalTrade: "ХАЛЯЛЬ ТРЕЙД",
+    blessings: "ХАЛЯЛЬ БЛАГОСЛОВЕНИЕ!"
+  },
+  en: {
+    heroTitle: "Halal Trade – <span style='color:#ffd700;'>Brings<br>Blessings!</span>",
+    list: [
+      "🪙 Best prices",
+      "✈️ Fast and reliable delivery",
+      "🛡️ Halal quality products",
+      "⚙️ Reliable service"
+    ],
+    startShopping: "Start Shopping",
+    halalTrade: "HALAL TRADE",
+    blessings: "HALAL BLESSINGS!"
+  }
+};
+
+function renderTexts(lang) {
+  document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
+  document.getElementById('hero-list').innerHTML = translations[lang].list.map(item => `<li style="margin-bottom:12px;display:flex;align-items:center;font-weight:600;">${item}</li>`).join('');
+  document.getElementById('start-shopping-btn').textContent = translations[lang].startShopping;
+  document.getElementById('halal-trade-title').textContent = translations[lang].halalTrade;
+  document.getElementById('halal-blessings-btn').textContent = translations[lang].blessings;
+  document.getElementById('start-shopping-btn').href = `/${lang}/products/`;
+}
+
+const langSelect = document.getElementById('lang-select');
+renderTexts(langSelect.value);
+
+langSelect.addEventListener('change', function() {
+  renderTexts(this.value);
+});
+</script>
